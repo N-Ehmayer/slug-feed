@@ -1,0 +1,19 @@
+{
+  "all": {
+    "end_with_newline": true,
+    "max_preserve_newlines": 3,
+    "indent_size": 2
+  },
+  "css": {
+    "preserve_newlines": false
+  },
+  "html": {
+    "indent_inner_html": true
+  },
+  "js": {
+    "operator_position": "after-newline"
+  },
+  "json": {
+    "brace_style": "collapse-preserve-inline"
+  }
+}
