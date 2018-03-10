@@ -41,7 +41,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.0.0",
-    "express": "^4.16.2",
+    "npm": "^5.7.1",
     "react": "^15.4.2",
     "react-dom": "15.4.2"
   },
@@ -49,8 +49,5 @@
     "url": "https://github.com/N-Ehmayer/slug-feed/issues"
   },
   "main": "server.js",
-  "directories": {
-    "doc": "docs"
-  },
   "license": "ISC"
 }
