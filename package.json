@@ -35,7 +35,6 @@
     "js-beautify": "^1.7.5",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
-    "sockjs-client": "^1.1.4",
     "style-loader": "^0.20.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
