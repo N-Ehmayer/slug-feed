@@ -33,7 +33,6 @@
     "eslint": "^4.18.2",
     "eslint-plugin-react": "^7.6.1",
     "js-beautify": "^1.7.5",
-    "knex-migrate": "^1.5.1",
     "node-sass": "^4.7.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.2",
@@ -41,7 +40,6 @@
     "webpack-dev-server": "^2.11.1"
   },
   "dependencies": {
-<<<<<<< HEAD
     "bootstrap": "^4.0.0",
     "express": "^4.16.2",
     "react": "^15.4.2",
@@ -55,15 +53,4 @@
     "doc": "docs"
   },
   "license": "ISC"
-=======
-    "dotenv": "^5.0.1",
-    "express": "^4.16.2",
-    "knex": "^0.14.4",
-    "knex-logger": "^0.1.0",
-    "npm": "^5.7.1",
-    "pg": "^7.4.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
-  }
->>>>>>> 488d544de438334ae4dd248a114c356894606e9b
 }
