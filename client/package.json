@@ -49,6 +49,9 @@
     "react-dom": "15.4.2",
     "script-loader": "^0.7.2",
     "uglify-loader": "^2.0.0"
+    "npm": "^5.7.1",
+    "react": "^15.4.2",
+    "react-dom": "15.4.2"
   },
   "bugs": {
     "url": "https://github.com/N-Ehmayer/slug-feed/issues"
