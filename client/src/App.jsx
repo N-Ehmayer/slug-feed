@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Button } from '../node_modules/mdbreact';
+import NavbarFeatures from './NavbarFeatures.jsx';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +8,11 @@ class App extends Component {
 
 
   render() {
-    return <div><Button color='success'>Hello darkness my old friend</Button></div>;
+    return (
+    <div>
+      <NavbarFeatures></NavbarFeatures>
+      <Button color='success'>Hello darkness my old friend</Button>
+    </div>);
   }
 }
 export default App;
