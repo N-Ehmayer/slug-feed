@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import {Button} from 'mdbreact';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +7,11 @@ class App extends Component {
 
 
   render() {
-    return <div>Hello darkness my old friend</div>;
+    console.log(Button.methods);
+    return (
+    <div>Hello darkness my oasdfld friend
+    <Button color="secondary">Secondary</Button>
+    </div>);
   }
 }
 export default App;
