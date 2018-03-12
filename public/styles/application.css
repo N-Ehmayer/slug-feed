@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Lobster|Lora");
 .main-container {
   padding-top: 4em;
 }
@@ -12,6 +13,7 @@
   font-size: 1.5rem;
   font-weight: 300;
   padding: 0;
+}
 
 p {
   max-width: 100%;
@@ -21,20 +23,34 @@ p {
   border: 1px solid #000;
 }
 
-.negative-comments {
-  background-color: pink;
+.negative-comment {
+  border-right: 1px solid tomato;
 }
 
-.positive-comments {
-  background-color: lightblue;
+.positive-comment {
+  border-left: 1px solid #00AAFF;
 }
 
 .comment-content {
   word-wrap: break-word;
+  padding: 15px;
+}
+
+.card-title h1 {
+  font-family: Cabin;
+  font-size: 1px;
 }
 
 .article-container {
-  background-color: lightgrey;
+  margin: 3em 1em;
+}
+
+.article-container h1 {
+  font-family: Cabin, san-sarif;
+}
+
+.article-container p {
+  font-family: Lola, sarif;
 }
 
 .article-content {
