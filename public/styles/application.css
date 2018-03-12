@@ -1,7 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Lobster|Lora");
-body {
-  color: blue;
-  font-family: 'Cabin', sans-serif;
+.main-container {
+  padding-top: 4em;
+}
+
+.card-img {
+  padding: 0;
 }
 
 .navbar-logo {
