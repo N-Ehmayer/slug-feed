@@ -4,6 +4,7 @@
   "description": "slugfeed news app",
   "main": "server.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -23,6 +24,7 @@
     "knex-logger": "^0.1.0",
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
+    "nodemon": "^1.17.1",
     "passport": "^0.4.0",
     "passport-auth0": "^0.6.1",
     "pg": "^7.4.1"

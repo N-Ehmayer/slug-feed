@@ -2,7 +2,16 @@
   padding-top: 4em;
 }
 
-.card-img {
+body {
+  color: blue;
+  font-family: 'Cabin', sans-serif;
+}
+
+.navbar-logo {
+  width: 90px;
+  font-family: Lobster, cursive;
+  font-size: 1.5rem;
+  font-weight: 300;
   padding: 0;
 }
 
@@ -13,6 +22,7 @@ p {
 .testclass {
   border: 1px solid #000;
 }
+
 .negative-comments {
   background-color: pink;
 }
@@ -28,6 +38,8 @@ p {
 .article-container {
   background-color: lightgrey;
 }
+
 .article-content {
-  word-wrap: break-word;;
+  word-wrap: break-word;
+  ;
 }
