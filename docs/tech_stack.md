@@ -18,13 +18,10 @@ Backend:
 
 Front End:
 
-- Webpack
-- Babel
 - SCSS Formatting
 - HTML5
 - CSS3
 - Material Design Bootstrap
-- ReactJS
 - Google Login API
 - Google Captcha
 
