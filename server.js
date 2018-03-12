@@ -7,6 +7,11 @@ const knexConfig = require("./knexfile");
 const knexLogger = require('knex-logger');
 const morgan = require('morgan');
 const sass = require("node-sass-middleware");
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENV || "development";
@@ -22,6 +27,16 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(
+  session({
+    secret: 'shhhhhhhhh',
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -33,11 +48,41 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+// Configure Passport to use Auth0
+const strategy = new Auth0Strategy(
+  {
+    domain: process.env.AUTH0_DOMAIN,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_SECRET,
+    callbackURL: process.env.AUTH0_CALLBACK_URL || 'http://localhost:3000/callback'
+  },
+  (accessToken, refreshToken, extraParams, profile, done) => {
+    return done(null, profile);
+  }
+);
+
+passport.use(strategy);
+
+// This can be used to keep a smaller payload
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+// ...
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Mount all resource routes
 const router = express.Router();
 
 require("./routes/index")(router);
+require("./routes/auth0")(router);
 require("./routes/api-article")(router);
+require("./routes/user")(router);
 
 const apiRouteFactory = require("./routes/api-route-factory.js");
 apiRouteFactory(router, knex, 'users');
