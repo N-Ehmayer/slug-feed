@@ -12,7 +12,7 @@ const ENV = process.env.ENV || "development";
 const app = express();
 
 const knex = require("knex")(knexConfig[ENV]);
-const apiRouteFactory = require("./api-route-factory.js");
+const apiRouteFactory = require("./routes/api-route-factory.js");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
