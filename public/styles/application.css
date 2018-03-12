@@ -5,3 +5,31 @@
 .card-img {
   padding: 0;
 }
+
+p {
+  max-width: 100%;
+}
+
+.testclass {
+  border: 1px solid #000;
+}
+
+.negative-comments {
+  background-color: pink;
+}
+
+.positive-comments {
+  background-color: lightblue;
+}
+
+.comment-content {
+  word-wrap: break-word;
+}
+
+.article-container {
+  background-color: lightgrey;
+}
+
+.article-content {
+  word-wrap: break-word;
+}
