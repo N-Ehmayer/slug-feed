@@ -8,15 +8,16 @@ function appendRoutes(router) {
 
   // Perform the login
   router.get('/login', passport.authenticate('auth0', {
-    clientID: process.env.AUTH0_CLIENT_ID,
-    domain: process.env.AUTH0_DOMAIN,
-    redirectUri: process.env.AUTH0_CALLBACK_URL,
-    responseType: 'code',
-    audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
-    scope: 'openid profile'}),
+      clientID: process.env.AUTH0_CLIENT_ID,
+      domain: process.env.AUTH0_DOMAIN,
+      redirectUri: process.env.AUTH0_CALLBACK_URL,
+      responseType: 'code',
+      audience: 'https://' + process.env.AUTH0_DOMAIN + '/userinfo',
+      scope: 'openid profile'
+    }),
     function(req, res) {
       res.redirect("/");
-  });
+    });
 
   // Perform session logout and redirect to homepage
   router.get('/logout', (req, res) => {
@@ -25,12 +26,11 @@ function appendRoutes(router) {
   });
 
   // Perform the final stage of authentication and redirect to '/user'
-  router.get( '/callback',
+  router.get('/callback',
     passport.authenticate('auth0', {
       failureRedirect: '/failure'
     }),
     function(req, res) {
-      console.log(req);
       res.redirect(req.session.returnTo || '/user');
     }
   );

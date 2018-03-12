@@ -12,11 +12,11 @@ const Auth0Strategy = require('passport-auth0');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
 
 const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENV || "development";
 const app = express();
-
 const knex = require("knex")(knexConfig[ENV]);
 
 app.set("view engine", "ejs");
@@ -37,6 +37,7 @@ app.use(
     saveUninitialized: true
   })
 );
+app.use(flash());
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -49,8 +50,7 @@ app.use(morgan('dev'));
 app.use(knexLogger(knex));
 
 // Configure Passport to use Auth0
-const strategy = new Auth0Strategy(
-  {
+const strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_SECRET,
@@ -62,28 +62,28 @@ const strategy = new Auth0Strategy(
 );
 
 passport.use(strategy);
-
-// This can be used to keep a smaller payload
-passport.serializeUser(function(user, done) {
-  done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-  done(null, user);
-});
-
-// ...
+passport.serializeUser(function(user, done) { done(null, user); });
+passport.deserializeUser(function(user, done) { done(null, user); });
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Mount all resource routes
-const router = express.Router();
+// Give all templates access to the loggedIn flag
+app.use(function(req, res, next) {
+  res.locals.loggedIn = false;
+  if (req.session.passport && typeof req.session.passport.user != 'undefined') {
+    res.locals.loggedIn = true;
+  }
+  next();
+});
 
+// Create the Router & Mount Custom Routes
+const router = express.Router();
 require("./routes/index")(router);
 require("./routes/auth0")(router);
 require("./routes/api-article")(router);
 require("./routes/user")(router);
 
+// Mount all factory-made resource routes
 const apiRouteFactory = require("./routes/api-route-factory.js");
 apiRouteFactory(router, knex, 'users');
 apiRouteFactory(router, knex, 'articles');
