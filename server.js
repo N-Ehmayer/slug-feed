@@ -80,8 +80,8 @@ app.use(function(req, res, next) {
 const router = express.Router();
 require("./routes/index")(router);
 require("./routes/auth0")(router);
-require("./routes/api-article")(router);
 require("./routes/user")(router);
+require("./routes/api-articles-id")(router, knex);
 
 // Mount all factory-made resource routes
 const apiRouteFactory = require("./routes/api-route-factory.js");
