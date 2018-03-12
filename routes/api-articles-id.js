@@ -1,6 +1,6 @@
 "use strict";
 
-function appendRoutes(router) {
+function appendRoutes(router, knex) {
 
   router.get('/api/articles/:id', (req, res) => {
     let articleObject = {};
