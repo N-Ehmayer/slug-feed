@@ -36,7 +36,7 @@ app.use(knexLogger(knex));
 // Mount all resource routes
 const router = express.Router();
 
-require("./routes/index")(router);
+require("./routes/index")(router, knex);
 require("./routes/api-article")(router);
 
 const apiRouteFactory = require("./routes/api-route-factory.js");
