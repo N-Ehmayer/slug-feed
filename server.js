@@ -7,7 +7,7 @@ const knexConfig = require("./knexfile");
 const knexLogger = require('knex-logger');
 const morgan = require('morgan');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENV || "development";
 const app = express();
 
