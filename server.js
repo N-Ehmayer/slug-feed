@@ -81,6 +81,7 @@ const router = express.Router();
 require("./routes/index")(router);
 require("./routes/auth0")(router);
 require("./routes/user")(router);
+require("./routes/article")(router);
 require("./routes/api-articles-id")(router, knex);
 
 // Mount all factory-made resource routes
