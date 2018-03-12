@@ -8,4 +8,4 @@ function appendRoutes(router) {
 
 };
 
-module.exports = appendRoute;
+module.exports = appendRoutes;
