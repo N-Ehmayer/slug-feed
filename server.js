@@ -7,12 +7,12 @@ const knexConfig = require("./knexfile");
 const knexLogger = require('knex-logger');
 const morgan = require('morgan');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENV || "development";
 const app = express();
 
 const knex = require("knex")(knexConfig[ENV]);
-const apiRouteFactory = require("./api-route-factory.js");
+const apiRouteFactory = require("./routes/api-route-factory.js");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
