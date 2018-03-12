@@ -30,37 +30,9 @@ class NavbarFeatures extends Component {
         return (
             <Router>
                 <Navbar color="indigo" dark expand="md" scrolling>
-                    <NavbarBrand href="/">
-                        <strong>Navbar</strong>
+                    <NavbarBrand href="/" className="mx-auto nav-brand">
+                        <strong>SlugFeed</strong>
                     </NavbarBrand>
-                    { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
-                    <Collapse isOpen = { this.state.collapse } navbar>
-                        <NavbarNav className="ml-auto">
-                        <NavItem active>
-                            <NavLink className="nav-link" to="#">Home</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink className="nav-link" to="#">Features</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink className="nav-link" to="#">Pricing</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                            <DropdownToggle nav caret>Dropdown</DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem href="#">Action</DropdownItem>
-                                <DropdownItem href="#">Another Action</DropdownItem>
-                                <DropdownItem href="#">Something else here</DropdownItem>
-                                <DropdownItem href="#">Something else here</DropdownItem>
-                            </DropdownMenu>
-                            </Dropdown>
-                        </NavItem>
-                            <form className="form-inline">
-                            <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-                            </form>
-                        </NavbarNav>
-                    </Collapse>
                 </Navbar>
             </Router>
         );
