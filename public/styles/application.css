@@ -3,3 +3,11 @@ body {
   color: blue;
   font-family: 'Cabin', sans-serif;
 }
+
+.navbar-logo {
+  width: 90px;
+  font-family: Lobster, cursive;
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0;
+}
