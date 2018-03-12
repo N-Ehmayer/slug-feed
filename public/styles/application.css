@@ -1,1 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Lobster|Lora");
+.main-container {
+  padding-top: 4em;
+}
+
+.card-img {
+  padding: 0;
+}
