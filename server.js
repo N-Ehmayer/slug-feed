@@ -6,6 +6,7 @@ const express = require("express");
 const knexConfig = require("./knexfile");
 const knexLogger = require('knex-logger');
 const morgan = require('morgan');
+const sass = require("node-sass-middleware");
 
 const PORT = process.env.PORT || 3000;
 const ENV = process.env.ENV || "development";
@@ -13,6 +14,15 @@ const app = express();
 
 const knex = require("knex")(knexConfig[ENV]);
 const apiRouteFactory = require("./routes/api-route-factory.js");
+
+app.set("view engine", "ejs");
+app.use("/styles", sass({
+  src: __dirname + "/sass",
+  dest: __dirname + "/public/styles",
+  debug: true,
+  outputStyle: 'expanded'
+}));
+app.use(express.static("public"));
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -26,6 +36,10 @@ app.use(knexLogger(knex));
 
 // Mount all resource routes
 const router = express.Router();
+
+router.get('/', (request, response) => {
+  response.render('index');
+});
 
 router.get('/api/articles/:id', (req, res) => {
   let articleObject = {};
