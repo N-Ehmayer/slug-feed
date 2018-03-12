@@ -37,7 +37,7 @@ app.use(knexLogger(knex));
 const router = express.Router();
 
 require("./routes/index")(router);
-require("./routes/api_article")(router);
+require("./routes/api-article")(router);
 
 const apiRouteFactory = require("./routes/api-route-factory.js");
 apiRouteFactory(router, knex, 'users');
