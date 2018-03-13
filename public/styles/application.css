@@ -13,6 +13,10 @@
   width: 100%;
 }
 
+.card {
+  margin-bottom: 40px;
+}
+
 .card-img {
   width: 100%;
   height: 100%;
@@ -20,7 +24,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  margin: auto;
 }
 
 .rounded-circle {
