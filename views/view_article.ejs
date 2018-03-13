@@ -33,12 +33,7 @@
 
       <div class="col-6 testclass">
         <article class="article-container">
-          <h1 class="article-title"><%= article.title %></h1>
-          <% for (let i in article.sections) { %>
-            <p class="article-content">
-              <%= article.sections[i].content %>
-            </p>
-          <% } %>
+          <%- include('./partials/_article'); %>
         </article>
       </div>
 
@@ -53,17 +48,7 @@
         <% } %>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col testclass">
-        1 of 3
-      </div>
-      <div class="col-5 testclass">
-        2 of 3 (wider)
-      </div>
-      <div class="col testclass">
-        3 of 3
-      </div>
+
     </div>
   </div>
 </body>
