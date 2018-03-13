@@ -1,18 +1,10 @@
 $(function() {
 
-  function loadArticles() {
-    $.ajax({
-      url: '/articles',
-      method: 'GET',
-      error: function(err) {
-        console.log(err);
-      },
-      success: function(articles) {
-        console.log(articles);
-      }
-    })
-  }
-  const articles = loadArticles();
+
+  $('#comments-p').click(event => {
+    $('#comments-p').addClass('animated zoomOut');
+    $('#comments-n').addClass('animated zoomOut');
+  });
 
   $('.popover-markup>.trigger').popover({
     html: true,

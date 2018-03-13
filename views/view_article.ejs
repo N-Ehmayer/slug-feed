@@ -17,11 +17,13 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-3 negative-comment">
+      <div class="col-3 negative-comment" id="comments-p">
         <h3>responses</h3>
         <% for (let section in article.sections) { %>
+        <%= section%>
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (!comment.agree) { %>
+              <%=comment%>
               <%- include('./partials/_comment', {comment}); %>
             <% } %>
           <% }) %>
@@ -39,7 +41,7 @@
         </article>
       </div>
 
-        <div class="positive-comments">
+        <div class="col-3 positive-comment" id="comments-n">
           <% for (let section in article.sections) { %>
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (comment.agree) { %>
