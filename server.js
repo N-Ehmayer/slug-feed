@@ -90,6 +90,7 @@ apiRouteFactory(router, knex, 'users');
 apiRouteFactory(router, knex, 'articles');
 apiRouteFactory(router, knex, 'sections');
 apiRouteFactory(router, knex, 'comments');
+apiRouteFactory(router, knex, 'comment_votes');
 apiRouteFactory(router, knex, 'tags');
 apiRouteFactory(router, knex, 'article_tags');
 apiRouteFactory(router, knex, 'user_interests');
