@@ -23,26 +23,28 @@ p {
   max-width: 100%;
 }
 
-.testclass {
+.article {
   border: 1px solid #000;
 }
 
 .negative-comments {
   background-color: pink;
+  border: 1px solid #000;
 }
 
 .positive-comments {
   background-color: lightblue;
+  border: 1px solid #000;
+}
+
+.comment-container {
+  border-bottom: 1px solid #000;
 }
 
 .comment-content {
   word-wrap: break-word;
 }
 
-.article-container {
-  background-color: lightgrey;
-}
-
-.article-content {
+.section-content {
   word-wrap: break-word;
 }
