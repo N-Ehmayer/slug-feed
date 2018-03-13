@@ -24,10 +24,11 @@ function getArticle(knex, id, callback, errHandler) {
 
   const sectionCommentsQuery = function(sectionId) {
     return knex
-      .select('comments.*')
+      .select('comments.*', 'users.name')
+      .join('users', 'users.id', '=', 'comments.user_id')
       .from('comments')
-      .where('section_id', sectionId)
-      .orderBy('created_at');
+      .where('comments.section_id', sectionId)
+      .orderBy('comments.created_at');
   };
 
   const authorQuery = knex
