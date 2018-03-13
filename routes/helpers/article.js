@@ -25,8 +25,8 @@ function getArticle(knex, id, callback, errHandler) {
   const sectionCommentsQuery = function(sectionId) {
     return knex
       .select('comments.*', 'users.name')
-      .join('users', 'users.id', '=', 'comments.user_id')
       .from('comments')
+      .join('users', 'users.id', '=', 'comments.user_id')
       .where('comments.section_id', sectionId)
       .orderBy('comments.created_at');
   };
