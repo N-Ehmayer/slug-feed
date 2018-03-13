@@ -79,7 +79,7 @@ app.use(function(req, res, next) {
 // Create the Router & Mount Custom Routes
 const router = express.Router();
 require("./routes/index")(router, knex);
-require("./routes/auth0")(router);
+require("./routes/auth0")(router, knex);
 require("./routes/user")(router);
 require("./routes/articles-id")(router, knex);
 require("./routes/api-articles-id")(router, knex);

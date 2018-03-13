@@ -4,9 +4,9 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex('users').insert([
-        { id: 1, name: 'user_name_1' },
-        { id: 2, name: 'user_name_2' },
-        { id: 3, name: 'user_name_3' }
+        { id: 'google-oauth2|103031492696030474631', profile: {} },
+        { id: 'a-a|123', profile: {} },
+        { id: 'b-b|456', profile: {} }
       ]);
     });
 };
