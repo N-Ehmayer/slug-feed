@@ -2,4 +2,7 @@
   <img src="<%= comment.profile.picture %>" class="rounded-circle" />
   <h3 class="comment-username"><%= comment.profile.nickname %></h3><br/>
   <p class="comment-content"><%= comment.content %></p>
+  <div class="comment-footer">
+    <p class="comment-created-date"><%= comment.created_at %></p>
+  </div>
 </div>
