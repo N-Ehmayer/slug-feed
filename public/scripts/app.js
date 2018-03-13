@@ -10,6 +10,11 @@ $(function() {
 
   timeCreated()
 
+  $('#comments-p').click(event => {
+    $('#comments-p').addClass('animated zoomOut');
+    $('#comments-n').addClass('animated zoomOut');
+  });
+
   $('.popover-markup>.trigger').popover({
     html: true,
     title: function() {

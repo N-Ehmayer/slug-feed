@@ -11,9 +11,9 @@
     <%- include('./partials/_jumbotron'); %>
   </header>
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col negative-comments">
+      <div class="col-3 negative-comments" id="comments-p">
         <p>Responses</p>
         <% for (let section in article.sections) { %>
           <% article.sections[section].comments.forEach(function (comment) { %>
@@ -30,7 +30,7 @@
         </article>
       </div>
 
-      <div class="col positive-comments">
+        <div class="col-3 positive-comment" id="comments-n">
         <p>Responses</p>
         <% for (let section in article.sections) { %>
           <% article.sections[section].comments.forEach(function (comment) { %>
@@ -39,8 +39,8 @@
             <% } %>
           <% }) %>
         <% } %>
+        </div>
       </div>
-
     </div>
   </div>
 </body>
