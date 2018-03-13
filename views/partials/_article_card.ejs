@@ -4,7 +4,7 @@
 
   <!--Card image-->
   <div class="view overlay">
-      <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%287%29.jpg" class="img-fluid card-img" alt="">
+      <img src="<%= article.hero_img_url %>" class="img-fluid card-img" alt="">
       <a href="articles/<%=article.id%>">
           <div class="mask rgba-white-slight"></div>
       </a>
@@ -15,7 +15,7 @@
       <!--Title-->
       <h4 class="card-title"><%= article.title %></h4>
       <!--Text-->
-      <p class="card-text"><%= article.content %></p>
+      <p class="card-text"><%= article.tagline %></p>
       <a href="#" class="btn btn-primary">Button</a>
   </div>
 </div>
