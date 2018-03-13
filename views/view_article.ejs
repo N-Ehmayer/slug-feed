@@ -10,23 +10,14 @@
   <header>
     <%- include('./partials/_jumbotron'); %>
   </header>
-  <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
-    <div class="text-white text-center py-5 px-4 my-5">
-        <div>
-            <h1 class="card-title pt-3 mb-5 font-bold text-left"><strong>Hello Darkness My Old Friend</strong></h1>
-        </div>
-    </div>
-  </div>
 
   <div class="container-fluid">
     <div class="row">
       <div class="col-3 negative-comments" id="comments-p">
         <p>Responses</p>
         <% for (let section in article.sections) { %>
-        <%= section%>
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (!comment.agree) { %>
-              <%=comment%>
               <%- include('./partials/_comment', {comment}); %>
             <% } %>
           <% }) %>
