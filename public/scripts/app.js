@@ -1,18 +1,14 @@
+const timeCreated = function() {
+  let date = $('.comment-created-date').html();
+  let formattedDate = moment(date).fromNow();
+  console.log(formattedDate);
+  $('.comment-created-date').replaceWith(formattedDate);
+}
+
+
 $(function() {
 
-  function loadArticles() {
-    $.ajax({
-      url: '/articles',
-      method: 'GET',
-      error: function(err) {
-        console.log(err);
-      },
-      success: function(articles) {
-        console.log(articles);
-      }
-    })
-  }
-  const articles = loadArticles();
+  timeCreated()
 
   $('.popover-markup>.trigger').popover({
     html: true,
