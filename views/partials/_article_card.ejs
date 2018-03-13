@@ -5,7 +5,7 @@
   <!--Card image-->
   <div class="view overlay">
 <img src="<%=article.hero_img_url%>" class="img-fluid" alt="">
-     <a href="article/<%=article.id%>">=
+     <a href="article/<%=article.id%>">
           <div class="mask rgba-white-slight"></div>
       </a>
   </div>
@@ -15,7 +15,7 @@
       <!--Title-->
       <h4 class="card-title"><%= article.title %></h4>
       <!--Text-->
-      <p class="card-text"><%= article.content %></p>
+      <p class="card-text"><% article.content %></p>
       <a href="#" class="btn btn-primary">Button</a>
   </div>
 </div>
