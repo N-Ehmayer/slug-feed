@@ -4,7 +4,7 @@ exports.up = async function(knex, Promise) {
     table.text('content').notNullable();
     table.boolean('agree').notNullable();
     table.integer('section_id').unsigned().notNullable();
-    table.integer('user_id').unsigned().notNullable();
+    table.text('user_id').notNullable();
     table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
 

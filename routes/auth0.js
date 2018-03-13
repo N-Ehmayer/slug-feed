@@ -4,7 +4,7 @@ const passport = require('passport');
 const flash = require('connect-flash');
 require('dotenv').config();
 
-function appendRoutes(router) {
+function appendRoutes(router, knex) {
 
   // Perform the login
   router.get('/login', passport.authenticate('auth0', {
@@ -31,7 +31,13 @@ function appendRoutes(router) {
       failureRedirect: '/failure'
     }),
     function(req, res) {
-      res.redirect(req.session.returnTo || '/user');
+      knex.raw(
+        `INSERT INTO users ( id, profile )
+        VALUES ( :id, :profile )
+        ON CONFLICT ( id ) DO UPDATE
+        SET profile = :profile
+        RETURNING *`, { id: req.user.id, profile: req.user }
+      ).then(() => res.redirect(req.session.returnTo || '/user'));
     }
   );
 
