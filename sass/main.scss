@@ -18,7 +18,7 @@ p {
   max-width: 100%
 }
 
-.testclass {
+.article {
   border: 1px solid #000;
 }
 
@@ -28,6 +28,10 @@ p {
 
 .positive-comment {
   border-left: 1px solid #00AAFF;
+}
+
+.comment-container {
+  border-bottom: 1px solid #000;
 }
 
 .comment-content {
@@ -43,7 +47,6 @@ p {
 }
 
 .article-container {
-  margin: 3em 1em;
   h1 {
     font-family: Cabin, san-sarif;
   }
@@ -54,5 +57,8 @@ p {
 
 .article-content {
   word-wrap: break-word;
-  ;
+}
+
+.section-content {
+  word-wrap: break-word;
 }
