@@ -24,15 +24,18 @@
       <div class="col testclass">
           <% for (var i = 0; i < 10; i++) { %>
             <img src="#" class="circle-avatar comment-avatar" />
-            <h3 class="comment-username">{Username}</h3><br/>
+            <h3 class="comment-username"><%= article %></h3><br/>
             <p class="comment-content">blblb lblblb llbdfnnd nfbjdnfb kdkmv mfvf ljkas hedfk naks ndnas,dn</p>
           <% } %>
       </div>
       <div class="col-6 testclass">
         <article class="article-container">
-          <h1 class="article-title">How to make better decisions by improving your intuition</h1>
-          <p class="article-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pellentesque habitant morbi tristique senectus et netus. Ultricies mi quis hendrerit dolor. Dignissim suspendisse in est ante in nibh mauris. Non pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Morbi tristique senectus et netus et malesuada fames. Sed vulputate mi sit amet mauris commodo quis imperdiet. Vehicula ipsum a arcu cursus vitae congue mauris rhoncus aenean. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Sociis natoque penatibus et magnis. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Duis convallis convallis tellus id. Viverra vitae congue eu consequat. Adipiscing enim eu turpis egestas. Tristique risus nec feugiat in fermentum.
-          </p>
+          <h1 class="article-title"><%= article.title %></h1>
+          <% for (i in article.sections) { %>
+            <p class="article-content">
+              <%= article.sections[i].content %>
+            </p>
+          <% } %>
         </article>
       </div>
       <div class="col testclass">
