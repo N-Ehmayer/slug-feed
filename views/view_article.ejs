@@ -24,7 +24,8 @@
 
   <div class="container">
     <div class="row">
-      <div class="col testclass">
+      <div class="col negative-comments">
+        <p>Responses</p>
         <% for (let section in article.sections) { %>
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (!comment.agree) { %>
@@ -34,22 +35,21 @@
         <% } %>
       </div>
 
-      <div class="col-6 testclass">
+      <div class="col-6 article">
         <article class="article-container">
           <%- include('./partials/_article'); %>
         </article>
       </div>
 
-      <div class="col testclass">
-        <div class="positive-comments">
-          <% for (let section in article.sections) { %>
+      <div class="col positive-comments">
+        <p>Responses</p>
+        <% for (let section in article.sections) { %>
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (comment.agree) { %>
               <%- include('./partials/_comment', {comment}); %>
             <% } %>
           <% }) %>
         <% } %>
-        </div>
       </div>
 
     </div>
