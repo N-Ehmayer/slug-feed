@@ -1,5 +1,14 @@
+const timeCreated = function() {
+  let date = $('.comment-created-date').html();
+  let formattedDate = moment(date).fromNow();
+  console.log(formattedDate);
+  $('.comment-created-date').replaceWith(formattedDate);
+}
+
+
 $(function() {
 
+  timeCreated()
 
   $('#comments-p').click(event => {
     $('#comments-p').addClass('animated zoomOut');
