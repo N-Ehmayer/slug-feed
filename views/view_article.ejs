@@ -6,71 +6,41 @@
 </head>
 
 <body>
-<<<<<<< HEAD
   <%- include('./partials/_navbar'); %>
-=======
   <header>
-    <%- include('./partials/_navbar'); %>
+    <%- include('./partials/_jumbotron'); %>
   </header>
->>>>>>> ea10b5e98e86c2614cf782072fe8af84a8019724
-  <div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
-    <div class="text-white text-center py-5 px-4 my-5">
-        <div>
-            <h1 class="card-title pt-3 mb-5 font-bold text-left"><strong>Hello Darkness My Old Friend</strong></h1>
-        </div>
-    </div>
   </div>
 
   <div class="container-fluid">
     <div class="row">
-<<<<<<< HEAD
-      <div class="col-3 negative-comment" id="comments-p">
-        <h3>responses</h3>
-=======
       <div class="col negative-comments">
         <p>Responses</p>
->>>>>>> ea10b5e98e86c2614cf782072fe8af84a8019724
         <% for (let section in article.sections) { %>
-        <%= section%>
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (!comment.agree) { %>
-              <%=comment%>
               <%- include('./partials/_comment', {comment}); %>
             <% } %>
           <% }) %>
         <% } %>
       </div>
 
-<<<<<<< HEAD
-      <div class="col">
-=======
       <div class="col-6 article">
->>>>>>> ea10b5e98e86c2614cf782072fe8af84a8019724
         <article class="article-container">
           <%- include('./partials/_article'); %>
         </article>
       </div>
-
-<<<<<<< HEAD
         <div class="col-3 positive-comment" id="comments-n">
           <% for (let section in article.sections) { %>
-=======
-      <div class="col positive-comments">
-        <p>Responses</p>
-        <% for (let section in article.sections) { %>
->>>>>>> ea10b5e98e86c2614cf782072fe8af84a8019724
           <% article.sections[section].comments.forEach(function (comment) { %>
             <% if (comment.agree) { %>
               <%- include('./partials/_comment', {comment}); %>
             <% } %>
           <% }) %>
         <% } %>
-<<<<<<< HEAD
         </div>
-=======
       </div>
 
->>>>>>> ea10b5e98e86c2614cf782072fe8af84a8019724
     </div>
   </div>
 </body>
