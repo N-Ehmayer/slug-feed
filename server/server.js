@@ -1,12 +1,12 @@
 "use strict";
 
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/../.env'});
 
+require('pg').defaults.parseInt8 = true
 const express = require("express");
 const knexConfig = require("./knexfile");
 const knexLogger = require('knex-logger');
 const morgan = require('morgan');
-const sass = require("node-sass-middleware");
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const cookieParser = require('cookie-parser');
@@ -14,25 +14,18 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const ENV = process.env.ENV || "development";
 const app = express();
 const knex = require("knex")(knexConfig[ENV]);
 
-app.set("view engine", "ejs");
-app.use("/styles", sass({
-  src: __dirname + "/sass",
-  dest: __dirname + "/public/styles",
-  debug: true,
-  outputStyle: 'expanded'
-}));
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: 'shhhhhhhhh',
+    secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true
   })
@@ -78,10 +71,7 @@ app.use(function(req, res, next) {
 
 // Create the Router & Mount Custom Routes
 const router = express.Router();
-require("./routes/articles-id")(router, knex);
-require("./routes/index")(router, knex);
 require("./routes/auth0")(router, knex);
-require("./routes/user")(router);
 require("./routes/api-articles")(router, knex);
 require("./routes/api-comment_votes")(router, knex);
 require("./routes/api-articles")(router, knex);
