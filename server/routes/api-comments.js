@@ -15,15 +15,28 @@ function initialScore(comment, user) {
   return score;
 }
 
+function baseQuery(knex, id) {
+  let query = knex
+    .select(knex.raw('comments.*, users.profile, SUM(CASE comment_votes.is_upvote WHEN true THEN 1 WHEN false THEN -1 ELSE 0 END) AS votes_score'))
+    .from('comments')
+    .leftJoin('comment_votes', 'comments.id', '=', 'comment_votes.comment_id')
+    .leftJoin('users', 'comments.user_id', '=', 'users.id');
+
+  if (id) {
+    query.where('comments.id', id);
+  }
+  query
+    .groupBy('comments.id')
+    .groupBy('users.id')
+    .orderBy('comments.id');
+
+  return query;
+}
+
 function appendRoutes(router, knex) {
 
   router.get(`/api/comments`, (request, response) => {
-    const dbQuery = knex
-      .select(knex.raw('comments.*, SUM(CASE is_upvote WHEN true THEN 1 WHEN false THEN -1 ELSE 0 END) AS votes_score'))
-      .from('comments')
-      .leftJoin('comment_votes', 'comments.id', '=', 'comment_votes.comment_id')
-      .groupBy('comments.id')
-      .orderBy('comments.id');
+    const dbQuery = baseQuery(knex);
     for (const field of Object.keys(request.query)) {
       dbQuery.where(field, request.query[field]);
     }
@@ -33,13 +46,7 @@ function appendRoutes(router, knex) {
   });
 
   router.get(`/api/comments/:id`, (request, response) => {
-    knex
-      .select('comments.*', knex.raw('SUM(CASE is_upvote WHEN true THEN 1 WHEN false THEN -1 ELSE 0 END) AS votes_score'))
-      .from('comments')
-      .leftJoin('comment_votes', 'comment.id', '=', 'comment_votes.comment_id')
-      .where('id', request.params.id)
-      .groupBy('comments.id')
-      .orderBy('comments.id')
+    baseQuery(knex, request.params.id)
       .then(results => response.json(results))
       .catch(error => response.status(422).send(error.detail));
   });
