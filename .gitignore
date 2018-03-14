@@ -4,5 +4,5 @@ package-lock.json
 .env
 **/build/*
 !.gitkeep
-src/**/*.css
-src/*.css
+client/src/styles/*.css
+client/src/index.css
