@@ -9,6 +9,20 @@ const timeCreated = function() {
 $(function() {
 
   timeCreated()
+  // shorten tagline to 140 chars
+  $('.text-shortener').text(function() {
+    var text = $(this).html();
+    var overOneForty = text.length > 140
+    console.log(text);
+    text = text.split('').slice(0, 139).join('');
+    if (overOneForty) {
+      text += "..."
+    }
+    console.log(text)
+    return text;
+
+  });
+
 
   $('#comments-p').click(event => {
     $('#comments-p').addClass('animated zoomOut');
