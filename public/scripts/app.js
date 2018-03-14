@@ -9,6 +9,29 @@ const timeCreated = function() {
 $(function() {
 
   timeCreated()
+
+  $('#comment-box').click('submit', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log("HIT THE RTOUTES")
+    $.ajax({
+      url: 'api/comments',
+      method: 'POST',
+      data: $(this).serialize(),
+
+      success: function(comments) {
+        console.log("success");
+        // loadTweets();
+        // $('#new-tweet-input').val('');
+      },
+      error: function(err) {
+        console.log(err);
+      }
+    });
+  })
+
+
+
   // shorten tagline to 140 chars
   $('.text-shortener').text(function() {
     var text = $(this).html();

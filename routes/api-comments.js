@@ -18,6 +18,7 @@ function initialScore(comment, user) {
 function appendRoutes(router, knex) {
 
   router.post('/api/comments', (request, response) => {
+    console.log("HIT THE ROUTE");
     // router.post('/api/comments', ensureLoggedIn, (request, response) => {
     const score = initialScore(request.body.content, request.user)
 
