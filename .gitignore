@@ -5,3 +5,4 @@ package-lock.json
 **/build/*
 !.gitkeep
 src/**/*.css
+src/*.css
