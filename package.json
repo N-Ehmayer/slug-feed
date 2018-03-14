@@ -9,7 +9,7 @@
     "server": "node start-server.js",
     "client": "node start-client.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "reDb": "cd server && \"npm run reDb\""
+    "reDb": "cd server && npm run reDb"
   },
   "author": "",
   "license": "ISC",
