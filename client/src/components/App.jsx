@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react'
+import logo from '../logo.svg'
+import { connect } from 'react-redux'
 import './App.css';
-import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NavbarFeatures from './components/_navbar_features.jsx'
 
