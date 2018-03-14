@@ -3,8 +3,7 @@ const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 function appendRoutes(router, knex) {
 
-  router.post('/api/comment_votes/:id', ensureLoggedIn, (request, response) => {
-    console.log(request.body);
+  router.post('/api/comment_votes', ensureLoggedIn, (request, response) => {
     knex
       .select()
       .from('comment_votes')
