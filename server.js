@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 
+require('pg').defaults.parseInt8 = true
 const express = require("express");
 const knexConfig = require("./knexfile");
 const knexLogger = require('knex-logger');
@@ -14,7 +15,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const ENV = process.env.ENV || "development";
 const app = express();
 const knex = require("knex")(knexConfig[ENV]);

@@ -4,8 +4,11 @@
   "description": "slugfeed news app",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "client": "node start-client.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "reDb": "knex-migrate down --to 0 && knex-migrate up && knex seed:run"
   },
   "author": "",
   "license": "ISC",
