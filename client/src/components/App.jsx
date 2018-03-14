@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import logo from '../logo.svg'
 import { connect } from 'react-redux'
 
 class App extends Component {
