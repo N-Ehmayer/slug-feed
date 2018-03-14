@@ -1,8 +1,13 @@
 <h1 class="article-title"><%= article.title %></h1>
 <div class="sections-container">
   <% for (let i in article.sections) { %>
-    <p class="section-content">
-      <%= article.sections[i].content %>
-    </p>
+    <div class="row section-content">
+      <div class="col">
+        <p><%= article.sections[i].content %></p>
+      </div>
+      <div class="col-1">
+        <i class="fa fa-comment" aria-hidden="true"></i>
+      </div>
+    </div>
   <% } %>
 </div>
