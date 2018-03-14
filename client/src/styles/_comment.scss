@@ -1,0 +1,20 @@
+.negative-comment {
+  border-right: 1px solid tomato;
+}
+
+.positive-comment {
+  border-left: 1px solid #00AAFF;
+}
+
+.comment-container {
+  border-bottom: 1px solid #000;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  padding: 15px;
+}
+
+.fa-comment {
+  color: lightgrey;
+}
