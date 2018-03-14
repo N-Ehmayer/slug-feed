@@ -18,7 +18,11 @@ function dbRouteFactory(router, knex, tableName) {
       .from(tableName)
       .orderBy('created_at');
     for (const field of Object.keys(request.query)) {
-      dbQuery.where(field, request.query[field]);
+      if (field.toLowerCase() === 'limit') {
+        dbQuery.limit(request.query[field])
+      } else {
+        dbQuery.where(field, request.query[field]);
+      }
     }
     dbQuery
       .then(results => response.json(results))

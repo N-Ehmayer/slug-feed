@@ -3,11 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "proxy": {
-    "/login": { "target": "http://localhost:3001" },
-    "/logout": { "target": "http://localhost:3001" },
-    "/callback": { "target": "http://localhost:3001" },
-    "/failure": { "target": "http://localhost:3001" },
-    "/api/": { "target": "http://localhost:3001" }
+    "/login": {
+      "target": "http://localhost:3001"
+    },
+    "/logout": {
+      "target": "http://localhost:3001"
+    },
+    "/callback": {
+      "target": "http://localhost:3001"
+    },
+    "/failure": {
+      "target": "http://localhost:3001"
+    },
+    "/api/": {
+      "target": "http://localhost:3001"
+    }
   },
   "dependencies": {
     "react": "^16.2.0",
