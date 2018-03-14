@@ -9,8 +9,10 @@
   <%- include('./partials/_navbar'); %>
     <div class="container main-container">
       <div class="row">
+        <% var cardRows = 0; %>
         <% articles.forEach( article => {%>
-          <%- include('./partials/_article_card', {article: article}); %>
+          <% cardRows++; %>
+          <%- include('./partials/_article_card', {article: article, cardRows: cardRows}); %>
         <% }) %>
       </div>
       <div class="popover-markup" id="popover">

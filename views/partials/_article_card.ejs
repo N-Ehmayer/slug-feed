@@ -1,6 +1,6 @@
 <!--Card-->
 
-<div id="card-<%= article.id %>" class="card card-img col-3 offset-1">
+<div id="card-<%= article.id %>" class="card card-img col-5 mx-auto">
 
   <!--Card image-->
   <div class="view overlay view-card">
@@ -15,9 +15,17 @@
       <!--Title-->
       <h4 class="card-title"><%= article.title %></h4>
       <!--Text-->
-      <p class="card-text"><%= article.tagline %></p>
-      <a href="#" class="btn btn-primary">Button</a>
+      <p class="card-text text-shortener" id="replace"><%= article.tagline %></p>
+  </div>
+
+  <div class="card-footer">
+    <p> testing </p>
   </div>
 </div>
 
+<% if (cardRows % 2 === 0) {%>
+</div>
+<div class="row">
+<% cardRows = 0 %>
+<%}%>
 <!--/.Card-->
