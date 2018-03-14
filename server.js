@@ -82,6 +82,7 @@ require("./routes/index")(router, knex);
 require("./routes/auth0")(router, knex);
 require("./routes/user")(router);
 require("./routes/articles-id")(router, knex);
+require("./routes/api-comment_votes-id")(router, knex);
 require("./routes/api-articles-id")(router, knex);
 
 // Mount all factory-made resource routes
