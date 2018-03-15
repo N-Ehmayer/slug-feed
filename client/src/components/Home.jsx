@@ -22,11 +22,7 @@ class Home extends Component {
     return (
       <div className="App">
         <NavbarFeatures />
-
-        <h1>Home Route</h1>
-
         <ArticleCard articles={articles}/>
-
       </div>
     );
   }
