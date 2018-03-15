@@ -1,21 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 
-const initialState = {}
-
-const AppReducer = (state=initialState, action) => {
-  switch (action.type) {
-    case 'ACTION':
-      return state
-    default:
-      return state
-  }
-}
+import reducer from './reducers'
 
 export default createStore(
-  combineReducers({
-    app: AppReducer
-  }),
+  reducer,
   applyMiddleware(
     ReduxThunk
   )
