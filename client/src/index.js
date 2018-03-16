@@ -21,7 +21,7 @@ ReactDOM.render(
       <React.Fragment>
         <Route path="/" component={Session}/>
         <Route exact path="/" component={Home} />
-        <Route exact path="/article/:id" component={ShowArticle} />
+        <Route exact path="/articles/:id" component={ShowArticle} />
       </React.Fragment>
     </Provider>
   </Router>
