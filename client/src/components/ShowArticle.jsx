@@ -1,19 +1,12 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
 import NavbarFeatures from './NavbarFeatures'
-import Home from './Home.jsx'
 import Comments from './Comments.jsx'
-import ModalPage from './ModalPage.jsx'
 import axios from 'axios'
-
-import { fetchArticle } from '../actions/articleActions.js'
 
 class ShowArticle extends Component {
 
   constructor(props) {
     super(props);
-
     this.state = { article: {}, positiveComments: [], negativeComments: [] }
   }
 
@@ -35,12 +28,8 @@ class ShowArticle extends Component {
   }
 
   render() {
-    console.log(this);
-    console.log(this.state);
-    const articleTitle = this.state.article.title;
-    const articleTagline = this.state.article.tagline;
-    const articleImg = this.state.article.hero_img_url;
-    const articleSections = this.state.article.sections && this.state.article.sections.map((section) => {
+    const article = this.state.article;
+    const articleSections = article.sections && article.sections.map((section) => {
       return (
         <div className="row">
           <div className="col">
@@ -52,8 +41,15 @@ class ShowArticle extends Component {
         </div>
       );
     });
-    const positiveComments = this.state.positiveComments;
-    const negativeComments = this.state.negativeComments;
+
+    const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
+    const articleTags = article.tags && article.tags.map((tag, index) => {
+      return (
+        <span key={tag.id} className={'badge badge-pill ' + colours[index % colours.length]}>
+          <a href={`/tags/${tag.url_slug}`} className='text-white'>{tag.display_name}</a>
+        </span>
+      )
+    });
 
     return (
       <div>
@@ -61,47 +57,32 @@ class ShowArticle extends Component {
 
         <div className="row">
           <div className="col-md-12">
-            <div className="card card-image" style={{backgroundImage: `url(${articleImg})`}}>
-              <div className="text-white text-center rgba-stylish-strong py-5 px-4">
+            <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
+              <div className="text-white text-center rgba-stylish-light py-5 px-4">
                 <div className="py-5">
-
-                  <h2 className="card-title pt-3 mb-5 font-bold">{articleTagline}</h2>
-                  <a className="btn peach-gradient"><i className="fa fa-clone left"></i> View project</a>
-
+                  <h2 className="card-title pt-3 mb-5 font-bold mx-auto">{article.tagline}</h2>
                 </div>
+              </div>
+              <div className="rgba-stylish-light">
+                {articleTags}
               </div>
             </div>
           </div>
         </div>
 
-
-
-
         <div className="d-block d-md-flex article-section">
-
           <div className="w-100 comments-column">
-
             <h3 className="pb-3 comments-column-title">Disagree</h3>
-            <Comments comments={this.state.negativeComments} classType={"neg-comment-container"} />
-
+            <Comments comments={this.state.negativeComments} classType={'neg-comment-container'} />
           </div>
-
-
           <div className="p-3 w-100 col-6 article-container">
-
-            <h2 className="pb-3">{articleTitle}</h2>
+            <h2 className="pb-3">{article.title}</h2>
             {articleSections}
-
-
           </div>
-
           <div className="w-100 comments-column">
-
             <h3 className="pb-3 comments-column-title">Agree</h3>
-            <Comments comments={this.state.positiveComments} classType={"pos-comment-container"} />
-
+            <Comments comments={this.state.positiveComments} classType={'pos-comment-container'} />
           </div>
-
         </div>
 
       </div>
