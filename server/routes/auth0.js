@@ -37,7 +37,7 @@ function appendRoutes(router, knex) {
         ON CONFLICT ( id ) DO UPDATE
         SET profile = :profile
         RETURNING *`, { id: req.user.id, profile: req.user }
-      ).then(() => res.redirect(req.session.returnTo || '/user'));
+      ).then(() => res.redirect(req.session.returnTo || '/'));
     }
   );
 
