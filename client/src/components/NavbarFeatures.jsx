@@ -10,7 +10,7 @@ class NavbarFeatures extends Component {
         <div className="row">
           <NavbarNav className="mx-auto">
             <NavItem>
-              <Link to='/'>Home</Link>{Home}
+              <Link to='/'>Home</Link>
               <p>Slug Feed</p>
             </NavItem>
             <NavItem>

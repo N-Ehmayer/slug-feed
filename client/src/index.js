@@ -19,7 +19,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/article/:id" component={ShowArticle} />
+        <Route exact path="/articles/:id" component={ShowArticle} />
       </Switch>
     </Provider>
   </Router>
