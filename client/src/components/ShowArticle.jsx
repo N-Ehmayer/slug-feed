@@ -52,7 +52,7 @@ class ShowArticle extends Component {
       <div>
         <NavbarFeatures />
 
-        <div className="row mb-5">
+        <div className="row">
           <div className="col-md-12">
             <div className="card card-image" style={{backgroundImage: `url(${articleImg})`}}>
               <div className="text-white text-center rgba-stylish-strong py-5 px-4">
@@ -70,17 +70,17 @@ class ShowArticle extends Component {
 
 
 
-        <div className="white-text d-block d-md-flex">
+        <div className="d-block d-md-flex article-container">
 
-          <div className="p-3 red lighten-1 w-100">
+          <div className="w-100 comments-column">
 
-            <h2 className="pb-3">Disagree</h2>
-            <Comments comments={this.state.negativeComments} />
+            <h3 className="pb-3 comments-column-title">Disagree</h3>
+            <Comments comments={this.state.negativeComments} classType={"neg-comment-container"} />
 
 
           </div>
 
-          <div className="p-3 blue lighten-1 w-100">
+          <div className="p-3 w-100 col-6">
 
             <h2 className="pb-3">{articleTitle}</h2>
             {articleSections}
@@ -88,14 +88,16 @@ class ShowArticle extends Component {
 
           </div>
 
-          <div className="p-3 purple lighten-1 w-100">
+          <div className="w-100 comments-column">
 
-            <h2 className="pb-3">Agree</h2>
-            <Comments comments={this.state.positiveComments} />
+            <h3 className="pb-3 comments-column-title">Agree</h3>
+            <Comments comments={this.state.positiveComments} classType={"pos-comment-container"} />
 
           </div>
 
         </div>
+
+      </div>
     );
   }
 }

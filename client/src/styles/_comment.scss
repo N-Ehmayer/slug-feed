@@ -1,13 +1,24 @@
-.negative-comment {
-  border-right: 1px solid tomato;
+
+
+.comments-column {
+  border-left: 2px solid #00FFFF;
+  border-right: 2px solid #ffa3a3fa;
+  padding: 25px;
 }
 
-.positive-comment {
-  border-left: 1px solid #00AAFF;
+.comments-column-title {
+  font-size: 20px;
+  color: #d3d3d3;
 }
 
-.comment-container {
-  border-bottom: 1px solid #000;
+.pos-comment-container {
+  border-bottom: 2px solid #00FFFF;
+  margin-bottom: 15px;
+}
+
+.neg-comment-container {
+  border-bottom: 2px solid #ffa3a3fa;
+  margin-bottom: 15px;
 }
 
 .comment-content {
@@ -15,11 +26,19 @@
   padding: 15px;
 }
 
-.fa-comment {
-  color: lightgrey;
-  transition: color 100ms;
+.user-avatar {
+
+}
+
+.username {
+  display: inline-block;
+  position: relative;
+  padding-left: 50px;
+  top: 5px;
 }
 
 .fa-comment:hover {
   color: black;
 }
+
+
