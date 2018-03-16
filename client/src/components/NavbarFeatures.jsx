@@ -1,26 +1,30 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
+import { connect } from 'react-redux';
+import { Navbar, NavbarBrand, NavbarNav, NavItem } from 'mdbreact';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import Home from './Home.jsx'
+
+const mapStateToProps = (state) => ({
+   session: state.session
+});
 
 class NavbarFeatures extends Component {
   render() {
     return (
-      <Navbar color="indigo" dark expand="md" scrolling>
-        <div className="row">
-          <NavbarNav className="mx-auto">
-            <NavItem>
-              <Link to='/'>Home</Link>
-              <p>Slug Feed</p>
-            </NavItem>
-            <NavItem>
-              <p>Login/Logout</p>
-            </NavItem>
+      <Router>
+        <Navbar light main-nav expand="md" scrolling>
+          <NavbarNav className="ml-auto">
+            <NavItem><Link className="nav-link" to="/">Home</Link></NavItem>
+            <NavItem><NavbarBrand href="/" className="navbar-logo mx-auto">SlugFeed</NavbarBrand></NavItem>
+            {this.props.session.user
+              ? <NavItem><a className="nav-link" href="/logout">Logout</a></NavItem>
+              : <NavItem><a className="nav-link" href="/login">Login</a></NavItem>
+            }
           </NavbarNav>
-        </div>
-      </Navbar>
+        </Navbar>
+      </Router>
     );
   }
 }
 
-export default NavbarFeatures
+export default connect(mapStateToProps)(NavbarFeatures);
