@@ -26,15 +26,18 @@ class ModalPage extends React.Component {
 
   onMessageTextChange(event) {
     this.setState({ messageText: event.target.value });
+    this.setState({ sentiment: sentiment(this.state.messageText)})
+    console.log(this.state.messageText)
+    console.log(this.state.sentiment)
     }
 
   messageSend(agree) {
 
     this.toggle
 
-    axios.post('/api/comment', {
+    axios.post('/api/comments', {
       content: this.state.messageText,
-      section: this.state.section,
+      section_id: this.state.section,
       agree: agree
     })
       .then(function(response){
@@ -65,7 +68,7 @@ class ModalPage extends React.Component {
                 <Input
                   type="textarea"
                   value={this.state.messageText}
-                  onChange={this.onMessageTextChange.bind(this)}
+                  onInput={this.onMessageTextChange.bind(this)}
                   label="Compose your message..."
                 />
 
@@ -73,16 +76,17 @@ class ModalPage extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
+          <p>{Math.round(this.state.sentiment.comparative * 10) / 10}</p>
             <Button
               color="secondary"
-              onClick={this.messageSend(true).bind(this)}
+              onClick={ () =>  this.messageSend(true) }
               onKeyPress={this.onPressEnter.bind(this)}
             >
               <i className="fa fa-send" aria-hidden="true"></i>
             </Button>
             <Button
               color="secondary"
-              onClick={this.messageSend(false).bind(this)}
+              onClick={ () => this.messageSend(false)}
               onKeyPress={this.onPressEnter.bind(this)}
             >
               <i className="fa fa-send" aria-hidden="true"></i>

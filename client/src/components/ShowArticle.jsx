@@ -58,8 +58,8 @@ class ShowArticle extends Component {
               <div className="text-white text-center rgba-stylish-strong py-5 px-4">
                 <div className="py-5">
 
-                    <h2 className="card-title pt-3 mb-5 font-bold">{articleTagline}</h2>
-                    <a className="btn peach-gradient"><i className="fa fa-clone left"></i> View project</a>
+                  <h2 className="card-title pt-3 mb-5 font-bold">{articleTagline}</h2>
+                  <a className="btn peach-gradient"><i className="fa fa-clone left"></i> View project</a>
 
                 </div>
               </div>
@@ -77,6 +77,7 @@ class ShowArticle extends Component {
             <h3 className="pb-3 comments-column-title">Disagree</h3>
             <Comments comments={this.state.negativeComments} classType={"neg-comment-container"} />
 
+        </div>
 
           </div>
 
@@ -86,7 +87,7 @@ class ShowArticle extends Component {
             {articleSections}
 
 
-          </div>
+        </div>
 
           <div className="w-100 comments-column">
 
