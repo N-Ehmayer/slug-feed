@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import registerServiceWorker from './registerServiceWorker';
 import store from './store.js'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Home from './components/Home.jsx'
+import Session from './components/Session.jsx';
 import ShowArticle from './components/ShowArticle.jsx'
 
 import 'font-awesome/css/font-awesome.min.css';
@@ -17,10 +18,11 @@ import './index.css';
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <Switch>
+      <React.Fragment>
+        <Route path="/" component={Session}/>
         <Route exact path="/" component={Home} />
         <Route exact path="/article/:id" component={ShowArticle} />
-      </Switch>
+      </React.Fragment>
     </Provider>
   </Router>
 , document.getElementById('root'));
