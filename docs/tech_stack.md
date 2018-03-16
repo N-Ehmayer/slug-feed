@@ -9,8 +9,6 @@ Database: PostgreSQL
 Backend:
 
 - Javascript (ES6)
-
-
 - NodeJs
 - NPM
 - Express
@@ -18,6 +16,7 @@ Backend:
 
 Front End:
 
+- React / Redux / React-Router
 - SCSS Formatting
 - HTML5
 - CSS3

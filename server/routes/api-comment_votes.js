@@ -1,8 +1,11 @@
+/** Custom routes for /api/comment_votes */
+
 "use strict";
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 
 function appendRoutes(router, knex) {
 
+  /** Modify the POST route to upsert (update or insert) to prevent multiple votes */
   router.post('/api/comment_votes', ensureLoggedIn, (request, response) => {
     knex
       .select()
@@ -13,6 +16,7 @@ function appendRoutes(router, knex) {
       })
       .then(results => {
         if (results.length === 0) {
+          // INSERT
           return knex('comment_votes')
             .insert({
               user_id: request.user.id,
@@ -22,6 +26,7 @@ function appendRoutes(router, knex) {
             .returning(['id', 'is_upvote'])
             .then(results => response.json(results));
         } else {
+          // UPDATE
           return knex('comment_votes')
             .where('id', results[0].id)
             .update({

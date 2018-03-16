@@ -1,4 +1,7 @@
-require('dotenv').config();
+/**
+ * Configuration loader for knex (the database connection engine)
+ */
+require('dotenv').config({path: __dirname + '/../.env'});
 
 module.exports = {
 
