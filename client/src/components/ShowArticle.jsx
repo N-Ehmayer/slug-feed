@@ -38,7 +38,7 @@ class ShowArticle extends Component {
     const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
     const articleTags = article.tags && article.tags.map((tag, index) => {
       return (
-        <span key={tag.id} className={"badge badge-pill " + colours[index % colours.length]}>
+        <span key={tag.id} className={'badge badge-pill ' + colours[index % colours.length]}>
           <a href={`/tags/${tag.url_slug}`} className='text-white'>{tag.display_name}</a>
         </span>
       )
@@ -66,7 +66,7 @@ class ShowArticle extends Component {
         <div className="d-block d-md-flex article-section">
           <div className="w-100 comments-column">
             <h3 className="pb-3 comments-column-title">Disagree</h3>
-            <Comments comments={this.state.negativeComments} classType={"neg-comment-container"} />
+            <Comments comments={this.state.negativeComments} classType={'neg-comment-container'} />
           </div>
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
@@ -74,7 +74,7 @@ class ShowArticle extends Component {
           </div>
           <div className="w-100 comments-column">
             <h3 className="pb-3 comments-column-title">Agree</h3>
-            <Comments comments={this.state.positiveComments} classType={"pos-comment-container"} />
+            <Comments comments={this.state.positiveComments} classType={'pos-comment-container'} />
           </div>
         </div>
 
