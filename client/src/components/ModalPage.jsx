@@ -12,7 +12,7 @@ class ModalPage extends React.Component {
       modal: false,
       messageText: '',
       sentiment: 0,
-      section: 1
+      section: this.props.section
     };
 
     this.toggle = this.toggle.bind(this);
@@ -27,8 +27,6 @@ class ModalPage extends React.Component {
   onMessageTextChange(event) {
     this.setState({ messageText: event.target.value });
     this.setState({ sentiment: sentiment(this.state.messageText)})
-    console.log(this.state.messageText)
-    console.log(this.state.sentiment)
     }
 
   messageSend(agree) {
@@ -41,7 +39,7 @@ class ModalPage extends React.Component {
       agree: agree
     })
       .then(function(response){
-        console.log('Message send success ----');
+        console.log('Message send success ----\n', response);
       });
 
     this.setState({ messageText: '' });

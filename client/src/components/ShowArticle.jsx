@@ -42,7 +42,14 @@ class ShowArticle extends Component {
     const articleImg = this.state.article.hero_img_url;
     const articleSections = this.state.article.sections && this.state.article.sections.map((section) => {
       return (
-        <p>{section.content}</p>
+        <div className="row">
+          <div className="col">
+            <p>{section.content}</p>
+          </div>
+          <div className="col-1">
+            <ModalPage section={section.id} />
+          </div>
+        </div>
       );
     });
     const positiveComments = this.state.positiveComments;
