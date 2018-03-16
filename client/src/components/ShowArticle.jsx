@@ -3,54 +3,48 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import NavbarFeatures from './NavbarFeatures'
 import Home from './Home.jsx'
+import Comments from './Comments.jsx'
 
 import { fetchArticle } from '../actions/articleActions.js'
 
 class ShowArticle extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
+
+    this.state = { article: {}, positiveComments: [], negativeComments: [] }
+  }
+
+  componentDidMount() {
     const pathname = this.props.location.pathname;
-
-    this.state = {
-      article: {}
-    };
-
-    const self = this
+    const self = this;
     axios.get(`http://localhost:3000/api${pathname}`)
-      .then(function (response) {
-        self.setState({
-          article: response.data
-        })
-      })
-      .catch(function (error) {
+      .then( response => {
+        const article = response.data;
+        const positiveComments = [];
+        const negativeComments = [];
+        article.sections.forEach( section => {
+          section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) )
+        });
+        self.setState({ article, positiveComments, negativeComments });
+      }).catch(function (error) {
         console.log(error);
       });
   }
 
-  componentDidMount() {
-
-  }
-
-
-  getComments(comments) {
-  }
-
-  getSections(sections) {
-
-  }
-
-
   render() {
-    console.log(this.state.article.sections)
-    const articleTitle = this.state.article.title
-    const articleTagline = this.state.article.tagline
-    const articleImg = this.state.article.hero_img_url
+    console.log(this);
+    console.log(this.state);
+    const articleTitle = this.state.article.title;
+    const articleTagline = this.state.article.tagline;
+    const articleImg = this.state.article.hero_img_url;
     const articleSections = this.state.article.sections && this.state.article.sections.map((section) => {
       return (
         <p>{section.content}</p>
-      )
-    })
+      );
+    });
+    const positiveComments = this.state.positiveComments;
+    const negativeComments = this.state.negativeComments;
 
     return (
       <div>
@@ -79,10 +73,7 @@ class ShowArticle extends Component {
           <div className="p-3 red lighten-1 w-100">
 
             <h2 className="pb-3">Disagree</h2>
-            <p>Comment content</p>
-            <p>Comment content</p>
-            <p>Comment content</p>
-            <p>Comment content</p>
+            <Comments comments={this.state.negativeComments} />
 
 
           </div>
@@ -98,9 +89,7 @@ class ShowArticle extends Component {
           <div className="p-3 purple lighten-1 w-100">
 
             <h2 className="pb-3">Agree</h2>
-            <p>Comment content</p>
-            <p>Comment content</p>
-            <p>Comment content</p>
+            <Comments comments={this.state.positiveComments} />
 
           </div>
 
