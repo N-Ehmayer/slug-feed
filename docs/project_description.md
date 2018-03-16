@@ -12,7 +12,7 @@ Slugfeed
 
 **Elevator Pitch:** We encourage engagement and discussion by integrating comments into content.
 
-**What it is:** Instead of keeping comments all the way at the bottom of articles, we put them center stage alongside the content that inspired them. Comments are then separated by positive & negative reactions to show different perspectives on the content. Overall article sentiment helps sort the website content.
+**What it is:** We tell users if the sentiment of their comment as they write them. Happy/Polite comments are encouraged - Nasty ones are auto-downvoted. Instead of keeping comments all the way at the bottom of articles, we put them center stage alongside the content that inspired them. Comments are then separated by positive & negative reactions to show different perspectives on the content. Overall article sentiment helps sort the website content.
 
 **Why people would use it:** 
 
