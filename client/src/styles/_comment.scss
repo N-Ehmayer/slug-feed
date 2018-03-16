@@ -1,4 +1,6 @@
-
+.article-container {
+  font-family: Cabin, san-sarif;
+}
 
 .comments-column {
   border-left: 2px solid #00FFFF;
@@ -21,20 +23,29 @@
   margin-bottom: 15px;
 }
 
-.comment-content {
-  word-wrap: break-word;
-  padding: 15px;
-}
-
-.user-avatar {
-
-}
-
 .username {
   display: inline-block;
+  font-size: 20px;
   position: relative;
   padding-left: 50px;
   top: 5px;
+}
+
+.comment-content {
+  word-wrap: break-word;
+  padding: 15px;
+  padding-bottom: 0px;
+}
+
+.rounded-circle {
+  border: 1px solid grey;
+}
+
+.comment-time {
+  position: relative;
+  left: 15px;
+  color: grey;
+  font-size: 15px;
 }
 
 .fa-comment:hover {
