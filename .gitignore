@@ -6,3 +6,4 @@ package-lock.json
 !.gitkeep
 client/src/styles/*.css
 client/src/index.css
+.swp

@@ -1,8 +1,9 @@
+/** Authentication/Authorization routes using Auth0 */
 "use strict";
 
+require('dotenv').config();
 const passport = require('passport');
 const flash = require('connect-flash');
-require('dotenv').config();
 
 function appendRoutes(router, knex) {
 
@@ -25,7 +26,7 @@ function appendRoutes(router, knex) {
     res.redirect('/');
   });
 
-  // Perform the final stage of authentication and redirect to '/user'
+  // Perform the final stage of authentication and redirect to '/'
   router.get('/callback',
     passport.authenticate('auth0', {
       failureRedirect: '/failure'
@@ -41,16 +42,21 @@ function appendRoutes(router, knex) {
     }
   );
 
+  // Deal with any login failures
   router.get('/failure', function(req, res) {
     var error = req.flash("error");
     var error_description = req.flash("error_description");
     req.logout();
-    res.render('failure', {
+    res.json({
       error: error[0],
       error_description: error_description[0],
     });
   });
 
+  // Route for the front-end to check for a session
+  router.get('/api/session', (request, response) => {
+    response.json(request.user);
+  });
 
 };
 
