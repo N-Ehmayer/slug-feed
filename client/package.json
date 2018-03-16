@@ -20,6 +20,7 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "mdbreact": "^4.2.0",
     "moment": "^2.21.0",
     "node-sass-chokidar": "^1.1.0",
