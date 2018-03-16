@@ -10,7 +10,7 @@ class Comments extends Component {
         <img className='rounded-circle user-avatar' src={comment.profile.picture}/>
         <h3 className='username'>{comment.profile.displayName}</h3>
         <p className='comment-content'>{comment.content}</p>
-        <p>{moment(comment.created_at).fromNow()}</p>
+        <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
       </div>
     })
 

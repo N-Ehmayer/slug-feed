@@ -70,24 +70,23 @@ class ShowArticle extends Component {
 
 
 
-        <div className="d-block d-md-flex article-container">
+        <div className="d-block d-md-flex article-section">
 
           <div className="w-100 comments-column">
 
             <h3 className="pb-3 comments-column-title">Disagree</h3>
             <Comments comments={this.state.negativeComments} classType={"neg-comment-container"} />
 
-        </div>
-
           </div>
 
-          <div className="p-3 w-100 col-6">
+
+          <div className="p-3 w-100 col-6 article-container">
 
             <h2 className="pb-3">{articleTitle}</h2>
             {articleSections}
 
 
-        </div>
+          </div>
 
           <div className="w-100 comments-column">
 
