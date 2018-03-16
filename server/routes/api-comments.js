@@ -38,7 +38,11 @@ function appendRoutes(router, knex) {
   router.get(`/api/comments`, (request, response) => {
     const dbQuery = baseQuery(knex);
     for (const field of Object.keys(request.query)) {
-      dbQuery.where(field, request.query[field]);
+      if (field.toLowerCase() === 'limit') {
+        dbQuery.limit(parseInt(request.query[field]))
+      } else {
+        dbQuery.where(field, request.query[field]);
+      }
     }
     dbQuery
       .then(results => response.json(results))
