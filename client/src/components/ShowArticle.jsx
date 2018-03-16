@@ -50,7 +50,14 @@ class ShowArticle extends Component {
     const articleImg = this.state.article.hero_img_url
     const articleSections = this.state.article.sections && this.state.article.sections.map((section) => {
       return (
-        <p>{section.content}</p>
+        <div className="row">
+          <div className="col">
+            <p>{section.content}</p>
+          </div>
+          <div className="col-1">
+            <ModalPage section={section.id} />
+          </div>
+        </div>
       )
     })
 
@@ -64,8 +71,8 @@ class ShowArticle extends Component {
               <div className="text-white text-center rgba-stylish-strong py-5 px-4">
                 <div className="py-5">
 
-                    <h2 className="card-title pt-3 mb-5 font-bold">{articleTagline}</h2>
-                    <a className="btn peach-gradient"><i className="fa fa-clone left"></i> View project</a>
+                  <h2 className="card-title pt-3 mb-5 font-bold">{articleTagline}</h2>
+                  <a className="btn peach-gradient"><i className="fa fa-clone left"></i> View project</a>
 
                 </div>
               </div>
@@ -86,16 +93,15 @@ class ShowArticle extends Component {
             <p>Comment content</p>
             <p>Comment content</p>
 
+        </div>
 
-          </div>
-
-          <div className="p-3 blue lighten-1 w-100">
+        <div className="p-3 blue lighten-1 w-100">
 
             <h2 className="pb-3">{articleTitle}</h2>
             {articleSections}
 
 
-          </div>
+        </div>
 
           <div className="p-3 purple lighten-1 w-100">
 
@@ -107,6 +113,7 @@ class ShowArticle extends Component {
           </div>
 
         </div>
+      </div>
     );
   }
 }
