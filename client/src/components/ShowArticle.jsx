@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
+import { Route, Link } from 'react-router-dom'
 import NavbarFeatures from './NavbarFeatures'
 import Home from './Home.jsx'
 import Comments from './Comments.jsx'
+import ModalPage from './ModalPage.jsx'
+import axios from 'axios'
 
 import { fetchArticle } from '../actions/articleActions.js'
 
@@ -94,7 +96,6 @@ class ShowArticle extends Component {
           </div>
 
         </div>
-      </div>
     );
   }
 }
