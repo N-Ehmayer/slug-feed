@@ -17,4 +17,9 @@
 
 .fa-comment {
   color: lightgrey;
+  transition: color 100ms;
+}
+
+.fa-comment:hover {
+  color: black;
 }
