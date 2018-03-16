@@ -31,7 +31,14 @@ class ShowArticle extends Component {
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
       return (
-        <p key={section.id}>{section.content}</p>
+        <div className="row">
+          <div className="col">
+            <p>{section.content}</p>
+          </div>
+          <div className="col-1">
+            <ModalPage section={section.id} />
+          </div>
+        </div>
       );
     });
 

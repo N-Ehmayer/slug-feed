@@ -12,7 +12,7 @@ class NavbarFeatures extends Component {
   render() {
     return (
       <Router>
-        <Navbar light main-nav expand="md" scrolling>
+        <Navbar light main-nav className="to-top" expand="md" fixed="top" scrolling>
           <NavbarNav className="ml-auto">
             <NavItem><Link className="nav-link" to="/">Home</Link></NavItem>
             <NavItem><NavbarBrand href="/" className="navbar-logo mx-auto">SlugFeed</NavbarBrand></NavItem>
