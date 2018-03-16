@@ -1,4 +1,4 @@
-export default function articleReducer(state={
+export default function articlesReducer(state={
   articles: [],
   fetching: false,
   fetched: false,
@@ -23,3 +23,4 @@ export default function articleReducer(state={
     default: return state
   }
 }
+

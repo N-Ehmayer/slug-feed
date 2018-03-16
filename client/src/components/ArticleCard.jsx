@@ -14,7 +14,7 @@ class ArticleCard extends Component {
                 <CardBody>
                   <CardTitle>{article.title}</CardTitle>
                   <CardText>{article.tagline}</CardText>
-                  <Link to={`/article/${article.id}`}>Read more ..</Link>
+                  <Link to={`/articles/${article.id}`}>Read more ..</Link>
                 </CardBody>
               </Card>
             </div>
