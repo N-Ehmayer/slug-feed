@@ -12,6 +12,8 @@ class Comments extends Component {
           <h3 className='username'>{comment.profile.displayName}</h3>
           <p className='comment-content'>{comment.content}</p>
           <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
+          <i className="fa fa-check-circle" aria-hidden="true"></i>
+          <p className='comment-score'>12</p>
         </div>
       )
     })
