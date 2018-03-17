@@ -7,7 +7,7 @@ exports.seed = function(knex, Promise) {
         "user_id": "e40f6b70-43be-4db2-b817-e8e28081390e",
         "title": "Virtual methodical policy",
         "tagline": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.",
-        "hero_img_url": "https://cdn.pixabay.com/photo/2017/06/17/18/34/background-2413079_1280.jpg"
+        "hero_img_url": "http://canacopegdl.com/images/dreamscape/dreamscape-17.jpg"
       }, {
         "user_id": "d2b00dc6-d734-40b4-88a3-e869d5603c4e",
         "title": "Organic well-modulated access",

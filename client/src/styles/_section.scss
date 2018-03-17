@@ -2,3 +2,17 @@
 .test {
   background-color: grey;
 }
+
+.icon:hover + .section-container {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+
+.sections-container {
+  padding-right: 25px;
+}
+
+.section-container {
+  position: relative;
+  right: 25px;
+}
