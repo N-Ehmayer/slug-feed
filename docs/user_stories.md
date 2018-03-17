@@ -29,7 +29,7 @@ To help me judge whether it is worth reading
 I want to be able to sort articles based on hot/new/top/controversial
 To see what's trending in the community
 
-[] 7) Want-to-have
+[ ] 7) Want-to-have
 I want to be able to see categories of articles
 To find information on a specific subject faster
 
@@ -53,61 +53,62 @@ To have a voice in the discussion
 I want to mark my comment as agree or disgree
 To contribute my opinion to the discussion
 
-12) Core-ish
+[ ] 12) Core-ish
 I want to upvote things that I think are good
-To enourage more content like it
+To encourage more content like it
 
-13) Core-ish
+[ ] 13) Core-ish
 I want to downvote bad content
 To discourage it / get it out of the way of good discussion
 
-14) Want-to-have
+[ ] 14) Want-to-have
 I want to be able to report comments
 Because sometimes people say terrible things & leave terrible links
 
-15) Want-to-have
+[ ] 15) Want-to-have
 I want to be able to report articles
 Because sometimes people say terrible things & leave terrible links
 
-16) Stretch
+[ ] 16) Stretch
 I want to be able to use emojis in my comments
 Because they're fun
 
 ## As a Content Creator
-1) Want-to-have
+[ ] 1) Want-to-have
 I want to be able to write articles
 To share my knowledge/opinion on subjects
 
-2) Nice-to-have
+[ ] 2) Nice-to-have
 I want to be able to edit my own articles
 To correct typos & other errors
 
-3) Necessary if creator implemented
+[ ] 3) Necessary if creator implemented
 I don't want other people to be able to edit my articles
 Because I want to control my content
 
-4) Want-to-have
+[ ] 4) Want-to-have
 I want to be able to tag my content
 To help people find it
 
-5) Stretch
+[ ] 5) Stretch
 I want to put images in my articles
 To help communicate
+
 ## As a Moderator
-1) Stretch
+[ ] 1) Stretch
 I want to be able to remove comments
 Because of content that violates the site rules
 
-2) Stretch
+[ ] 2) Stretch
 I want to be able to remove articles
 Because of content that violates the site rules
 
-3) Stretch
+[ ] 3) Stretch
 I want to be able to ban users
 Because some people repeatedly violate rules
 
 ## As an Admin
-1) Stretch
+[ ] 1) Stretch
 I want to be able to appoint moderators
 To help me administer the community
 
