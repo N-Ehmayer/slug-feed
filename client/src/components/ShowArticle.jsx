@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
-import ModalPage from './ModalPage.jsx';
-import NavbarFeatures from './NavbarFeatures.jsx';
-import Comments from './Comments.jsx';
-import axios from 'axios';
+import React, { Component } from 'react'
+import NavbarFeatures from './NavbarFeatures'
+import Comments from './Comments.jsx'
+import CommentModal from './CommentModal.jsx'
+import axios from 'axios'
 
 class ShowArticle extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { article: {}, positiveComments: [], negativeComments: [] }
+    this.state = { article: {}, positiveComments: [], negativeComments: [], commentModalSectionId: null }
+
+    this.showCommentModal = this.showCommentModal.bind(this);
+    this.hideCommentModal = this.hideCommentModal.bind(this);
   }
 
   componentDidMount() {
     const pathname = this.props.location.pathname;
     const self = this;
-    axios.get(`http://localhost:3000/api${pathname}`)
+    axios.get(`/api${pathname}`)
       .then( response => {
         const article = response.data;
         const positiveComments = [];
@@ -28,16 +31,25 @@ class ShowArticle extends Component {
       });
   }
 
+  showCommentModal(section_id) {
+    console.log('clicked comment modal');
+    this.setState({ commentModalSectionId: section_id });
+  }
+
+  hideCommentModal() {
+    this.setState({ commentModalSectionId: null });
+  }
+
   render() {
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
       return (
         <div key={section.id} className="row">
           <div className="col">
-            <p>{section.content}</p>
+            <p className="section-content">{section.content}</p>
           </div>
           <div className="col-1">
-            <ModalPage section={section.id} />
+            <i className="fa fa-comment" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}></i>
           </div>
         </div>
       );
@@ -55,7 +67,7 @@ class ShowArticle extends Component {
     return (
       <div>
         <NavbarFeatures />
-
+        {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal}/>}
         <div className="row">
           <div className="col-md-12">
             <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
