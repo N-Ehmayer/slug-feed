@@ -1,8 +1,8 @@
-import React from 'react'
-import { Input, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact'
-import 'font-awesome/css/font-awesome.min.css'
-import axios from 'axios'
-import sentiment from 'sentiment'
+import React from 'react';
+import { Input, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
+import 'font-awesome/css/font-awesome.min.css';
+import axios from 'axios';
+import sentiment from 'sentiment';
 
 class ModalPage extends React.Component {
 

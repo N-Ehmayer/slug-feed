@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import ModalPage from './ModalPage.jsx'
-import NavbarFeatures from './NavbarFeatures.jsx'
-import Comments from './Comments.jsx'
-import axios from 'axios'
+import React, { Component } from 'react';
+import ModalPage from './ModalPage.jsx';
+import NavbarFeatures from './NavbarFeatures.jsx';
+import Comments from './Comments.jsx';
+import axios from 'axios';
 
 class ShowArticle extends Component {
 

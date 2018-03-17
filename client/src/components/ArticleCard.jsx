@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Card, CardBody, CardTitle, CardText } from 'mdbreact';
 
 class ArticleCard extends Component {
