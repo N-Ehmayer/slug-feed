@@ -1,55 +1,55 @@
 # User Stories
 
 ## As a Reader
-1) Core
+[x] 1) Core
 I want to be able to sign up with social media
 Because I don't want to remember logins
 
-2) Core
+[x] 2) Core
 I want to be able to login with social media
 Because I don't want to remember logins
 
-3) Want-to-have
+[ ] 3) Want-to-have
 I want to be able to define what I find interesting
 So that the site shows me more relevant content
 
-4.a) Core
+[x] 4.a) Core
 I want a feed of articles to choose from
 Because I'm looking for information
 
-4.b) Want-to-have
+[ ] 4.b) Want-to-have
 I want to see a feed of articles that I find interesting
 So that I don't have to wade through everything
 
-5) Want-to-have
+[ ] 5) Want-to-have
 I want to see a metric of article quality in the feed
 To help me judge whether it is worth reading
 
-6) Sorted - Core, Selectable sort - stretch
+6) [x] Sorted - Core, Selectable sort - stretch
 I want to be able to sort articles based on hot/new/top/controversial
 To see what's trending in the community
 
-7) Want-to-have
+[] 7) Want-to-have
 I want to be able to see categories of articles
 To find information on a specific subject faster
 
-8) Core
+[x] 8) Core
 I want to be able to click an article in my view and have it load
 Because I want to read the article
 
-9) Core
+[x] 9) Core
 I want to see what people are saying about the article
 Because it makes it easier to judge it
 
-10) Core - WOW
+[x] 10) Core - WOW
 I want to see comments that both agree/disagree with the story alongside the article content
 To help see any biases
 
-11.a) Core
+[x] 11.a) Core
 I want to leave comments on specific sections of articles
 To have a voice in the discussion
 
-11.b) Core
+[x] 11.b) Core
 I want to mark my comment as agree or disgree
 To contribute my opinion to the discussion
 
