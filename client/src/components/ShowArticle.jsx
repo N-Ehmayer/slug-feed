@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import NavbarFeatures from './NavbarFeatures'
+import ModalPage from './ModalPage.jsx'
+import NavbarFeatures from './NavbarFeatures.jsx'
 import Comments from './Comments.jsx'
 import axios from 'axios'
 
@@ -31,7 +32,7 @@ class ShowArticle extends Component {
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
       return (
-        <div className="row">
+        <div key={section.id} className="row">
           <div className="col">
             <p>{section.content}</p>
           </div>

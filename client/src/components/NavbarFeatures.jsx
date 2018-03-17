@@ -12,11 +12,11 @@ class NavbarFeatures extends Component {
   render() {
     return (
       <Router>
-        <Navbar light main-nav className="to-top" expand="md" fixed="top" scrolling>
+        <Navbar light className="to-top" expand="md" fixed="top" scrolling>
           <NavbarNav className="ml-auto">
-            <NavItem><Link className="nav-link" to="/">Home</Link></NavItem>
+            <NavItem><Link className="nav-link" to="/">Feed</Link></NavItem>
             <NavItem><NavbarBrand href="/" className="navbar-logo mx-auto">SlugFeed</NavbarBrand></NavItem>
-            {this.props.session.user
+            {(this.props.session.user || {}).id
               ? <NavItem><a className="nav-link" href="/logout">Logout</a></NavItem>
               : <NavItem><a className="nav-link" href="/login">Login</a></NavItem>
             }

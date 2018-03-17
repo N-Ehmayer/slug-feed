@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import NavbarFeatures from './NavbarFeatures'
 import ArticleCard from './ArticleCard'
 
-import ShowArticle from './ShowArticle.jsx'
-
 import { fetchArticles } from '../actions/articleActions.js'
-
 
 
 class Home extends Component {
@@ -18,7 +14,6 @@ class Home extends Component {
 
   render() {
     const { articles } = this.props
-
     return (
       <div className="App">
         <NavbarFeatures />

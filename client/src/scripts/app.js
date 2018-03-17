@@ -1,7 +1,7 @@
+
 const timeCreated = function() {
   let date = $('.comment-created-date').html();
   let formattedDate = moment(date).fromNow();
-  console.log(formattedDate);
   $('.comment-created-date').replaceWith(formattedDate);
 }
 
@@ -13,16 +13,12 @@ $(function() {
   $('#comment-box').click('submit', function(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log("HIT THE RTOUTES")
     $.ajax({
       url: 'api/comments',
       method: 'POST',
       data: $(this).serialize(),
-
       success: function(comments) {
         console.log("success");
-        // loadTweets();
-        // $('#new-tweet-input').val('');
       },
       error: function(err) {
         console.log(err);
