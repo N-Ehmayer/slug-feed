@@ -42,19 +42,29 @@
 }
 
 .comment-time {
+  display: inline-block;
+  float: left;
   position: relative;
   left: 15px;
   color: grey;
   font-size: 15px;
 }
 
-.fa-comment {
-  color: lightgrey;
+.fa-check-circle {
+  display: inline-block;
+  position: relative;
+  left: 170px;
+  bottom: 8px;
+  font-size: 30px;
 }
 
-.fa-comment:hover {
+.comment-score {
+  display: inline-block;
+  float: right;
   color: grey;
-  font-size: 110%;
-}
+  position: relative;
+  right: 6px;
+  bottom: 5px;
 
+}
 
