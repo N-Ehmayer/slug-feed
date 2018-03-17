@@ -18,8 +18,6 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
-      scale: 1,
-      opacity: 1
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
@@ -56,13 +54,13 @@ class ShowArticle extends Component {
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
       return (
-        <div key={section.id} className="row">
-          <div className="col">
-            <p className="section-content">{section.content}</p>
-          </div>
-          <div className="col-1" style={{...styles, opacity: this.state.opacity, transform: 'scale(' + this.state.scale + ')'}}>
+        <div key={section.id} className="row sections-container">
+          <div className="col-1 icon">
             <i className="fa fa-comment" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-              style={{...styles, opacity: this.state.opacity, transform: 'scale(' + this.state.scale + ')'}}></i>
+              style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+          </div>
+          <div className="col section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
+            <p className="section-content">{section.content}</p>
           </div>
         </div>
       );
