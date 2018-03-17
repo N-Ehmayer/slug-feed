@@ -38,7 +38,7 @@ function appendRoutes(router, knex) {
         ON CONFLICT ( id ) DO UPDATE
         SET profile = :profile
         RETURNING *`, { id: req.user.id, profile: req.user }
-      ).then(() => res.redirect(req.session.returnTo || '/'));
+      ).then(() => res.redirect('/'));
     }
   );
 
@@ -55,7 +55,7 @@ function appendRoutes(router, knex) {
 
   // Route for the front-end to check for a session
   router.get('/api/session', (request, response) => {
-    response.json(request.user);
+    response.json(request.user || {});
   });
 
 };
