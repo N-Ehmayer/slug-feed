@@ -61,7 +61,7 @@ class ShowArticle extends Component {
             <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
               <div className="text-white text-center rgba-stylish-light py-5 px-4">
                 <div className="py-5">
-                  <h2 className="card-title pt-3 mb-5 font-bold mx-auto">{article.tagline}</h2>
+                  <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto">{article.tagline}</h2>
                 </div>
               </div>
               <div className="rgba-stylish-light">
