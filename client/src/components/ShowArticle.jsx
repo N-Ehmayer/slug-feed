@@ -12,6 +12,7 @@ class ShowArticle extends Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       article: {},
       positiveComments: [],
@@ -49,13 +50,6 @@ class ShowArticle extends Component {
 
   hideCommentModal() {
     this.setState({ commentModalSectionId: null });
-  }
-
-  onCommentHover() {
-    this.setState({
-      fontsize: 5,
-      opacity: 0.7
-    })
   }
 
   render() {
