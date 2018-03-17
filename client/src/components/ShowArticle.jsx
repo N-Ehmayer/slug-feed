@@ -4,11 +4,22 @@ import Comments from './Comments.jsx'
 import CommentModal from './CommentModal.jsx'
 import axios from 'axios'
 
+const styles = {
+  transition: 'all 0.2s ease-out'
+}
+
 class ShowArticle extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { article: {}, positiveComments: [], negativeComments: [], commentModalSectionId: null }
+    this.state = {
+      article: {},
+      positiveComments: [],
+      negativeComments: [],
+      commentModalSectionId: null,
+      scale: 1,
+      opacity: 1
+    }
 
     this.showCommentModal = this.showCommentModal.bind(this);
     this.hideCommentModal = this.hideCommentModal.bind(this);
@@ -40,6 +51,13 @@ class ShowArticle extends Component {
     this.setState({ commentModalSectionId: null });
   }
 
+  onCommentHover() {
+    this.setState({
+      fontsize: 5,
+      opacity: 0.7
+    })
+  }
+
   render() {
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
@@ -48,8 +66,9 @@ class ShowArticle extends Component {
           <div className="col">
             <p className="section-content">{section.content}</p>
           </div>
-          <div className="col-1">
-            <i className="fa fa-comment" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}></i>
+          <div className="col-1" style={{...styles, opacity: this.state.opacity, transform: 'scale(' + this.state.scale + ')'}}>
+            <i className="fa fa-comment" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+              style={{...styles, opacity: this.state.opacity, transform: 'scale(' + this.state.scale + ')'}}></i>
           </div>
         </div>
       );
