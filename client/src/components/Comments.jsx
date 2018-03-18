@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 class Comments extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      commentScore: 0, // should be this.props.overallscore
+      isUpvote: null
+    }
+  }
+
+  toggleUpVote() {
+
+  }
+
 
   render() {
     const classType = this.props.classType;
@@ -12,8 +25,9 @@ class Comments extends Component {
           <h3 className='username'>{comment.profile.displayName}</h3>
           <p className='comment-content'>{comment.content}</p>
           <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
-          <i className="fa fa-check-circle" aria-hidden="true"></i>
-          <p className='comment-score'>12</p>
+          <i className="fa fa-plus-circle" aria-hidden="true" onClick={() => this.toggleUpVote()}></i>
+          <i className="fa fa-minus-circle" aria-hidden="true" onClick={() => this.toggleUpVote()}></i>
+          <p className='comment-score'>{comment.initial_score}</p>
         </div>
       )
     })
