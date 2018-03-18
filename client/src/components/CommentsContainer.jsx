@@ -18,9 +18,9 @@ class CommentsContainer extends Component {
     })
 
     return (
-      <ReactCSSTransitionGroup transitionName="thing">
-        {comments}
-      </ReactCSSTransitionGroup>
+      <div>
+       {comments}
+      </div>
     );
   }
 }
