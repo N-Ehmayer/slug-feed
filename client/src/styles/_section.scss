@@ -4,38 +4,35 @@
 
 .section-container {
   position: relative;
-  right: 0px;
+  margin-bottom: 5px;
 }
 
 .section-content {
-  height: 32px;
 }
 
-
-.fa-comment {
+.fa-commenting, .fa-comments {
   color: lightgrey;
+  font-size: 120%;
   margin-top: 0;
+  padding: 0 5px;
 }
 
-.fa-comment:hover {
+
+.fa-commenting:hover, .fa-comments:hover {
   color: grey;
-  font-size: 110%;
+  font-size: 130%;
 }
 
 .comment-icon {
   position: relative;
-  left: 300px;
   visibility: hidden;
   text-align: center;
 }
 
-.comment-icon:hover + .section-container {
-  border-top: 1px solid lightgrey;
-  border-bottom: 1px solid lightgrey;
-}
-
 .section-container:hover > .comment-icon {
   visibility: visible;
+  border-bottom: lightgrey 0.05em solid;
+
 }
 
 

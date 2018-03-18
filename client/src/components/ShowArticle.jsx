@@ -64,8 +64,10 @@ class ShowArticle extends Component {
         <div key={section.id} className="sections-container">
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
             <p className="section-content">{section.content}</p>
-            <div className="col-1 comment-icon">
-              <i className="fa fa-comment" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+            <div className="comment-icon">
+              <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
                 style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
             </div>
           </div>
