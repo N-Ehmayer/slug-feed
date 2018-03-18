@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NavbarFeatures from './NavbarFeatures'
-import Comments from './Comments.jsx'
+import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
 import axios from 'axios'
 
@@ -51,7 +51,6 @@ class ShowArticle extends Component {
   }
 
   render() {
-    console.log(this.state.session)
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
       return (
@@ -98,7 +97,7 @@ class ShowArticle extends Component {
         <div className="d-block d-md-flex article-section">
           <div className="w-100 comments-column">
             <h3 className="pb-3 comments-column-title">Disagree</h3>
-            <Comments comments={this.state.negativeComments} classType={'neg-comment-container'} />
+            <CommentsContainer comments={this.state.negativeComments} classType={'neg-comment-container'} />
           </div>
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
@@ -106,7 +105,7 @@ class ShowArticle extends Component {
           </div>
           <div className="w-100 comments-column">
             <h3 className="pb-3 comments-column-title">Agree</h3>
-            <Comments comments={this.state.positiveComments} classType={'pos-comment-container'} />
+            <CommentsContainer comments={this.state.positiveComments} classType={'pos-comment-container'} />
           </div>
         </div>
 
