@@ -86,21 +86,3 @@
   color: grey;
 }
 
-
-.thing-enter {
-  opacity: 0.01;
-  transition: opacity 1s ease-in;
-}
-
-.thing-enter.thing-enter-active {
-  opacity: 1;
-}
-
-.thing-leave {
-  opacity: 1;
-  transition: opacity 1s ease-in;
-}
-
-.thing-leave.thing-leave-active {
-  opacity: 0.01;
-}
