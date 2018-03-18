@@ -117,12 +117,16 @@ class Comment extends Component {
           <img className='rounded-circle user-avatar' src={comment.poster.picture} alt='article banner'/>
           <h3 className='username'>{comment.poster.displayName}</h3>
           <p className='comment-content'>{comment.content}</p>
-          <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
-          <i className="fa fa-plus-circle" aria-hidden="true" onClick={() => this.toggleUpVote(this.state.isUpvote, comment.id)}
-            style={{"color": this.state.toggleColor.upVote}}></i>
-          <i className="fa fa-minus-circle" aria-hidden="true" onClick={() => this.toggleDownVote(this.state.isUpvote, comment.id)}
-            style={{"color": this.state.toggleColor.downVote}}></i>
-          <p className='comment-score'>{this.state.commentScore}</p>
+          <div className='comment-footer'>
+            <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
+            <div className='rating-container'>
+              <i className="fa fa-minus-circle" aria-hidden="true" onClick={() => this.toggleDownVote(this.state.isUpvote, comment.id)}
+                style={{"color": this.state.toggleColor.downVote}}></i>
+              <p className='comment-score'><b>{this.state.commentScore}</b></p>
+              <i className="fa fa-plus-circle" aria-hidden="true" onClick={() => this.toggleUpVote(this.state.isUpvote, comment.id)}
+                style={{"color": this.state.toggleColor.upVote}}></i>
+            </div>
+          </div>
         </div>
       )
 

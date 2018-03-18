@@ -41,21 +41,31 @@
   border: 1px solid grey;
 }
 
+.comment-footer {
+  position: relative;
+}
+
 .comment-time {
-  display: inline-block;
+  display: block;
   float: left;
   position: relative;
-  left: 15px;
+  left: 0;
+  bottom: 0;
   color: grey;
   font-size: 15px;
 }
 
+.rating-container {
+  display: inline-flex;
+  position: relative;
+  right: -100px;
+  bottom: 3px;
+}
+
 .fa-plus-circle {
   color: lightgrey;
-  display: inline-block;
-  position: relative;
-  left: 122px;
-  bottom: 8px;
+
+
   font-size: 30px;
 }
 .fa-plus-circle:hover {
@@ -63,22 +73,17 @@
 
 .fa-minus-circle {
   color: lightgrey;
-  display: inline-block;
-  float: right;
-  position: relative;
-  right: 60px;
-  bottom: 8px;
+
   font-size: 30px;
 }
 .fa-minus-circle:hover {
 }
 
 .comment-score {
-  display: inline-block;
-  float: right;
-  color: grey;
   position: relative;
-  left: 12px;
-  bottom: 5px;
+  top: 3px;
+  padding: 0 10px;
+  color: grey;
+
 
 }
