@@ -50,12 +50,29 @@
   font-size: 15px;
 }
 
-.fa-check-circle {
+.fa-plus-circle {
+  color: lightgrey;
   display: inline-block;
   position: relative;
-  left: 170px;
+  left: 155px;
   bottom: 8px;
   font-size: 30px;
+}
+.fa-plus-circle:hover {
+  color: grey;
+}
+
+.fa-minus-circle {
+  color: lightgrey;
+  display: inline-block;
+  float: right;
+  position: relative;
+  right: 60px;
+  bottom: 8px;
+  font-size: 30px;
+}
+.fa-minus-circle:hover {
+  color: grey;
 }
 
 .comment-score {
@@ -63,8 +80,7 @@
   float: right;
   color: grey;
   position: relative;
-  right: 6px;
+  left: 12px;
   bottom: 5px;
 
 }
-

@@ -51,6 +51,7 @@ class ShowArticle extends Component {
   }
 
   render() {
+    console.log(this.state.session)
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
       return (
