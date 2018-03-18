@@ -1,19 +1,20 @@
-
-.test {
-  background-color: grey;
-}
-
 .sections-container {
   padding-right: 25px;
 }
 
 .section-container {
   position: relative;
-  right: 25px;
+  right: 0px;
 }
+
+.section-content {
+  height: 32px;
+}
+
 
 .fa-comment {
   color: lightgrey;
+  margin-top: 0;
 }
 
 .fa-comment:hover {
@@ -21,9 +22,20 @@
   font-size: 110%;
 }
 
+.comment-icon {
+  position: relative;
+  left: 300px;
+  visibility: hidden;
+  text-align: center;
+}
+
 .comment-icon:hover + .section-container {
   border-top: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;
+}
+
+.section-container:hover > .comment-icon {
+  visibility: visible;
 }
 
 
