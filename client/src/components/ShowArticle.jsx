@@ -18,10 +18,12 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
+      commentsVisible: false
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
     this.hideCommentModal = this.hideCommentModal.bind(this);
+    this.toggleComments = this.toggleComments.bind(this);
   }
 
   componentDidMount() {
@@ -50,6 +52,11 @@ class ShowArticle extends Component {
     this.setState({ commentModalSectionId: null });
   }
 
+  toggleComments() {
+    this.state.commentsVisible ? this.setState({ commentsVisible: false }) : this.setState({ commentsVisible: true })
+  }
+
+
   render() {
     const article = this.state.article;
     const articleSections = article.sections && article.sections.map((section) => {
@@ -74,7 +81,7 @@ class ShowArticle extends Component {
         </span>
       )
     });
-
+    console.log(this.state.commentsVisible);
     return (
       <div>
         <NavbarFeatures />
@@ -94,10 +101,14 @@ class ShowArticle extends Component {
           </div>
         </div>
 
+        <button onClick={() => { this.toggleComments()}}>Toggle Discussion</button>
+
         <div className="d-block d-md-flex article-section">
           <div className="w-100 comments-column">
             <h3 className="pb-3 comments-column-title">Disagree</h3>
-            <CommentsContainer comments={this.state.negativeComments} classType={'neg-comment-container'} />
+            { this.state.commentsVisible ?
+              <CommentsContainer comments={this.state.negativeComments} classType={'neg-comment-container'} />
+              : null }
           </div>
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
@@ -105,7 +116,9 @@ class ShowArticle extends Component {
           </div>
           <div className="w-100 comments-column">
             <h3 className="pb-3 comments-column-title">Agree</h3>
+            { this.state.commentsVisible ?
             <CommentsContainer comments={this.state.positiveComments} classType={'pos-comment-container'} />
+            : null }
           </div>
         </div>
 

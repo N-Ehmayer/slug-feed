@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Comment from './Comment.jsx';
 
 class CommentsContainer extends Component {
@@ -6,7 +7,6 @@ class CommentsContainer extends Component {
     super(props)
 
     this.state = {
-
     }
   }
 
@@ -14,13 +14,13 @@ class CommentsContainer extends Component {
     const classType = this.props.classType;
 
     const comments = this.props.comments.map((comment) => {
-      return ( <Comment key={comment.id} comment={comment} /> )
+      return ( <Comment key={comment} comment={comment} classType={classType} /> )
     })
 
     return (
-      <div className={classType}>
+      <ReactCSSTransitionGroup transitionName="thing">
         {comments}
-      </div>
+      </ReactCSSTransitionGroup>
     );
   }
 }
