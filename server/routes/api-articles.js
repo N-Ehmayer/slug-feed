@@ -33,11 +33,25 @@ function appendRoutes(router, knex) {
 
     const sectionCommentsQuery = function(sectionId) {
       return knex
-        .select('comments.*', 'users.profile')
+        .select(knex.raw(`
+          comments.*,
+          posters.profile as poster,
+          user_votes.is_upvote AS currentUserVoteType,
+          SUM(CASE comment_votes.is_upvote WHEN true THEN 1 WHEN false THEN -1 ELSE 0 END) AS votes_score`
+        ))
         .from('comments')
-        .join('users', 'users.id', '=', 'comments.user_id')
+        .leftOuterJoin('users AS posters', 'comments.user_id', '=', 'posters.id')
+        .leftOuterJoin('comment_votes', 'comments.id', '=', 'comment_votes.comment_id')
+        .joinRaw(`
+          LEFT OUTER JOIN comment_votes AS user_votes
+          ON user_votes.comment_id = comments.id
+          AND user_votes.user_id = '${(request.user || {}).id}'`
+        )
         .where('comments.section_id', sectionId)
-        .orderBy('comments.created_at');
+        .groupBy('user_votes.id')
+        .groupBy('comments.id')
+        .groupBy('posters.id')
+        .orderBy('comments.id');
     };
 
     const authorQuery = knex
