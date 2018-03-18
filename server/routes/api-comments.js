@@ -17,17 +17,28 @@ function initialScore(comment, user) {
 }
 
 /** Utility Query Def for getting the total of the votes on a given comment(s) */
-function baseQuery(knex, id) {
+function baseQuery(knex, id, currentUserId) {
   let query = knex
-    .select(knex.raw('comments.*, users.profile, SUM(CASE comment_votes.is_upvote WHEN true THEN 1 WHEN false THEN -1 ELSE 0 END) AS votes_score'))
+    .select(knex.raw(`
+      comments.*,
+      posters.profile as poster,
+      user_votes.is_upvote AS currentUserVoteType,
+      SUM(CASE comment_votes.is_upvote WHEN true THEN 1 WHEN false THEN -1 ELSE 0 END) AS votes_score`
+    ))
     .from('comments')
     .leftJoin('comment_votes', 'comments.id', '=', 'comment_votes.comment_id')
-    .leftJoin('users', 'comments.user_id', '=', 'users.id');
+    .leftJoin('users AS posters', 'comments.user_id', '=', 'posters.id')
+    .joinRaw(`
+      LEFT OUTER JOIN comment_votes AS user_votes
+      ON user_votes.comment_id = comments.id
+      AND user_votes.user_id = '${currentUserId}'`
+    )
 
   if (id) { query.where('comments.id', id); }
   query
+    .groupBy('user_votes.id')
     .groupBy('comments.id')
-    .groupBy('users.id')
+    .groupBy('posters.id')
     .orderBy('comments.id');
 
   return query;
@@ -38,7 +49,7 @@ function appendRoutes(router, knex) {
 
   /** Custom GET table route incorporating the comment score */
   router.get(`/api/comments`, (request, response) => {
-    const dbQuery = baseQuery(knex);
+    const dbQuery = baseQuery(knex, null, (request.user || {}).id);
     for (const field of Object.keys(request.query)) {
       if (field.toLowerCase() === 'limit') {
         dbQuery.limit(parseInt(request.query[field]))
@@ -53,7 +64,7 @@ function appendRoutes(router, knex) {
 
   /** Custom GET record route incorporating the comment score */
   router.get(`/api/comments/:id`, (request, response) => {
-    baseQuery(knex, request.params.id)
+    baseQuery(knex, request.params.id, (request.user || {}).id)
       .then(results => response.json(results))
       .catch(error => response.status(422).send(error.detail));
   });
