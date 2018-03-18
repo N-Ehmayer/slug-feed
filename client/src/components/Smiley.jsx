@@ -9,15 +9,19 @@ class Smiley extends Component {
     };
   }
 
-  componentWillUpdate() {
-      this.updateCanvas();
+  componentDidMount() {
+    this.updateCanvas();
   }
+  componentWillUpdate() {
+    this.updateCanvas();
+  }
+
   updateCanvas() {
       const ctx = this.smileyCanvas.getContext('2d');
       smileyLogic(ctx, this.props.height, this.props.width)(this.props.sentiment);
   }
+
   render() {
-    console.log(this.props.sentiment, 'in smiley');
     return  (
       <div style={{width: this.props.width, overflow: 'auto'}}>
         <canvas ref={ (ref) => this.smileyCanvas = ref } width={this.props.width} height={this.props.height} />

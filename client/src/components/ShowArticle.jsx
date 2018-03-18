@@ -55,8 +55,8 @@ class ShowArticle extends Component {
     const articleSections = article.sections && article.sections.map((section) => {
       return (
         <div key={section.id} className="row sections-container">
-          <div className="col-1 comment-icon">
-            <i className="fa fa-comment" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+          <div className="col-1 comment-icon align-middle">
+            <i className="fa fa-comment align-middle" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
               style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
           </div>
           <div className="col section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
