@@ -19,6 +19,8 @@
     "js-beautify": "^1.7.5"
   },
   "dependencies": {
-    "knex": "^0.14.4"
+    "knex": "^0.14.4",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-transition-group": "^1.2.1"
   }
 }

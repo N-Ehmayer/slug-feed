@@ -25,7 +25,7 @@ class Comment extends Component {
 
   toggleUpVote(type, commentId, score) {
     const self = this
-    if (type == NOVOTE) {
+    if (type === NOVOTE) {
       // Change current user vote type to NOVOTE/null
       axios.post('/api/comment_votes', {
         comment_id: commentId,
@@ -69,7 +69,7 @@ class Comment extends Component {
 
   toggleDownVote(type, commentId, score) {
     const self = this
-    if (type == NOVOTE) {
+    if (type === NOVOTE) {
       axios.post('/api/comment_votes', {
         comment_id: commentId,
         is_upvote: DOWNVOTE
@@ -112,27 +112,23 @@ class Comment extends Component {
   render() {
     const comment = this.props.comment
     console.log(this.state.commentScore);
-      return (
-        <div>
-          <img className='rounded-circle user-avatar' src={comment.poster.picture} alt='article banner'/>
-          <h3 className='username'>{comment.poster.displayName}</h3>
-          <p className='comment-content'>{comment.content}</p>
-          <div className='comment-footer'>
-            <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
-            <div className='rating-container'>
-              <i className="fa fa-minus-circle" aria-hidden="true" onClick={() => this.toggleDownVote(this.state.isUpvote, comment.id)}
-                style={{"color": this.state.toggleColor.downVote}}></i>
-              <p className='comment-score'><b>{this.state.commentScore}</b></p>
-              <i className="fa fa-plus-circle" aria-hidden="true" onClick={() => this.toggleUpVote(this.state.isUpvote, comment.id)}
-                style={{"color": this.state.toggleColor.upVote}}></i>
-            </div>
+    return (
+      <div className={this.props.classType}>
+        <img className='rounded-circle user-avatar' src={comment.poster.picture} alt='article banner'/>
+        <h3 className='username'>{comment.poster.displayName}</h3>
+        <p className='comment-content'>{comment.content}</p>
+        <div className='comment-footer'>
+          <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
+          <div className='rating-container'>
+            <i className="fa fa-minus-circle" aria-hidden="true" onClick={() => this.toggleDownVote(this.state.isUpvote, comment.id)}
+              style={{"color": this.state.toggleColor.downVote}}></i>
+            <p className='comment-score'><b>{this.state.commentScore}</b></p>
+            <i className="fa fa-plus-circle" aria-hidden="true" onClick={() => this.toggleUpVote(this.state.isUpvote, comment.id)}
+              style={{"color": this.state.toggleColor.upVote}}></i>
           </div>
         </div>
-      )
-
-    return (
-      {comment}
-    );
+      </div>
+    )
   }
 }
 
