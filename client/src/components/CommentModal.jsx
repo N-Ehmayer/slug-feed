@@ -2,7 +2,9 @@ import React from 'react'
 import { Input, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact'
 import 'font-awesome/css/font-awesome.min.css'
 import axios from 'axios'
+import Smiley from './Smiley.jsx'
 import sentiment from 'sentiment'
+import ease from '../scripts/ease-func.js'
 
 class ModalPage extends React.Component {
   constructor(props) {
@@ -11,13 +13,29 @@ class ModalPage extends React.Component {
       user: null,
       messageText: '',
       sentiment: 0,
+      smileySentiment: 0,
       section: this.props.section
     };
   }
 
+  setSmileSentiment() {
+    let originalSentiment = this.state.sentiment;
+    let updateSentiment = originalSentiment * 25;
+    console.log('in setSmileSentiment: ', updateSentiment, originalSentiment)
+    if (updateSentiment >= 100) {
+      this.setState({ smileySentiment: 100 });
+    }
+    if (updateSentiment <= -100) {
+      this.setState({ smileySentiment: -100 });
+    } else { this.setState({ smileySentiment: updateSentiment }) }
+  }
+
   onMessageTextChange(event) {
     this.setState({ messageText: event.target.value });
-    this.setState({ sentiment: sentiment(this.state.messageText)});
+    let newSentiment = sentiment(this.state.messageText)
+    this.setState({ sentiment: newSentiment.comparative });
+    this.setSmileSentiment();
+    console.log(this.state.smileySentiment, 'line 38')
   }
 
   messageSend(agree) {
@@ -50,7 +68,7 @@ class ModalPage extends React.Component {
         <ModalBody>
           <div className="row">
             <div className="col-md-12">
-
+              <Smiley height='50' width='50' sentiment={this.state.smileySentiment}/>
               <Input
                 type="textarea"
                 value={this.state.messageText}
@@ -62,7 +80,7 @@ class ModalPage extends React.Component {
           </div>
         </ModalBody>
         <ModalFooter>
-        <p>{Math.round(this.state.sentiment.comparative * 10) / 10}</p>
+        <p>{Math.round(this.state.sentiment * 10) / 10}</p>
           <Button
             color="secondary"
             onClick={ () =>  this.messageSend(true) }
