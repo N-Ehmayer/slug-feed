@@ -1,7 +1,8 @@
 /** Custom routes for /api/comments */
 "use strict";
+require('dotenv').config();
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
-const sentiment = require('sentiment');
+const language = require('@google-cloud/language');
 const sanitize = require('sanitizer').sanitize;
 
 /**
@@ -12,8 +13,24 @@ const sanitize = require('sanitizer').sanitize;
  * make changes for habitually good/bad commenters.
  */
 function initialScore(comment, user) {
-  let score = Math.ceil(sentiment(comment).comparative * 3 / 5);
-  return score;
+  return analyzeSentimentOfText(comment)
+    .then(sentiment => Math.round(sentiment.score * 3));
+}
+
+/**
+ * Farm out sentiment analysis to Google's Natural Language Processing.
+ * https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
+ */
+function analyzeSentimentOfText(text) {
+  console.log(process.env.GOOGLE_AUTH_JSON_PATH)
+  const client = new language.LanguageServiceClient({
+    keyFilename: process.env.GOOGLE_AUTH_JSON_PATH,
+  });
+  const document = { content: text, type: 'PLAIN_TEXT' };
+  return client
+    .analyzeSentiment({document})
+    .then(results => results[0].documentSentiment)
+    .catch(err => console.error('ERROR:', err));
 }
 
 /** Utility Query Def for getting the total of the votes on a given comment(s) */
@@ -71,21 +88,21 @@ function appendRoutes(router, knex) {
 
   /** Custom POST record route calculating the initial score based on sentiment */
   router.post('/api/comments', ensureLoggedIn, (request, response) => {
-    const score = initialScore(request.body.content, request.user)
-
-    return knex('comments')
-      .insert({
-        user_id: request.user.id,
-        section_id: request.body.section_id,
-        content: sanitize(request.body.content),
-        agree: request.body.agree,
-        'initial_score': score
+    initialScore(request.body.content, request.user)
+      .then(score => {
+        knex('comments')
+          .insert({
+            user_id: request.user.id,
+            section_id: request.body.section_id,
+            content: sanitize(request.body.content),
+            agree: request.body.agree,
+            'initial_score': score
+          })
+          .returning('id')
+          .then(results => response.json(results))
+          .catch(error => response.send(error.detail));
       })
-      .returning('id')
-      .then(results => response.json(results))
-      .catch(error => response.send(error.detail));
   })
 };
-
 
 module.exports = appendRoutes;

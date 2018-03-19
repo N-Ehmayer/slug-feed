@@ -38,7 +38,7 @@ class Comment extends Component {
               isUpvote: UPVOTE,
               commentScore: updatedScore,
               toggleColor: {
-                upVote: 'grey',
+                upVote: 'cyan',
                 downVote: 'lightgrey'
               }
             })
@@ -59,7 +59,7 @@ class Comment extends Component {
             self.setState({
               isUpvote: NOVOTE,
               commentScore: updatedScore,
-              toggleColor: 'grey'
+              toggleColor: 'lightgrey'
             })
           })
           .catch(error => console.log(error))
@@ -84,7 +84,7 @@ class Comment extends Component {
               commentScore: updatedScore,
               toggleColor: {
                 upVote: 'lightgrey',
-                downVote: 'grey'
+                downVote: '#db5e5e'
               }
             })
           })

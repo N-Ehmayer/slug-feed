@@ -7,3 +7,4 @@ package-lock.json
 client/src/styles/*.css
 client/src/index.css
 .swp
+googleAuth.json

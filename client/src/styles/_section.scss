@@ -1,3 +1,7 @@
+.fa-comments-o:hover {
+  font-size: 130%;
+}
+
 .sections-container {
   padding-right: 25px;
 }
@@ -7,7 +11,15 @@
   margin-bottom: 5px;
 }
 
-.fa-commenting, .fa-comments, .fa-sort-amount-desc {
+.section-content {
+  padding: 5px;
+}
+.section-toggled {
+  background-color: #fff2f2;
+  border-radius: 5px;
+}
+
+.fa-commenting, .fa-comments .fa-sort-amount-desc {
   color: lightgrey;
   font-size: 120%;
   margin-top: 0;

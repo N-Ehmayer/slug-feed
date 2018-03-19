@@ -106,23 +106,23 @@ class ShowArticle extends Component {
       return (
         <div key={section.id} className="sections-container">
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
-            <p className="section-content">{section.content}</p>
 
             {this.state.sectionToggled === section.id ?
               <div className="comment-icon" style={{'visibility': 'visible'}}>
+                <div className='section-toggled'><p className="section-content">{section.content}</p></div>
                 <i className="fa fa-sort-amount-desc" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')', 'color': 'grey'}}></i>
                 <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
               </div> :
               <div className="comment-icon">
+                <div><p className="section-content" style={{'visibility': 'visible'}}>{section.content}</p></div>
                 <i className="fa fa-sort-amount-desc" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
                 <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
               </div>
             }
-
           </div>
         </div>
       );
@@ -173,7 +173,8 @@ class ShowArticle extends Component {
           <div className="container">
           <div className="row">
             <h2 className="pb-3 article-title">{article.title}</h2>
-            <div className="toggle-comments" onClick={() => { this.toggleComments()}}><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+            <div className="toggle-comments" onClick={() => { this.toggleComments()}}><i class="fa fa-comments-o" aria-hidden="true"
+              style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i></div>
             </div>
 
             {articleSections}
