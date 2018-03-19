@@ -159,7 +159,8 @@ class ShowArticle extends Component {
           <div className={"w-100 comments-column" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Disagree</h3>
 
-              <CommentsContainer comments={this.state.negativeComments} classType={'neg-comment-container'} />
+              <CommentsContainer comments={this.state.negativeComments} classType={'neg-comment-container'
+              + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")} />
           </div>
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
@@ -167,7 +168,8 @@ class ShowArticle extends Component {
           </div>
           <div className={"w-100 comments-column animated" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Agree</h3>
-            <CommentsContainer comments={this.state.positiveComments} classType={'pos-comment-container'} />
+            <CommentsContainer comments={this.state.positiveComments} classType={'pos-comment-container'
+            + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")} />
           </div>
         </div>
 
