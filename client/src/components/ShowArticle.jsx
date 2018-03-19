@@ -87,9 +87,6 @@ class ShowArticle extends Component {
     }
   };
 
-  authMakeComment() {
-
-  }
 
 
   render() {
@@ -134,9 +131,10 @@ class ShowArticle extends Component {
       <div>
         <NavbarFeatures />
         {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal.bind(this)}/>}
+        <div className="container-fluid">
         <div className="row">
-          <div className="col-md-12">
-            <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
+          <div className="col-12">
+            <div className="card card-image jumbo-fix" style={{backgroundImage: `url(${article.hero_img_url})`}}>
               <div className="text-white text-center rgba-stylish-light py-5 px-4">
                 <div className="py-5">
                   <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto" style={{'fontSize': '30px'}}>{article.tagline}</h2>
@@ -153,8 +151,8 @@ class ShowArticle extends Component {
             </div>
           </div>
         </div>
+        </div>
 
-        <button onClick={() => { this.toggleComments()}}>Toggle Discussion</button>
         <div className="d-block d-md-flex article-section">
           <div className={"w-100 comments-column" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Disagree</h3>
@@ -163,8 +161,14 @@ class ShowArticle extends Component {
               + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")} />
           </div>
           <div className="p-3 w-100 col-6 article-container">
-            <h2 className="pb-3">{article.title}</h2>
+          <div className="container">
+          <div className="row">
+            <h2 className="pb-3 article-title">{article.title}</h2>
+            <div className="toggle-comments" onClick={() => { this.toggleComments()}}><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+            </div>
+
             {articleSections}
+            </div>
           </div>
           <div className={"w-100 comments-column animated" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Agree</h3>
