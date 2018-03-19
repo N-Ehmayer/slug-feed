@@ -26,17 +26,17 @@ class Comment extends Component {
   toggleUpVote(type, commentId, score) {
     const self = this
     if (type === NOVOTE) {
-      // Change current user vote type to NOVOTE/null
       axios.post('/api/comment_votes', {
         comment_id: commentId,
         is_upvote: UPVOTE
       }).then(response => {
         axios.get(`/api/comments/${commentId}`)
           .then(response => {
-            const comment = response.data[0];
+            let comment = response.data[0];
+            let updatedScore = comment.votes_score + comment.initial_score;
             self.setState({
               isUpvote: UPVOTE,
-              commentScore: comment.votes_score,
+              commentScore: updatedScore,
               toggleColor: {
                 upVote: 'grey',
                 downVote: 'lightgrey'
@@ -53,11 +53,12 @@ class Comment extends Component {
       }).then(response => {
         axios.get(`/api/comments/${commentId}`)
           .then(response => {
-            const comment = response.data[0];
+            let comment = response.data[0];
+            let updatedScore = comment.votes_score + comment.initial_score;
             console.log(comment);
             self.setState({
               isUpvote: NOVOTE,
-              commentScore: comment.votes_score,
+              commentScore: updatedScore,
               toggleColor: 'grey'
             })
           })
@@ -77,9 +78,10 @@ class Comment extends Component {
         axios.get(`/api/comments/${commentId}`)
           .then(response => {
             const comment = response.data[0];
+            let updatedScore = comment.votes_score + comment.initial_score;
             self.setState({
               isUpvote: DOWNVOTE,
-              commentScore: comment.votes_score,
+              commentScore: updatedScore,
               toggleColor: {
                 upVote: 'lightgrey',
                 downVote: 'grey'
@@ -97,9 +99,10 @@ class Comment extends Component {
         axios.get(`/api/comments/${commentId}`)
           .then(response => {
             const comment = response.data[0];
+            let updatedScore = comment.votes_score + comment.initial_score;
             self.setState({
               isUpvote: NOVOTE,
-              commentScore: comment.votes_score,
+              commentScore: updatedScore,
               toggleColor: 'lightgrey'
             })
           })
