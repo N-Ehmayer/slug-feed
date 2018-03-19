@@ -18,12 +18,17 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
-      commentsVisible: false
+      commentsVisible: false,
+      sectionToggle: null,
+      sectionToggleStyles: {
+        background-color: white
+      }
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
     this.hideCommentModal = this.hideCommentModal.bind(this);
     this.toggleComments = this.toggleComments.bind(this);
+    this.toggleSectionComments = this.toggleSectionComments.bind(this);
   }
 
   componentDidMount() {
@@ -56,24 +61,20 @@ class ShowArticle extends Component {
     this.state.commentsVisible ? this.setState({ commentsVisible: false }) : this.setState({ commentsVisible: true })
   }
 
+  toggleSectionComments(section_id) {
+    const self = this;
+    axios.get(`/api/comments?section_id=${section_id}`)
+      .then( response => {
+        const comments = response.data;
+        const positiveComments = [];
+        const negativeComments = [];
+        comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+        self.setState({ positiveComments, negativeComments });
+      });
+  };
 
   render() {
     const article = this.state.article;
-    const articleSections = article.sections && article.sections.map((section) => {
-      return (
-        <div key={section.id} className="sections-container">
-          <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
-            <p className="section-content">{section.content}</p>
-            <div className="comment-icon">
-              <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-            </div>
-          </div>
-        </div>
-      );
-    });
 
     const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
     const articleTags = article.tags && article.tags.map((tag, index) => {
@@ -83,6 +84,23 @@ class ShowArticle extends Component {
         </span>
       )
     });
+
+    const articleSections = article.sections && article.sections.map((section) => {
+      return (
+        <div key={section.id} className="sections-container">
+          <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
+            <p className="section-content">{section.content}</p>
+            <div className="comment-icon">
+              <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+            </div>
+          </div>
+        </div>
+      );
+    });
+
     console.log(this.state.commentsVisible);
     return (
       <div>
