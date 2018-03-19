@@ -2,14 +2,25 @@ import React, { Component } from 'react';
 import smileyLogic from '../scripts/smiley-logic.js';
 
 class Smiley extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sentiment: this.props.sentiment
+    };
+  }
 
   componentDidMount() {
-      this.updateCanvas();
+    this.updateCanvas();
   }
+  componentWillUpdate() {
+    this.updateCanvas();
+  }
+
   updateCanvas() {
       const ctx = this.smileyCanvas.getContext('2d');
-      smileyLogic(ctx, this.state.height, this.state.width)(this.props.sentiment);
+      smileyLogic(ctx, this.props.height, this.props.width)(this.props.sentiment);
   }
+
   render() {
     return  (
       <div style={{width: this.props.width, overflow: 'auto'}}>

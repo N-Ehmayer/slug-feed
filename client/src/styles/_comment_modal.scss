@@ -1,0 +1,52 @@
+#close-comment {
+  align-content: left;
+  float: left;
+  padding: 25px;
+  padding-bottom: 0;
+}
+
+#comment-avatar {
+  padding-top: 25px;
+  padding-right: 50px;
+  padding-left: 40px;
+  padding-bottom: 0;
+}
+
+.comment-avatar {
+  display: inline-block;
+  height: 35px;
+  width: 35px;
+
+}
+.comment-user-name {
+  display: inline-block;
+  padding-left: 25px;
+}
+
+.negative-message-send {
+  display: inline-block;
+  float: left;
+}
+
+.positive-message-send {
+  display: inline-block;
+  float: right;
+}
+
+.points {
+  padding: 0;
+  padding-left: 10px;
+  text-align: center;
+}
+.sentiment-text {
+  font-size: 8px;
+  text-align: center;
+  color: green;
+  padding-top: 15px;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+
+.send-button {
+
+}
