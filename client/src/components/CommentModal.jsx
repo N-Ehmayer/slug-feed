@@ -54,7 +54,7 @@ class CommentModal extends React.Component {
       .then(function(response){
         console.log('Message send success ----\n', response);
       });
-
+    this.props.hideMe();
     this.setState({...this.state, messageText: '' });
 
   }
@@ -88,7 +88,7 @@ class CommentModal extends React.Component {
               <Input
                 type="textarea"
                 value={this.state.messageText}
-                onInput={this.onMessageTextChange.bind(this)}
+                onChange={this.onMessageTextChange.bind(this)}
                 label="Compose your message..."
               />
 

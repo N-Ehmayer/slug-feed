@@ -85,7 +85,7 @@ class ShowArticle extends Component {
     return (
       <div>
         <NavbarFeatures />
-        {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal}/>}
+        {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal.bind(this)}/>}
         <div className="row">
           <div className="col-md-12">
             <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
