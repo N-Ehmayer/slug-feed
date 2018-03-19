@@ -19,10 +19,7 @@ class ShowArticle extends Component {
       negativeComments: [],
       commentModalSectionId: null,
       commentsVisible: false,
-      sectionToggled: null,
-      sectionToggleStyles: {
-        backgroundColor: ''
-      }
+      sectionToggled: null
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
@@ -63,18 +60,26 @@ class ShowArticle extends Component {
   }
 
   toggleSectionComments(section_id) {
-    const self = this;
-    axios.get(`/api/comments?section_id=${section_id}`)
-      .then( response => {
-        const comments = response.data;
-        const positiveComments = [];
-        const negativeComments = [];
-        comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
-        self.setState({ positiveComments, negativeComments });
-      }).catch(function (error) {
-        console.log(error);
+    if (this.state.sectionToggled === section_id) {
+      let positiveComments = [];
+      let negativeComments = [];
+      this.state.article.sections.forEach( section => {
+        section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) )
       });
-    this.setState({ toggledSection: section_id, sectionToggleStyles: 'lightgrey' })
+      this.setState({ positiveComments, negativeComments, sectionToggled: null });
+    } else {
+      const self = this;
+      axios.get(`/api/comments?section_id=${section_id}`)
+        .then( response => {
+          const comments = response.data;
+          let positiveComments = [];
+          let negativeComments = [];
+          comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+          self.setState({ positiveComments, negativeComments, commentsVisible: true, sectionToggled: section_id });
+        }).catch(function (error) {
+          console.log(error);
+        });
+    }
   };
 
   render() {
@@ -93,16 +98,22 @@ class ShowArticle extends Component {
       return (
         <div key={section.id} className="sections-container">
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
-            {this.state.toggledSection === section.id ?
-            <p className="section-content" style={{"background-color": this.state.sectionToggleStyles}}>{section.content}</p> :
             <p className="section-content">{section.content}</p>
+            {this.state.sectionToggled === section.id ?
+              <div className="comment-icon" style={{'visibility': 'visible'}}>
+                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')', 'color': 'grey'}}></i>
+                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              </div> :
+              <div className="comment-icon">
+                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              </div>
             }
-            <div className="comment-icon">
-              <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-            </div>
+
           </div>
         </div>
       );

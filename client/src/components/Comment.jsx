@@ -114,7 +114,6 @@ class Comment extends Component {
 
   render() {
     const comment = this.props.comment
-    console.log(this.state.commentScore);
     return (
       <div className={this.props.classType}>
         <img className='rounded-circle user-avatar' src={comment.poster.picture} alt='article banner'/>
