@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import NavbarFeatures from './NavbarFeatures'
 import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
+import { connect } from 'react-redux';
 import axios from 'axios'
 
 const styles = {
   transition: 'all 0.2s ease-out'
 }
+
+const mapStateToProps = (state) => ({
+   session: state.session
+});
 
 class ShowArticle extends Component {
 
@@ -18,7 +23,7 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
-      commentsVisible: false
+      commentsVisible: true
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
@@ -56,6 +61,9 @@ class ShowArticle extends Component {
     this.state.commentsVisible ? this.setState({ commentsVisible: false }) : this.setState({ commentsVisible: true })
   }
 
+  authMakeComment() {
+
+  }
 
   render() {
     const article = this.state.article;
@@ -65,10 +73,13 @@ class ShowArticle extends Component {
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
             <p className="section-content">{section.content}</p>
             <div className="comment-icon">
-              <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+            {this.props.session.user.id ?
+              <div>
+                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              </div> : null }
             </div>
           </div>
         </div>
@@ -83,11 +94,10 @@ class ShowArticle extends Component {
         </span>
       )
     });
-    console.log(this.state.commentsVisible);
     return (
       <div>
         <NavbarFeatures />
-        {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal}/>}
+        {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal.bind(this)}/>}
         <div className="row">
           <div className="col-md-12">
             <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
@@ -104,23 +114,19 @@ class ShowArticle extends Component {
         </div>
 
         <button onClick={() => { this.toggleComments()}}>Toggle Discussion</button>
-
         <div className="d-block d-md-flex article-section">
-          <div className="w-100 comments-column">
+          <div className={"w-100 comments-column" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Disagree</h3>
-            { this.state.commentsVisible ?
+
               <CommentsContainer comments={this.state.negativeComments} classType={'neg-comment-container'} />
-              : null }
           </div>
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
             {articleSections}
           </div>
-          <div className="w-100 comments-column">
+          <div className={"w-100 comments-column animated" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Agree</h3>
-            { this.state.commentsVisible ?
             <CommentsContainer comments={this.state.positiveComments} classType={'pos-comment-container'} />
-            : null }
           </div>
         </div>
 
@@ -129,4 +135,4 @@ class ShowArticle extends Component {
   }
 }
 
-export default ShowArticle;
+export default connect(mapStateToProps)(ShowArticle);

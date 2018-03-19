@@ -28,7 +28,7 @@ class CommentModal extends React.Component {
 
   setSmileSentiment() {
     let originalSentiment = this.state.sentiment;
-    let updateSentiment = originalSentiment * 25;
+    let updateSentiment = originalSentiment * 50;
     if (updateSentiment >= 100) {
       this.setState({ smileySentiment: 100 });
     }
@@ -38,8 +38,9 @@ class CommentModal extends React.Component {
   }
 
   onMessageTextChange(event) {
+    this.setState({ smileySentiment: 0 });
     this.setState({ messageText: event.target.value });
-    let newSentiment = sentiment(this.state.messageText)
+    let newSentiment = sentiment(this.state.messageText);
     this.setState({ sentiment: newSentiment.comparative });
     this.setSmileSentiment();
   }
@@ -54,7 +55,7 @@ class CommentModal extends React.Component {
       .then(function(response){
         console.log('Message send success ----\n', response);
       });
-
+    this.props.hideMe();
     this.setState({...this.state, messageText: '' });
 
   }
@@ -77,7 +78,7 @@ class CommentModal extends React.Component {
               </button>
             </div>
             <div className="col" id="comment-avatar">
-              <img className="rounded-circle user-avatar comment-avatar" src={this.props.session.user.picture} alt='article banner'/>
+              <img className="rounded-circle comment-avatar" src={this.props.session.user.picture} alt='article banner'/>
               <p className="comment-user-name">{this.props.session.user.displayName}</p>
             </div>
           </div>
@@ -103,13 +104,13 @@ class CommentModal extends React.Component {
             onClick={ () => this.messageSend(false)}
             onKeyPress={this.onPressEnter.bind(this)}
           >
-            <i className="fa fa-send mx-auto" aria-hidden="true"></i>
+            <i className="fa fa-arrow-left mx-auto" aria-hidden="true"></i>
           </Button>
           </div>
           <div className="col-3">
             <p className="sentiment-text align-middle">Points:<br/></p><p className="points">{Math.round(this.state.sentiment * 10) / 10}</p>
           </div>
-          <div className="col-3 mx-auto">
+          <div className="col-3 mx-auto smiley">
             <Smiley height='50' width='50' sentiment={this.state.smileySentiment}/>
           </div>
           <div className="col-3 mx-auto">
@@ -119,7 +120,7 @@ class CommentModal extends React.Component {
               onClick={ () =>  this.messageSend(true) }
               onKeyPress={this.onPressEnter.bind(this)}
             >
-              <i className="fa fa-send mx-auto" aria-hidden="true"></i>
+              <i className="fa fa-arrow-right mx-auto" aria-hidden="true"></i>
             </Button>
           </div>
         </div>
