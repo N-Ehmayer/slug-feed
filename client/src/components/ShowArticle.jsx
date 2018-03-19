@@ -73,7 +73,7 @@ class ShowArticle extends Component {
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
             <p className="section-content">{section.content}</p>
             <div className="comment-icon">
-            {this.props.session.id ?
+            {this.props.session.user.id ?
               <div>
                 <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
