@@ -86,7 +86,7 @@ class ShowArticle extends Component {
       );
     });
 
-    const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
+    const colours = ['pink', 'blue', 'orange', 'green', 'indigo', 'purple'];
     const articleTags = article.tags && article.tags.map((tag, index) => {
       return (
         <span key={tag.id} className={'badge badge-pill ' + colours[index % colours.length]}>
@@ -103,11 +103,16 @@ class ShowArticle extends Component {
             <div className="card card-image" style={{backgroundImage: `url(${article.hero_img_url})`}}>
               <div className="text-white text-center rgba-stylish-light py-5 px-4">
                 <div className="py-5">
-                  <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto">{article.tagline}</h2>
+                  <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto" style={{'fontSize': '30px'}}>{article.tagline}</h2>
                 </div>
               </div>
-              <div className="rgba-stylish-light">
-                {articleTags}
+              <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
+                <div style={{'fontSize': '20px'}}>{articleTags}</div>
+                <span className="text-white badge badge-pill red" style={{'fontSize': '20px'}}>
+                  <i className="text-white fa fa-comments">
+                   {' ' + Math.floor(article.agreement * 100) + '%'}
+                  </i><i className="text-white fa fa-thumbs-up"></i>
+                </span>
               </div>
             </div>
           </div>
