@@ -59,7 +59,7 @@ class Comment extends Component {
             self.setState({
               isUpvote: NOVOTE,
               commentScore: updatedScore,
-              toggleColor: 'grey'
+              toggleColor: 'lightgrey'
             })
           })
           .catch(error => console.log(error))
