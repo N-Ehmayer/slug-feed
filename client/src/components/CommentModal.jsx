@@ -104,7 +104,7 @@ class CommentModal extends React.Component {
             onClick={ () => this.messageSend(false)}
             onKeyPress={this.onPressEnter.bind(this)}
           >
-            <i className="fa fa-send mx-auto" aria-hidden="true"></i>
+            <i className="fa fa-arrow-left mx-auto" aria-hidden="true"></i>
           </Button>
           </div>
           <div className="col-3">
@@ -120,7 +120,7 @@ class CommentModal extends React.Component {
               onClick={ () =>  this.messageSend(true) }
               onKeyPress={this.onPressEnter.bind(this)}
             >
-              <i className="fa fa-send mx-auto" aria-hidden="true"></i>
+              <i className="fa fa-arrow-right mx-auto" aria-hidden="true"></i>
             </Button>
           </div>
         </div>
