@@ -5,29 +5,14 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('article_tags').insert([{
         "article_id": 1,
-        "tag_id": 1
-      }, {
-        "article_id": 1,
-        "tag_id": 2
-      }, {
-        "article_id": 1,
-        "tag_id": 3
-      }, {
-        "article_id": 1,
-        "tag_id": 4
-      }, {
-        "article_id": 1,
-        "tag_id": 5
-      }, {
-        "article_id": 1,
-        "tag_id": 6
-      }, {
-        "article_id": 1,
-        "tag_id": 7
-      }, {
-        "article_id": 1,
         "tag_id": 8
       }, {
+        "article_id": 1,
+        "tag_id": 9
+      }, {
+        "article_id": 1,
+        "tag_id": 10
+      }, {
         "article_id": 2,
         "tag_id": 1
       }, {
@@ -36,30 +21,12 @@ exports.seed = function(knex, Promise) {
       }, {
         "article_id": 2,
         "tag_id": 3
-      }, {
-        "article_id": 2,
-        "tag_id": 4
-      }, {
-        "article_id": 2,
-        "tag_id": 5
-      }, {
-        "article_id": 2,
-        "tag_id": 6
-      }, {
-        "article_id": 2,
-        "tag_id": 7
       }, {
         "article_id": 2,
         "tag_id": 8
       }, {
         "article_id": 3,
-        "tag_id": 1
-      }, {
-        "article_id": 3,
-        "tag_id": 2
-      }, {
-        "article_id": 3,
-        "tag_id": 3
+        "tag_id": 8
       }, {
         "article_id": 3,
         "tag_id": 4
@@ -70,29 +37,56 @@ exports.seed = function(knex, Promise) {
         "article_id": 3,
         "tag_id": 6
       }, {
-        "article_id": 3,
+        "article_id": 5,
+        "tag_id": 6
+      }, {
+        "article_id": 5,
         "tag_id": 7
       }, {
-        "article_id": 3,
+        "article_id": 5,
+        "tag_id": 11
+      }, {
+        "article_id": 5,
+        "tag_id": 12
+      }, {
+        "article_id": 4,
         "tag_id": 8
       }, {
         "article_id": 4,
-        "tag_id": 1
+        "tag_id": 13
       }, {
         "article_id": 4,
-        "tag_id": 2
+        "tag_id": 14
       }, {
-        "article_id": 4,
-        "tag_id": 3
+        "article_id": 6,
+        "tag_id": 8
       }, {
-        "article_id": 4,
+        "article_id": 6,
+        "tag_id": 15
+      }, {
+        "article_id": 7,
+        "tag_id": 8
+      }, {
+        "article_id": 7,
         "tag_id": 4
       }, {
-        "article_id": 4,
-        "tag_id": 5
+        "article_id": 7,
+        "tag_id": 14
       }, {
-        "article_id": 4,
-        "tag_id": 6
+        "article_id": 8,
+        "tag_id": 8
+      }, {
+        "article_id": 8,
+        "tag_id": 1
+      }, {
+        "article_id": 8,
+        "tag_id": 2
+      }, {
+        "article_id": 8,
+        "tag_id": 10
+      }, {
+        "article_id": 8,
+        "tag_id": 16
       }]);
     });
 };
