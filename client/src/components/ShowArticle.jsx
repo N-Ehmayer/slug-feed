@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import AuthorCard from './AuthorCard.jsx';
 import NavbarFeatures from './NavbarFeatures'
 import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
@@ -168,6 +169,7 @@ class ShowArticle extends Component {
             </div>
 
             {articleSections}
+            <AuthorCard author={article.author} />
             </div>
           </div>
           <div className={"w-100 comments-column animated" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
