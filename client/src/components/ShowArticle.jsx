@@ -19,9 +19,9 @@ class ShowArticle extends Component {
       negativeComments: [],
       commentModalSectionId: null,
       commentsVisible: false,
-      sectionToggle: null,
+      sectionToggled: null,
       sectionToggleStyles: {
-        background-color: white
+        backgroundColor: ''
       }
     }
 
@@ -30,6 +30,7 @@ class ShowArticle extends Component {
     this.toggleComments = this.toggleComments.bind(this);
     this.toggleSectionComments = this.toggleSectionComments.bind(this);
   }
+
 
   componentDidMount() {
     const pathname = this.props.location.pathname;
@@ -70,7 +71,10 @@ class ShowArticle extends Component {
         const negativeComments = [];
         comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
         self.setState({ positiveComments, negativeComments });
+      }).catch(function (error) {
+        console.log(error);
       });
+    this.setState({ toggledSection: section_id, sectionToggleStyles: 'lightgrey' })
   };
 
   render() {
@@ -89,7 +93,10 @@ class ShowArticle extends Component {
       return (
         <div key={section.id} className="sections-container">
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
+            {this.state.toggledSection === section.id ?
+            <p className="section-content" style={{"background-color": this.state.sectionToggleStyles}}>{section.content}</p> :
             <p className="section-content">{section.content}</p>
+            }
             <div className="comment-icon">
               <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
                 style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
@@ -101,7 +108,6 @@ class ShowArticle extends Component {
       );
     });
 
-    console.log(this.state.commentsVisible);
     return (
       <div>
         <NavbarFeatures />
