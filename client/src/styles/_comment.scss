@@ -68,10 +68,12 @@
   color: lightgrey;
   font-size: 30px;
 }
-
 .fa-minus-circle {
   color: lightgrey;
   font-size: 30px;
+}
+.fa-minus-circle:hover, .fa-plus-circle:hover {
+  color: #bcbcbc;
 }
 
 .fa-comment {
