@@ -165,7 +165,8 @@ class ShowArticle extends Component {
           <div className="container">
           <div className="row">
             <h2 className="pb-3 article-title">{article.title}</h2>
-            <div className="toggle-comments" onClick={() => { this.toggleComments()}}><i class="fa fa-comments-o" aria-hidden="true"></i></div>
+            <div className="toggle-comments" onClick={() => { this.toggleComments()}}><i class="fa fa-comments-o" aria-hidden="true"
+              style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i></div>
             </div>
 
             {articleSections}
