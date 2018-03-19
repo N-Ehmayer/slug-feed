@@ -77,7 +77,7 @@ class CommentModal extends React.Component {
               </button>
             </div>
             <div className="col" id="comment-avatar">
-              <img className="rounded-circle user-avatar comment-avatar" src={this.props.session.user.picture} alt='article banner'/>
+              <img className="rounded-circle comment-avatar" src={this.props.session.user.picture} alt='article banner'/>
               <p className="comment-user-name">{this.props.session.user.displayName}</p>
             </div>
           </div>

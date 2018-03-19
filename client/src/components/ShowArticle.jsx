@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import NavbarFeatures from './NavbarFeatures'
 import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
+import { connect } from 'react-redux';
 import axios from 'axios'
 
 const styles = {
   transition: 'all 0.2s ease-out'
 }
+
+const mapStateToProps = (state) => ({
+   session: state.session
+});
 
 class ShowArticle extends Component {
 
@@ -56,6 +61,9 @@ class ShowArticle extends Component {
     this.state.commentsVisible ? this.setState({ commentsVisible: false }) : this.setState({ commentsVisible: true })
   }
 
+  authMakeComment() {
+
+  }
 
   render() {
     const article = this.state.article;
@@ -65,10 +73,13 @@ class ShowArticle extends Component {
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
             <p className="section-content">{section.content}</p>
             <div className="comment-icon">
-              <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+            {this.props.session.id ?
+              <div>
+                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              </div> : null }
             </div>
           </div>
         </div>
@@ -129,4 +140,4 @@ class ShowArticle extends Component {
   }
 }
 
-export default ShowArticle;
+export default connect(mapStateToProps)(ShowArticle);
