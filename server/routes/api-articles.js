@@ -59,11 +59,23 @@ function appendRoutes(router, knex) {
       .from('users').join('articles', 'users.id', 'articles.user_id')
       .where('articles.id', id);
 
+    const ratingQuery = knex
+      .select(knex.raw(`
+      AVG(CASE comment_votes.is_upvote WHEN comments.agree THEN 1 ELSE 0 END) AS rating
+      `))
+      .from('comment_votes')
+      .join('comments', 'comment_votes.comment_id', '=', 'comments.id')
+      .join('sections', 'comments.section_id', '=', 'sections.id')
+      .where('sections.article_id', id)
+      .whereNot('comment_votes.is_upvote', null);
+
     // Run the queries, bailing out on any errors
     articleQuery
       .then(articles => articleObject = articles[0])
       .catch(error => errHandler(error))
       .then(() => tagsQuery.then(tags =>  articleObject.tags = tags ))
+      .catch(error => errHandler(error))
+      .then(() => ratingQuery.then(ratings =>  articleObject.rating = ratings[0]))
       .catch(error => errHandler(error))
       .then(() =>
         sectionsQuery.then(sections => {
