@@ -24,7 +24,7 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
-      commentsVisible: false,
+      commentsVisible: true,
       sectionToggled: null
     }
 

@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Herman",
             "familyName": "Melville"
           },
-          "picture": "https://robohash.org/remeafuga.png?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/female/female1023193986206.jpg",
           "locale": "American",
           "gender": "Male",
           "nickname": "hmelville"
@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Robert Louis",
             "familyName": "Stevenson"
           },
-          "picture": "https://robohash.org/facilisaliquamdeleniti.jpg?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/male/male1084610502014.jpg",
           "locale": "England",
           "gender": "Male",
           "nickname": "RLStevenson"
@@ -39,7 +39,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Mary",
             "familyName": "Shelley"
           },
-          "picture": "https://robohash.org/inutaccusantium.jpg?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/male/male1085882788391.jpg",
           "locale": "England",
           "gender": "Female",
           "nickname": "FrankenWriter"
@@ -53,7 +53,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "John B.",
             "familyName": "Rathbun"
           },
-          "picture": "https://robohash.org/sintsintquis.bmp?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/male/male108440371381.jpg",
           "locale": "America",
           "gender": "Male",
           "nickname": "JBR"
@@ -67,7 +67,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Jane",
             "familyName": "Austen"
           },
-          "picture": "https://robohash.org/etsintsimilique.png?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/male/male1085635283783.jpg",
           "locale": "England",
           "gender": "Female",
           "nickname": "JAusten"
@@ -81,7 +81,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Bram",
             "familyName": "Stoker"
           },
-          "picture": "https://robohash.org/veroenimaut.jpg?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/female/female1021714246674.jpg",
           "locale": "England",
           "gender": "Male",
           "nickname": "BStoker"
@@ -95,7 +95,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Mark",
             "familyName": "Twain"
           },
-          "picture": "https://robohash.org/occaecatiiustosequi.png?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/male/male1085292691650.jpg",
           "locale": "America",
           "gender": "Male",
           "nickname": "RaftLover"
@@ -109,7 +109,7 @@ exports.seed = function(knex, Promise) {
             "givenName": "Foss",
             "familyName": "Greenhowe"
           },
-          "picture": "https://robohash.org/corporisetdeserunt.jpg?size=50x50&set=set1",
+          "picture": "https://www.fakepersongenerator.com/Face/male/male20151083704422302.jpg",
           "locale": "Māori",
           "gender": "Male",
           "nickname": "fgreenhowe7"
