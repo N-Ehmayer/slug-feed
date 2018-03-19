@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
         "title": "Treasure Island",
         "tagline": `“Fifteen men on the dead man's chest--
              Yo-ho-ho, and a bottle of rum!”`,
-        "hero_img_url": "https://cdn.pixabay.com/photo/2017/06/17/18/34/background-2413079_1280.jpg"
+        "hero_img_url": "http://img02.deviantart.net/38e0/i/2010/037/0/3/treasure_island_by_cassiopeiaart.jpg"
       }, {
         "user_id": "3723ef8d-bb85-4d45-a718-f9d82bc36b8f",
         "title": "Frankenstein; or The Modern Prometheus",
