@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AuthorCard from './AuthorCard.jsx';
+import ArticleTag from './ArticleTag.jsx';
 import NavbarFeatures from './NavbarFeatures'
 import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
@@ -95,11 +96,7 @@ class ShowArticle extends Component {
 
     const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
     const articleTags = article.tags && article.tags.map((tag, index) => {
-      return (
-        <span key={tag.id} className={'badge badge-pill ' + colours[index % colours.length]}>
-          <a href={`/tags/${tag.url_slug}`} className='text-white'>{tag.display_name}</a>
-        </span>
-      )
+      return <ArticleTag colour={colours[index % colours.length]} tag={tag}/>
     });
 
     const articleSections = article.sections && article.sections.map((section) => {
