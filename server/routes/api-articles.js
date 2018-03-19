@@ -59,9 +59,9 @@ function appendRoutes(router, knex) {
       .from('users').join('articles', 'users.id', 'articles.user_id')
       .where('articles.id', id);
 
-    const ratingQuery = knex
+    const agreementQuery = knex
       .select(knex.raw(`
-      AVG(CASE comment_votes.is_upvote WHEN comments.agree THEN 1 ELSE 0 END) AS rating
+      AVG(CASE comment_votes.is_upvote WHEN comments.agree THEN 1 ELSE 0 END) AS agreement
       `))
       .from('comment_votes')
       .join('comments', 'comment_votes.comment_id', '=', 'comments.id')
@@ -75,7 +75,9 @@ function appendRoutes(router, knex) {
       .catch(error => errHandler(error))
       .then(() => tagsQuery.then(tags =>  articleObject.tags = tags ))
       .catch(error => errHandler(error))
-      .then(() => ratingQuery.then(ratings =>  articleObject.rating = ratings[0]))
+      .then(() => agreementQuery.then(agreements =>  {
+        articleObject.agreement = parseFloat(agreements[0].agreement);
+      }))
       .catch(error => errHandler(error))
       .then(() =>
         sectionsQuery.then(sections => {
