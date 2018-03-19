@@ -4,29 +4,53 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex('tags').insert([{
-        "display_name": "Acoustic Guitar",
-        "url_slug": "acoustic_guitar"
+        "display_name": "Treasure",  // 1
+        "url_slug": "treasure"
       }, {
-        "display_name": "SAP EBP",
-        "url_slug": "sap_ebp"
+        "display_name": "Adventure",  // 2
+        "url_slug": "adventure"
       }, {
-        "display_name": "Force Protection",
-        "url_slug": "force_protection"
+        "display_name": "Island",  // 3
+        "url_slug": "island"
       }, {
-        "display_name": "Norton Ghost",
-        "url_slug": "norton_ghost"
+        "display_name": "Horror",  // 4
+        "url_slug": "horror"
       }, {
-        "display_name": "Illustrator",
-        "url_slug": "illustrator"
+        "display_name": "Science Fiction",  // 5
+        "url_slug": "science_fiction"
       }, {
-        "display_name": "CFOs",
-        "url_slug": "cfos"
+        "display_name": "Science",  // 6
+        "url_slug": "science"
       }, {
-        "display_name": "IICRC Certified",
-        "url_slug": "iicrc_certified"
+        "display_name": "Technology",  // 7
+        "url_slug": "technology"
       }, {
-        "display_name": "Power Plants",
+        "display_name": "Literature",  // 8
+        "url_slug": "literature"
+      }, {
+        "display_name": "Whales",  // 9
+        "url_slug": "Whales"
+      }, {
+        "display_name": "Sailing",  // 10
+        "url_slug": "Sailing"
+      }, {
+        "display_name": "Power Plants",  // 11
         "url_slug": "power_plants"
+      }, {
+        "display_name": "Engines",  // 12
+        "url_slug": "Engines"
+      }, {
+        "display_name": "Romance",  // 13
+        "url_slug": "romance"
+      }, {
+        "display_name": "Victorian",  // 14
+        "url_slug": "victorian"
+      }, {
+        "display_name": "Fantasy",  // 15
+        "url_slug": "fantasy"
+      }, {
+        "display_name": "Mississippi",  // 16
+        "url_slug": "mississippi"
       }]);
 
     });

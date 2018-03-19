@@ -5,100 +5,100 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('users').insert([{
         "profile": {
-          "displayName": "Constantine Garment",
+          "displayName": "Herman Melville",
           "id": "3ee7cc84-a812-42a8-b712-167d49b957b6",
           "name": {
-            "givenName": "Constantine",
-            "familyName": "Garment"
+            "givenName": "Herman",
+            "familyName": "Melville"
           },
           "picture": "https://robohash.org/remeafuga.png?size=50x50&set=set1",
-          "locale": "Swahili",
-          "gender": "Female",
-          "nickname": "cgarment0"
+          "locale": "American",
+          "gender": "Male",
+          "nickname": "hmelville"
         },
         "id": "e40f6b70-43be-4db2-b817-e8e28081390e"
       }, {
         "profile": {
-          "displayName": "Calhoun Yeaman",
+          "displayName": "Robert Louis Stevenson",
           "id": "9eb22ec6-2f58-44fc-9ba7-d768d1ffd0a2",
           "name": {
-            "givenName": "Calhoun",
-            "familyName": "Yeaman"
+            "givenName": "Robert Louis",
+            "familyName": "Stevenson"
           },
           "picture": "https://robohash.org/facilisaliquamdeleniti.jpg?size=50x50&set=set1",
-          "locale": "Aymara",
+          "locale": "England",
           "gender": "Male",
-          "nickname": "cyeaman1"
+          "nickname": "RLStevenson"
         },
         "id": "d2b00dc6-d734-40b4-88a3-e869d5603c4e"
       }, {
         "profile": {
-          "displayName": "Mervin Egdell",
+          "displayName": "Mary Shelley",
           "id": "428f0e7d-c543-4d3b-b141-f8d92b0fc1f1",
           "name": {
-            "givenName": "Mervin",
-            "familyName": "Egdell"
+            "givenName": "Mary",
+            "familyName": "Shelley"
           },
           "picture": "https://robohash.org/inutaccusantium.jpg?size=50x50&set=set1",
-          "locale": "Czech",
-          "gender": "Male",
-          "nickname": "megdell2"
+          "locale": "England",
+          "gender": "Female",
+          "nickname": "FrankenWriter"
         },
         "id": "3723ef8d-bb85-4d45-a718-f9d82bc36b8f"
       }, {
         "profile": {
-          "displayName": "Tamas Lembrick",
+          "displayName": "John B. Rathbun",
           "id": "d8168e5a-a2de-4b77-ba05-f80bc92ae014",
           "name": {
-            "givenName": "Tamas",
-            "familyName": "Lembrick"
+            "givenName": "John B.",
+            "familyName": "Rathbun"
           },
           "picture": "https://robohash.org/sintsintquis.bmp?size=50x50&set=set1",
-          "locale": "Irish Gaelic",
+          "locale": "America",
           "gender": "Male",
-          "nickname": "tlembrick3"
+          "nickname": "JBR"
         },
         "id": "236fe96a-4807-40d9-9d00-0ff9baea72c0"
       }, {
         "profile": {
-          "displayName": "Wilow Freyn",
+          "displayName": "Jane Austen",
           "id": "a7b6bc49-7d1a-4574-b2fd-0847e11462ed",
           "name": {
-            "givenName": "Wilow",
-            "familyName": "Freyn"
+            "givenName": "Jane",
+            "familyName": "Austen"
           },
           "picture": "https://robohash.org/etsintsimilique.png?size=50x50&set=set1",
-          "locale": "Guaraní",
+          "locale": "England",
           "gender": "Female",
-          "nickname": "wfreyn4"
+          "nickname": "JAusten"
         },
         "id": "c9f055e0-90a4-4999-ac54-3c309f981e7b"
       }, {
         "profile": {
-          "displayName": "Saundra Osinin",
+          "displayName": "Bram Stoker",
           "id": "0207dde2-473c-414c-8cab-3bf620f36689",
           "name": {
-            "givenName": "Saundra",
-            "familyName": "Osinin"
+            "givenName": "Bram",
+            "familyName": "Stoker"
           },
           "picture": "https://robohash.org/veroenimaut.jpg?size=50x50&set=set1",
-          "locale": "Thai",
-          "gender": "Female",
-          "nickname": "sosinin5"
+          "locale": "England",
+          "gender": "Male",
+          "nickname": "BStoker"
         },
         "id": "e0fb4e2c-a395-465f-9369-3c5731b889eb"
       }, {
         "profile": {
-          "displayName": "Stormie Le Fevre",
+          "displayName": "Mark Twain",
           "id": "2a5f8a9a-a979-4914-82dd-eb6216f64982",
           "name": {
-            "givenName": "Stormie",
-            "familyName": "Le Fevre"
+            "givenName": "Mark",
+            "familyName": "Twain"
           },
           "picture": "https://robohash.org/occaecatiiustosequi.png?size=50x50&set=set1",
-          "locale": "Hindi",
-          "gender": "Female",
-          "nickname": "sle6"
+          "locale": "America",
+          "gender": "Male",
+          "nickname": "RaftLover"
         },
         "id": "a65d8cf5-f7fd-413a-9b1d-f9c2e957f6ab"
       }, {
