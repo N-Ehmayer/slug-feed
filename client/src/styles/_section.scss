@@ -14,7 +14,7 @@
   color: lightgrey;
   font-size: 120%;
   margin-top: 0;
-  padding: 0 5px;
+  padding: 0 10px 8px 0;
 }
 
 
@@ -27,6 +27,7 @@
   position: relative;
   visibility: hidden;
   text-align: center;
+  border-bottom: lightgrey 0.05em solid;
 }
 
 .section-container:hover > .comment-icon {

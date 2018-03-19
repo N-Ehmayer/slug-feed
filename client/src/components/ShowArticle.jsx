@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import NavbarFeatures from './NavbarFeatures'
-import AuthorCard from './AuthorCard.jsx';
 import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
 import { connect } from 'react-redux';
@@ -24,13 +23,16 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
-      commentsVisible: true
+      commentsVisible: false,
+      sectionToggled: null
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
     this.hideCommentModal = this.hideCommentModal.bind(this);
     this.toggleComments = this.toggleComments.bind(this);
+    this.toggleSectionComments = this.toggleSectionComments.bind(this);
   }
+
 
   componentDidMount() {
     const pathname = this.props.location.pathname;
@@ -62,32 +64,38 @@ class ShowArticle extends Component {
     this.state.commentsVisible ? this.setState({ commentsVisible: false }) : this.setState({ commentsVisible: true })
   }
 
+  toggleSectionComments(section_id) {
+    if (this.state.sectionToggled === section_id) {
+      let positiveComments = [];
+      let negativeComments = [];
+      this.state.article.sections.forEach( section => {
+        section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) )
+      });
+      this.setState({ positiveComments, negativeComments, sectionToggled: null });
+    } else {
+      const self = this;
+      axios.get(`/api/comments?section_id=${section_id}`)
+        .then( response => {
+          const comments = response.data;
+          let positiveComments = [];
+          let negativeComments = [];
+          comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+          self.setState({ positiveComments, negativeComments, commentsVisible: true, sectionToggled: section_id });
+        }).catch(function (error) {
+          console.log(error);
+        });
+    }
+  };
+
   authMakeComment() {
 
   }
 
+
   render() {
     const article = this.state.article;
-    const articleSections = article.sections && article.sections.map((section) => {
-      return (
-        <div key={section.id} className="sections-container">
-          <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
-            <p className="section-content">{section.content}</p>
-            <div className="comment-icon">
-            {this.props.session.user.id ?
-              <div>
-                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              </div> : null }
-            </div>
-          </div>
-        </div>
-      );
-    });
 
-    const colours = ['pink', 'blue', 'orange', 'green', 'indigo', 'purple'];
+    const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
     const articleTags = article.tags && article.tags.map((tag, index) => {
       return (
         <span key={tag.id} className={'badge badge-pill ' + colours[index % colours.length]}>
@@ -95,6 +103,33 @@ class ShowArticle extends Component {
         </span>
       )
     });
+
+    const articleSections = article.sections && article.sections.map((section) => {
+      return (
+        <div key={section.id} className="sections-container">
+          <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
+            <p className="section-content">{section.content}</p>
+
+            {this.state.sectionToggled === section.id ?
+              <div className="comment-icon" style={{'visibility': 'visible'}}>
+                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')', 'color': 'grey'}}></i>
+                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              </div> :
+              <div className="comment-icon">
+                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
+                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
+              </div>
+            }
+
+          </div>
+        </div>
+      );
+    });
+
     return (
       <div>
         <NavbarFeatures />
@@ -107,7 +142,7 @@ class ShowArticle extends Component {
                   <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto" style={{'fontSize': '30px'}}>{article.tagline}</h2>
                 </div>
               </div>
-              <div className="rgba-stylish-light d-flex justify-content-between align-items-end p-1">
+              <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
                 <div style={{'fontSize': '20px'}}>{articleTags}</div>
                 <span className="text-white badge badge-pill red" style={{'fontSize': '20px'}}>
                   <i className="text-white fa fa-comments">
@@ -129,7 +164,6 @@ class ShowArticle extends Component {
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
             {articleSections}
-            <AuthorCard author={article.author}/>
           </div>
           <div className={"w-100 comments-column animated" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Agree</h3>
