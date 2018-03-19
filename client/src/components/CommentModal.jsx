@@ -28,7 +28,7 @@ class CommentModal extends React.Component {
 
   setSmileSentiment() {
     let originalSentiment = this.state.sentiment;
-    let updateSentiment = originalSentiment * 25;
+    let updateSentiment = originalSentiment * 50;
     if (updateSentiment >= 100) {
       this.setState({ smileySentiment: 100 });
     }
@@ -38,8 +38,9 @@ class CommentModal extends React.Component {
   }
 
   onMessageTextChange(event) {
+    this.setState({ smileySentiment: 0 });
     this.setState({ messageText: event.target.value });
-    let newSentiment = sentiment(this.state.messageText)
+    let newSentiment = sentiment(this.state.messageText);
     this.setState({ sentiment: newSentiment.comparative });
     this.setSmileSentiment();
   }
@@ -88,7 +89,7 @@ class CommentModal extends React.Component {
               <Input
                 type="textarea"
                 value={this.state.messageText}
-                onChange={this.onMessageTextChange.bind(this)}
+                onInput={this.onMessageTextChange.bind(this)}
                 label="Compose your message..."
               />
 
@@ -109,7 +110,7 @@ class CommentModal extends React.Component {
           <div className="col-3">
             <p className="sentiment-text align-middle">Points:<br/></p><p className="points">{Math.round(this.state.sentiment * 10) / 10}</p>
           </div>
-          <div className="col-3 mx-auto">
+          <div className="col-3 mx-auto smiley">
             <Smiley height='50' width='50' sentiment={this.state.smileySentiment}/>
           </div>
           <div className="col-3 mx-auto">

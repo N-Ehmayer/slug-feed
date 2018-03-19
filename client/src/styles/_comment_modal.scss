@@ -1,7 +1,6 @@
 #close-comment {
-  align-content: left;
   float: left;
-  padding: 25px;
+  margin: 12px;
   padding-bottom: 0;
 }
 
@@ -16,11 +15,15 @@
   display: inline-block;
   height: 35px;
   width: 35px;
+  float: right;
 
 }
+
 .comment-user-name {
   display: inline-block;
   padding-left: 25px;
+  width: 80%;
+  text-align: center;
 }
 
 .negative-message-send {
@@ -45,5 +48,10 @@
   padding-top: 15px;
   margin-bottom: 0;
   padding-left: 10px;
+}
+
+.smiley {
+  margin-top: 4px;
+  padding-left: 5px;
 }
 
