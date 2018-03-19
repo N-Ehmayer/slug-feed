@@ -7,10 +7,7 @@
   margin-bottom: 5px;
 }
 
-.section-content {
-}
-
-.fa-commenting, .fa-comments {
+.fa-commenting, .fa-comments, .fa-sort-amount-desc {
   color: lightgrey;
   font-size: 120%;
   margin-top: 0;
@@ -18,7 +15,7 @@
 }
 
 
-.fa-commenting:hover, .fa-comments:hover {
+.fa-commenting:hover, .fa-sort-amount-desc:hover, .fa-comments:hover {
   color: grey;
   font-size: 130%;
 }

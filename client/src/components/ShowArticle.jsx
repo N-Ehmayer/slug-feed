@@ -110,13 +110,13 @@ class ShowArticle extends Component {
 
             {this.state.sectionToggled === section.id ?
               <div className="comment-icon" style={{'visibility': 'visible'}}>
-                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                <i className="fa fa-sort-amount-desc" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')', 'color': 'grey'}}></i>
                 <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
               </div> :
               <div className="comment-icon">
-                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
+                <i className="fa fa-sort-amount-desc" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
                 <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
                   style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
@@ -137,8 +137,16 @@ class ShowArticle extends Component {
           <div className="col-12">
             <div className="card card-image jumbo-fix" style={{backgroundImage: `url(${article.hero_img_url})`}}>
               <div className="text-white text-center rgba-stylish-light py-5 px-4">
-                <div className="py-5">
-                  <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto" style={{'fontSize': '30px'}}>{article.tagline}</h2>
+                <div className="py-5 row">
+                  <div className="col text-right">
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                  </div>
+                  <div className="col-5 text-center align-bottom">
+                    <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto" style={{'fontSize': '30px'}}>{article.tagline}</h2>
+                  </div>
+                  <div className="col text-left">
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                  </div>
                 </div>
               </div>
               <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
