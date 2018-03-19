@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NavbarFeatures from './NavbarFeatures'
+import AuthorCard from './AuthorCard.jsx';
 import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
 import { connect } from 'react-redux';
@@ -106,7 +107,7 @@ class ShowArticle extends Component {
                   <h2 className="article-hero-tagline pt-3 mb-5 font-bold mx-auto" style={{'fontSize': '30px'}}>{article.tagline}</h2>
                 </div>
               </div>
-              <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
+              <div className="rgba-stylish-light d-flex justify-content-between align-items-end p-1">
                 <div style={{'fontSize': '20px'}}>{articleTags}</div>
                 <span className="text-white badge badge-pill red" style={{'fontSize': '20px'}}>
                   <i className="text-white fa fa-comments">
@@ -128,6 +129,7 @@ class ShowArticle extends Component {
           <div className="p-3 w-100 col-6 article-container">
             <h2 className="pb-3">{article.title}</h2>
             {articleSections}
+            <AuthorCard author={article.author}/>
           </div>
           <div className={"w-100 comments-column animated" + (this.state.commentsVisible ? " animated fadeIn" : " animated fadeOut")}>
             <h3 className="pb-3 comments-column-title">Agree</h3>

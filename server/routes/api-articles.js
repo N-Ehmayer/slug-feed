@@ -75,6 +75,8 @@ function appendRoutes(router, knex) {
       .catch(error => errHandler(error))
       .then(() => tagsQuery.then(tags =>  articleObject.tags = tags ))
       .catch(error => errHandler(error))
+      .then(() => authorQuery.then(authors =>  articleObject.author = authors[0].profile ))
+      .catch(error => errHandler(error))
       .then(() => agreementQuery.then(agreements =>  {
         articleObject.agreement = parseFloat(agreements[0].agreement);
       }))
