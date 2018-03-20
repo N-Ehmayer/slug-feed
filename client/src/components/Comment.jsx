@@ -42,7 +42,7 @@ class Comment extends Component {
           <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
           <div className='rating-container'>
             <i className={'fa fa-minus-circle'} style={downvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(DOWNVOTE)}></i>
-            <p className='comment-score'><b>{this.currentScore}</b></p>
+            <p className='comment-score'><b>{this.currentScore()}</b></p>
             <i className={'fa fa-plus-circle'} style={upvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(UPVOTE)}></i>
           </div>
         </div>
