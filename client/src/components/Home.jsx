@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavbarFeatures from './NavbarFeatures';
 import ArticleCard from './ArticleCard';
+import HomeCarousel from './HomeCarousel';
 import { fetchArticles } from '../actions/articleActions.js';
 
 class Home extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(fetchArticles());
   }
 
@@ -15,8 +16,9 @@ class Home extends Component {
     return (
       <div className="App">
         <NavbarFeatures />
+        <HomeCarousel articles={articles}/>
         <div className="container main-container">
-            <ArticleCard articles={articles}/>
+          <ArticleCard articles={articles}/>
         </div>
       </div>
     );

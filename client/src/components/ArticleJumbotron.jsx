@@ -18,8 +18,8 @@ const ArticleJumbotron = (props) => {
               </div>
             </div>
             <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
-              <div style={{'fontSize': '20px'}}>{articleTags}</div>
-              <span className="text-white badge badge-pill red" style={{'fontSize': '20px'}}>
+              <div className="article-tag-container">{articleTags}</div>
+              <span className="text-white badge rounded-circle overall-rating">
                 <i className="text-white fa fa-thumbs-up"></i>
                 {' ' + Math.floor(props.article.agreement * 100) + '%'}
               </span>
