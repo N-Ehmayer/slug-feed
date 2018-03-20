@@ -4,23 +4,32 @@ import { Card, CardBody, CardTitle, CardText } from 'mdbreact';
 
 class ArticleCard extends Component {
 
+  linkToArticle() {
+
+    console.log(this.context)
+  }
+
   render() {
     const articles = this.props.articles.map((article) => {
       return (
-        <Card key={article.id} className="col-5 mx-auto">
+        <Card key={article.id} className="col-5 mx-auto" onClick={this.linkToArticle.bind(this)}>
           <div className="view-card">
-            <div
-              className="card-img h-100"
-              style={ { backgroundImage: 'url(' + article.hero_img_url + ')'} }
-            />
+            <Link to={`/articles/${article.id}`}>
+              <div
+                className="card-img h-100"
+                style={ { backgroundImage: 'url(' + article.hero_img_url + ')'} }
+              />
+            </Link>
           </div>
+          <Link to={`/articles/${article.id}`}>
           <CardBody>
             <CardTitle>{article.title}</CardTitle>
             <CardText>{article.tagline}</CardText>
+            <p>Read more...</p>
             <footer className="footer">
-              <Link to={`/articles/${article.id}`}>Read more...</Link>
             </footer>
           </CardBody>
+          </Link>
         </Card>
       )
     })

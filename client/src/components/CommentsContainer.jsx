@@ -14,7 +14,7 @@ class CommentsContainer extends Component {
     const classType = this.props.classType;
 
     const comments = this.props.comments.map((comment) => {
-      return ( <Comment key={comment} comment={comment} classType={classType} /> )
+      return ( <Comment key={comment.id} comment={comment} classType={classType} /> )
     })
 
     return (
