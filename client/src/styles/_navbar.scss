@@ -1,5 +1,5 @@
 .navbar-logo {
-  width: 90px;
+  width: 300px;
   font-family: Lobster, cursive;
   font-size: 1.5rem;
   font-weight: 300;
@@ -9,4 +9,30 @@
 .to-top {
   z-index: 1000;
   background-color: white;
+}
+
+.nav-hover-blue {
+  background-color: black;
+  color: white !important;
+  padding: 8px 20px !important;
+  transition: 1s;
+}
+
+.nav-hover-blue:hover {
+  background-color: #009DD9;
+  color: white !important;
+  padding: 8px 20px !important;
+}
+
+.nav-hover-red {
+  background-color: white;
+  color: black !important;
+  padding: 8px 20px !important;
+  transition: 1s;
+}
+
+.nav-hover-red:hover {
+  background-color: red !important;
+  color: white !important;
+  padding: 8px 20px !important;
 }

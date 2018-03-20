@@ -96,15 +96,15 @@ class ShowArticle extends Component {
       <div>
         <NavbarFeatures />
         {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal.bind(this)}/>}
-        <ArticleJumbotron article={article}/>
 
-        <div className="d-block d-md-flex article-section">
-          <CommentsContainer
-            isVisible={this.state.commentsVisible}
-            title={"Disagree"}
-            comments={this.state.negativeComments}
-            classType={'neg-comment-container'}
-          />
+        <ArticleJumbotron article={article}/>
+          <div className="d-block d-md-flex article-section">
+            <CommentsContainer
+              isVisible={this.state.commentsVisible}
+              title={"Disagree"}
+              comments={this.state.negativeComments}
+              classType={'neg-comment-container'}
+            />
 
           <div className="p-3 w-100 col-6 article-container">
             <div className="container">
