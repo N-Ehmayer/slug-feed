@@ -35,7 +35,7 @@ class ShowArticle extends Component {
   }
 
 
-  componentDidMount() {
+  componentWillMount() {
     const pathname = this.props.location.pathname;
     axios.get(`/api${pathname}`)
       .then( response => {
@@ -95,7 +95,7 @@ class ShowArticle extends Component {
         <NavbarFeatures />
         {this.state.commentModalSectionId && <CommentModal section={this.state.commentModalSectionId} hideMe={this.hideCommentModal.bind(this)}/>}
 
-        <ArticleJumbotron article={article}/>
+        {article.id && <ArticleJumbotron article={article}/>}
           <div className="d-block d-md-flex article-section">
             <CommentsContainer
               isVisible={this.state.commentsVisible}
