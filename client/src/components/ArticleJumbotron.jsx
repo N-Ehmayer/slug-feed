@@ -3,6 +3,7 @@ import ArticleTag from './ArticleTag.jsx';
 
 const ArticleJumbotron = (props) => {
   const colours = ['pink', 'blue', 'indigo', 'purple', 'orange', 'green'];
+  const thumbsUp = ( Math.floor(props.article.agreement * 100 ) ) > 70;
   const articleTags = props.article.tags && props.article.tags.map((tag, index) => {
     return <ArticleTag key={tag.id} colour={colours[index % colours.length]} tag={tag}/>
   });
@@ -19,10 +20,15 @@ const ArticleJumbotron = (props) => {
             </div>
             <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
               <div className="article-tag-container">{articleTags}</div>
-              <span className="text-white badge rounded-circle overall-rating">
-                <i className="text-white fa fa-thumbs-up"></i>
-                {' ' + Math.floor(props.article.agreement * 100) + '%'}
-              </span>
+              <div className="rating-box">
+                <div className="gaint-thumb">
+                  {thumbsUp ? <i className="thumb-up fa fa-thumbs-up "></i> : <i className="thumb-down fa fa-thumbs-down "></i>
+                  }
+                </div>
+                <div className="overall-rating">
+                  <p>{' ' + Math.floor(props.article.agreement * 100) + '%'}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

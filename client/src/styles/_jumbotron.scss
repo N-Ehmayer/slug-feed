@@ -31,13 +31,33 @@
 }
 
 .overall-rating {
-  font-size: 20px;
-  background-color: red;
-  height: 80px;
-  width: 80px;
+  display: inline-block;
+  color: white;
   position: relative;
-  bottom: 40px;
-  right: 60px;
-  line-height: 3.3;
-  border: solid 1px solid;
+  padding-left: 10px;
+  max-width: 100px;
+  font-size: 40px;
+  bottom: 5px;
+  p {
+    text-shadow: 7px 7px 8px black;
+  }
+}
+
+.gaint-thumb {
+  display: inline-block;
+  font-size: 70px;
+  max-width: 100px;
+  .thumb-up {
+    color: $cool-blue;
+  }
+  .thumb-down {
+    color: red;
+  }
+}
+
+.rating-box {
+  width: 200px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  display: inline;
 }
