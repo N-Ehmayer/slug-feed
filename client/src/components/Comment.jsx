@@ -37,8 +37,9 @@ class Comment extends Component {
   }
 
   render() {
-    const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {color: 'lightgrey'});
-    const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {color: 'lightgrey'});
+    const sharedStyle = {fontSize: '30px', }
+    const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {});
+    const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {});
 
     return (
       <div className={this.props.classType}>
@@ -49,7 +50,7 @@ class Comment extends Component {
           <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
           <div className='rating-containers'>
             <TooltipIcon
-            style={downvoteStyle}
+            style={{...sharedStyle, ...downvoteStyle}}
             icon='minus-circle'
             loginRequired
             validMessage='Downvote'
@@ -57,7 +58,7 @@ class Comment extends Component {
             onClick={() => this.toggleVote(DOWNVOTE)} />
             <p className='comment-score'><b>{this.currentScore()}</b></p>
             <TooltipIcon
-            style={upvoteStyle}
+            style={{...sharedStyle, ...upvoteStyle}}
             icon='plus-circle'
             loginRequired
             validMessage='Upvote'
