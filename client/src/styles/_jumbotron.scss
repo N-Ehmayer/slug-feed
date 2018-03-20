@@ -11,14 +11,34 @@
   margin: 5px;
 }
 
-.overall-rating {
-  font-size: 20px;
-  background-color: red;
-  height: 80px;
-  width: 80px;
+.overall-rating-container {
+  display: inline-flex;
   position: relative;
-  bottom: 40px;
-  right: 60px;
-  line-height: 3.3;
-  border: solid 1px solid;
+  right: 20px;
+  margin-right: 50px;
+}
+
+.thumb-badge {
+  background-color: red;
+  height: 60px;
+  width: 60px;
+  position: relative;
+  margin-right: 10px;
+
+}
+
+.fa-heart {
+  font-size: 30px;
+  line-height: 1.8;
+}
+
+.overall-rating {
+  font-size: 45px;
+  position: relative;
+}
+
+.positive-label {
+  position: relative;
+  top: 32px;
+  margin-left: 10px
 }

@@ -19,9 +19,12 @@ const ArticleJumbotron = (props) => {
             </div>
             <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
               <div className="article-tag-container">{articleTags}</div>
-              <span className="text-white badge rounded-circle overall-rating">
-                <i className="text-white fa fa-thumbs-up"></i>
-                {' ' + Math.floor(props.article.agreement * 100) + '%'}
+              <span className='overall-rating-container'>
+                <div className='thumb-badge text-white badge rounded-circle'>
+                  <i className="fa fa-heart" aria-hidden="true"></i>
+                </div>
+                <p className='overall-rating text-white'>{' ' + Math.floor(props.article.agreement * 100) + '%'}</p>
+                <p className='positive-label text-white'>Positive</p>
               </span>
             </div>
           </div>
