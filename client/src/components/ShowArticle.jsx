@@ -10,8 +10,6 @@ import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
 import NavbarFeatures from './NavbarFeatures'
 
-const styles = { transition: 'all 0.5s ease-out' }
-
 const mapStateToProps = (state) => ({
    session: state.session
 });

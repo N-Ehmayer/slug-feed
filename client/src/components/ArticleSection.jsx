@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 const ArticleSection = (props) => {
   const transitionStyles = { transition: 'all 0.2s ease-out'}
