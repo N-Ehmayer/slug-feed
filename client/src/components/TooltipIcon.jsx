@@ -18,8 +18,6 @@ class TooltipIcon extends Component {
   render() {
     const props = this.props;
     const loggedIn = ((props.session.user || {}).id !== undefined);
-    const loginRequired = (props.loginRequired == true);
-    const transitionStyles = { transition: 'all 0.2s ease-out'};
     const onClick = props.loginRequired
       ? () => loggedIn ? props.onClick() : this.shake()
       : () => props.onClick();
@@ -31,7 +29,7 @@ class TooltipIcon extends Component {
           className={'fa animated fa-' + props.icon + (this.state.shouldShake ? ' shake' : '')}
           aria-hidden="true"
           onClick={() => onClick() }
-          style={ transitionStyles  }
+          style={ this.props.style }
         ></i>
       </Tooltip>
     )

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TooltipIcon from './TooltipIcon.jsx';
-import { Tooltip } from 'mdbreact';
 
 class ArticleSection extends Component {
 
@@ -19,7 +18,6 @@ class ArticleSection extends Component {
 
   render() {
     const props = this.props;
-    const loggedIn = ((props.session.user || {}).id !== undefined);
     const transitionStyles = { transition: 'all 0.2s ease-out'}
     const commentStyle = props.isToggled ? {'visibility': 'visible'} : {}
 

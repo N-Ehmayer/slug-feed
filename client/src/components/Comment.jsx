@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Tooltip } from 'mdbreact';
+import TooltipIcon from './TooltipIcon.jsx';
 
 const UPVOTE = true;
 const DOWNVOTE = false;
@@ -39,7 +39,6 @@ class Comment extends Component {
   render() {
     const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {color: 'lightgrey'});
     const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {color: 'lightgrey'});
-    const loggedIn = ((this.props.session.user || {}).id !== undefined);
 
     return (
       <div className={this.props.classType}>
@@ -49,13 +48,21 @@ class Comment extends Component {
         <div className='comment-footer'>
           <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
           <div className='rating-containers'>
-            <Tooltip placement='top' tooltipContent={loggedIn ? 'Downvote' : 'You must be logged in to vote'}>
-              <i className={'fa fa-minus-circle'} style={downvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(DOWNVOTE)}></i>
-            </Tooltip>
+            <TooltipIcon
+            style={downvoteStyle}
+            icon='minus-circle'
+            loginRequired
+            validMessage='Downvote'
+            invalidMessage='You must be logged in to vote'
+            onClick={() => this.toggleVote(DOWNVOTE)} />
             <p className='comment-score'><b>{this.currentScore()}</b></p>
-            <Tooltip placement='top' tooltipContent={loggedIn ? 'Upvote' : 'You must be logged in to vote'}>
-              <i className={'fa fa-plus-circle'} style={upvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(UPVOTE)}></i>
-            </Tooltip>
+            <TooltipIcon
+            style={upvoteStyle}
+            icon='plus-circle'
+            loginRequired
+            validMessage='Upvote'
+            invalidMessage='You must be logged in to vote'
+            onClick={() => this.toggleVote(UPVOTE)} />
           </div>
         </div>
       </div>
