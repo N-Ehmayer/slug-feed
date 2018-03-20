@@ -1,6 +1,3 @@
-.article-container {
-  font-family: Cabin, san-sarif;
-}
 
 .comments-column {
   border-left: 2px solid #00FFFF;
@@ -57,7 +54,7 @@
   font-size: 15px;
 }
 
-.rating-container {
+.rating-containers {
   display: inline-flex;
   position: relative;
   right: -100px;
@@ -96,4 +93,5 @@
 .user-avatar {
   height: 50px;
   width: 50px;
+  border: lightgrey 1px solid;
 }
