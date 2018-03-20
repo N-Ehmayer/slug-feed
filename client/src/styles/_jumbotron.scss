@@ -37,27 +37,38 @@
   padding-left: 10px;
   max-width: 100px;
   font-size: 40px;
-  bottom: 5px;
-  p {
+  top: 30px;
+  h2 {
     text-shadow: 7px 7px 8px black;
   }
+  p {
+    font-size: 10px;
+  }
 }
-
+.thumb-up {
+  background-color: $neon-green;
+  width: 90px;
+  height: 90px;
+}
+ .thumb-down {
+  background-color: red;
+  width: 90px;
+  height: 90px;
+  padding-top: 7px;
+}
 .gaint-thumb {
   display: inline-block;
-  font-size: 70px;
+  position: relative;
+  top: 10px;
+  font-size: 55px;
   max-width: 100px;
-  .thumb-up {
-    color: $cool-blue;
-  }
-  .thumb-down {
-    color: red;
-  }
+  color: white;
+
 }
 
 .rating-box {
   width: 200px;
   margin-right: 30px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   display: inline;
 }

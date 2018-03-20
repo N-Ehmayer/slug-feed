@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import HomeCarouselItem from './HomeCarouselItem.jsx'
-import { Carousel, CarouselInner, CarouselControl, CarouselCaption, CarouselItem } from 'mdbreact';
+import { Carousel, CarouselInner, CarouselControl } from 'mdbreact';
 
 class HomeCarousel extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class HomeCarousel extends Component {
       <Carousel
         activeItem={this.state.activeItem}
         next={this.next}
-        className="z-depth-1">
+        className="z-depth-1 black">
         <CarouselInner>
           {this.props.articles.map((article, index) => <HomeCarouselItem key={index} article={article} itemId={(index + 1).toString()} />)}
         </CarouselInner>

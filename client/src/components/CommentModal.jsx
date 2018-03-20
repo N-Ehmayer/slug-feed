@@ -1,11 +1,10 @@
 import React from 'react'
-import { Input, Button, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact'
+import { Input, Button, Modal, ModalBody } from 'mdbreact'
 import { connect } from 'react-redux';
 import 'font-awesome/css/font-awesome.min.css'
 import axios from 'axios'
 import Smiley from './Smiley.jsx'
 import sentiment from 'sentiment'
-import ease from '../scripts/ease-func.js'
 
 const mapStateToProps = (state) => ({
    session: state.session

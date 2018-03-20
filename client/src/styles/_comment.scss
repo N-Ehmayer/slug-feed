@@ -1,7 +1,5 @@
 
 .comments-column {
-  border-left: 2px solid #00FFFF;
-  border-right: 2px solid #ffa3a3fa;
   padding: 25px;
   height: 950px;
   overflow: auto;
@@ -89,5 +87,5 @@
 .user-avatar {
   height: 50px;
   width: 50px;
-  border: lightgrey 1px solid;
+  border: $cool-blue 2px solid;
 }

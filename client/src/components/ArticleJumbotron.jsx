@@ -21,14 +21,37 @@ const ArticleJumbotron = (props) => {
             <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
               <div className="article-tag-container">{articleTags}</div>
               <div className="rating-box">
-                <div className="gaint-thumb">
-                  {thumbsUp ? <i className="thumb-up fa fa-thumbs-up "></i> : <i className="thumb-down fa fa-thumbs-down "></i>
-                  }
-                </div>
+                {thumbsUp ?
+                <span className="badge rounded-circle thumb-up">
+                  <div className="gaint-thumb">
+                     <i className="fa fa-thumbs-up "></i>
+                  </div>
+                </span> :
+                <span className="badge rounded-circle thumb-down">
+                  <div className="gaint-thumb">
+                     <i className="fa fa-thumbs-down "></i>
+                  </div>
+                </span>
+                }
                 <div className="overall-rating">
-                  <p>{' ' + Math.floor(props.article.agreement * 100) + '%'}</p>
+                  <h2>{' ' + Math.floor(props.article.agreement * 100) + '%'}</h2>
+                  <p className>Positive</p>
                 </div>
               </div>
+{/*||||||| merged common ancestors
+              <span className="text-white badge rounded-circle overall-rating">
+                <i className="text-white fa fa-thumbs-up"></i>
+                {' ' + Math.floor(props.article.agreement * 100) + '%'}
+              </span>
+=======
+              <span className='overall-rating-container'>
+                <div className='thumb-badge text-white badge rounded-circle'>
+                  <i className="fa fa-heart" aria-hidden="true"></i>
+                </div>
+                <p className='overall-rating text-white'>{' ' + Math.floor(props.article.agreement * 100) + '%'}</p>
+                <p className='positive-label text-white'>Positive</p>
+              </span>
+>>>>>>> 479c1cca25b7bKe19483aa18074e00ad2dbbcd1b9*/}
             </div>
           </div>
         </div>
