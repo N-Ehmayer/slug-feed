@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import logo from '../img/logo-black-shift.png';
 class Logo extends Component {
   render() {
