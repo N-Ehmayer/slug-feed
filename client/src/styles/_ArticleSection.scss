@@ -1,3 +1,7 @@
+.article-section {
+  height: 98%;
+}
+
 .fa-comments-o:hover {
   font-size: 130%;
 }
@@ -27,7 +31,7 @@
 }
 
 
-.fa-commenting:hover, .fa-sort-amount-desc:hover, .fa-comments:hover {
+.fa-commenting:hover, .fa-comments:hover {
   color: grey;
   font-size: 130%;
 }
@@ -44,5 +48,6 @@
   border-bottom: lightgrey 0.05em solid;
 
 }
+
 
 

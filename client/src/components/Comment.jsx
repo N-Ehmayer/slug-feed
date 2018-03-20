@@ -8,125 +8,42 @@ const NOVOTE = null;
 
 class Comment extends Component {
   constructor(props) {
-    super(props)
-
-    const comment = this.props.comment
-    const currentScore = comment.initial_score + comment.votes_score;
-
-    this.state = {
-      isUpvote: null,
-      commentScore: currentScore,
-      toggleColor: {
-        upVote: 'lightgrey',
-        downVote: 'lightgrey'
-      }
-    }
+    super(props);
+    this.state = this.props.comment;
+    this.toggleVote = this.toggleVote.bind(this);
+    this.currentScore = this.currentScore.bind(this);
   }
 
-  toggleUpVote(type, commentId, score) {
-    const self = this
-    if (type === NOVOTE) {
-      axios.post('/api/comment_votes', {
-        comment_id: commentId,
-        is_upvote: UPVOTE
-      }).then(response => {
-        axios.get(`/api/comments/${commentId}`)
-          .then(response => {
-            let comment = response.data[0];
-            let updatedScore = comment.votes_score + comment.initial_score;
-            self.setState({
-              isUpvote: UPVOTE,
-              commentScore: updatedScore,
-              toggleColor: {
-                upVote: 'cyan',
-                downVote: 'lightgrey'
-              }
-            })
-          })
-          .catch(error => console.log(error))
-      }).catch(error => console.log(error));
-
-    } else {
-      axios.post('/api/comment_votes', {
-        comment_id: commentId,
-        is_upvote: NOVOTE
-      }).then(response => {
-        axios.get(`/api/comments/${commentId}`)
-          .then(response => {
-            let comment = response.data[0];
-            let updatedScore = comment.votes_score + comment.initial_score;
-            console.log(comment);
-            self.setState({
-              isUpvote: NOVOTE,
-              commentScore: updatedScore,
-              toggleColor: 'lightgrey'
-            })
-          })
-          .catch(error => console.log(error))
-      }).catch(error => console.log(error));
-
-    }
+  currentScore() {
+    return this.state.initial_score + this.state.votes_score;
   }
 
-  toggleDownVote(type, commentId, score) {
-    const self = this
-    if (type === NOVOTE) {
-      axios.post('/api/comment_votes', {
-        comment_id: commentId,
-        is_upvote: DOWNVOTE
-      }).then(response => {
-        axios.get(`/api/comments/${commentId}`)
-          .then(response => {
-            const comment = response.data[0];
-            let updatedScore = comment.votes_score + comment.initial_score;
-            self.setState({
-              isUpvote: DOWNVOTE,
-              commentScore: updatedScore,
-              toggleColor: {
-                upVote: 'lightgrey',
-                downVote: '#db5e5e'
-              }
-            })
-          })
-          .catch(error => console.log(error))
-      }).catch(error => console.log(error));
-
-    } else {
-      axios.post('/api/comment_votes', {
-        comment_id: commentId,
-        is_upvote: NOVOTE
-      }).then(response => {
-        axios.get(`/api/comments/${commentId}`)
-          .then(response => {
-            const comment = response.data[0];
-            let updatedScore = comment.votes_score + comment.initial_score;
-            self.setState({
-              isUpvote: NOVOTE,
-              commentScore: updatedScore,
-              toggleColor: 'lightgrey'
-            })
-          })
-          .catch(error => console.log(error))
-      }).catch(error => console.log(error));
-    }
+  toggleVote(clickedVote) {
+    axios.post('/api/comment_votes', {
+      comment_id: this.state.id,
+      is_upvote: ((this.state.currentuservotetype === clickedVote) ? NOVOTE : clickedVote)
+    }).then(response => {
+      axios.get(`/api/comments/${this.state.id}`)
+        .then(response => this.setState(response.data[0]) )
+        .catch(error => console.error(error))
+    }).catch(error => console.error(error));
   }
-
 
   render() {
-    const comment = this.props.comment
+    const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {color: 'lightgrey'});
+    const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {color: 'lightgrey'});
+
     return (
       <div className={this.props.classType}>
-        <img className='rounded-circle user-avatar' src={comment.poster.picture} alt='article banner'/>
-        <h3 className='username'>{comment.poster.displayName}</h3>
-        <p className='comment-content'>{comment.content}</p>
+        <img className='rounded-circle user-avatar' src={this.state.poster.picture} alt='article banner'/>
+        <h3 className='username'>{this.state.poster.displayName}</h3>
+        <p className='comment-content'>{this.state.content}</p>
         <div className='comment-footer'>
-          <p className='comment-time'>{moment(comment.created_at).fromNow()}</p>
+          <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
           <div className='rating-container'>
-            <i className="fa fa-minus-circle" aria-hidden="true" onClick={() => this.toggleDownVote(this.state.isUpvote, comment.id)}
-              style={{"color": this.state.toggleColor.downVote}}></i>
-            <p className='comment-score'><b>{this.state.commentScore}</b></p>
-            <i className="fa fa-plus-circle" aria-hidden="true" onClick={() => this.toggleUpVote(this.state.isUpvote, comment.id)}
-              style={{"color": this.state.toggleColor.upVote}}></i>
+            <i className={'fa fa-minus-circle'} style={downvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(DOWNVOTE)}></i>
+            <p className='comment-score'><b>{this.currentScore}</b></p>
+            <i className={'fa fa-plus-circle'} style={upvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(UPVOTE)}></i>
           </div>
         </div>
       </div>
