@@ -8,7 +8,7 @@ const ArticleCard = (props) => {
   return (
     <Card>
       <CardTitle className="p-2">
-        <img className='rounded-circle user-avatar mx-2' src={author.picture} />
+        <img className='rounded-circle user-avatar mx-2' src={author.picture} alt='author' />
         <span className=''> -- {author.displayName}</span>
       </CardTitle>
     </Card>
