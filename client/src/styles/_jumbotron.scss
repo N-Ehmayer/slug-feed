@@ -33,7 +33,7 @@
 .overall-rating-container {
   display: inline-flex;
   position: relative;
-  right: 20px;
+  top: 10px;
   margin-right: 50px;
 }
 
@@ -53,11 +53,13 @@
 
 .overall-rating {
   font-size: 45px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
   position: relative;
 }
 
 .positive-label {
   position: relative;
   top: 32px;
-  margin-left: 10px
+  margin-left: 10px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
