@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import AuthorCard from './AuthorCard.jsx';
-import ArticleTag from './ArticleTag.jsx';
-import NavbarFeatures from './NavbarFeatures'
-import CommentsContainer from './CommentsContainer.jsx'
-import CommentModal from './CommentModal.jsx'
 import { connect } from 'react-redux';
 import axios from 'axios'
+
+import AuthorCard from './AuthorCard.jsx';
+import ArticleSection from './ArticleSection.jsx';
+import ArticleTag from './ArticleTag.jsx';
+import CommentsContainer from './CommentsContainer.jsx'
+import CommentModal from './CommentModal.jsx'
+import NavbarFeatures from './NavbarFeatures'
 
 const styles = {
   transition: 'all 0.2s ease-out'
@@ -103,23 +105,12 @@ class ShowArticle extends Component {
       return (
         <div key={section.id} className="sections-container">
           <div className="section-container" style={{...styles, transform: 'scale(' + this.state.scale + ')'}}>
-
-            {this.state.sectionToggled === section.id ?
-              <div className="comment-icon" style={{'visibility': 'visible'}}>
-                <div className='section-toggled'><p className="section-content">{section.content}</p></div>
-                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
-                  style={{...styles, transform: 'scale(' + this.state.scale + ')', 'color': 'grey'}}></i>
-                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              </div> :
-              <div className="comment-icon">
-                <div><p className="section-content" style={{'visibility': 'visible'}}>{section.content}</p></div>
-                <i className="fa fa-comments" aria-hidden="true" onClick={() => this.toggleSectionComments(section.id)} modal={this.state.modal}
-                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-                <i className="fa fa-commenting" aria-hidden="true" onClick={() => this.showCommentModal(section.id)} modal={this.state.modal}
-                  style={{...styles, transform: 'scale(' + this.state.scale + ')'}}></i>
-              </div>
-            }
+            <ArticleSection
+              section={section}
+              isToggled={this.state.sectionToggled === section.id}
+              toggleSectionComments={this.toggleSectionComments}
+              showCommentModal={this.showCommentModal}
+            />
           </div>
         </div>
       );
