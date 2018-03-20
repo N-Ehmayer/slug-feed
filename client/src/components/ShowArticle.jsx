@@ -10,7 +10,7 @@ import CommentsContainer from './CommentsContainer.jsx'
 import CommentModal from './CommentModal.jsx'
 import NavbarFeatures from './NavbarFeatures'
 
-const styles = { transition: 'all 0.2s ease-out' }
+const styles = { transition: 'all 0.5s ease-out' }
 
 const mapStateToProps = (state) => ({
    session: state.session
@@ -26,7 +26,7 @@ class ShowArticle extends Component {
       positiveComments: [],
       negativeComments: [],
       commentModalSectionId: null,
-      commentsVisible: true,
+      commentsVisible: false,
       sectionToggled: null
     }
 
@@ -39,7 +39,6 @@ class ShowArticle extends Component {
 
   componentDidMount() {
     const pathname = this.props.location.pathname;
-    const self = this;
     axios.get(`/api${pathname}`)
       .then( response => {
         const article = response.data;
@@ -48,7 +47,7 @@ class ShowArticle extends Component {
         article.sections.forEach( section => {
           section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) )
         });
-        self.setState({ article, positiveComments, negativeComments });
+        this.setState({ article, positiveComments, negativeComments });
       }).catch(function (error) {
         console.log(error);
       });
@@ -60,21 +59,16 @@ class ShowArticle extends Component {
 
   toggleSectionComments(section_id) {
     if (this.state.sectionToggled === section_id) {
-      let positiveComments = [];
-      let negativeComments = [];
-      this.state.article.sections.forEach( section => {
-        section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) )
-      });
-      this.setState({ positiveComments, negativeComments, sectionToggled: null });
+      this.setState({ positiveComments: [], negativeComments: [], sectionToggled: null });
+      this.toggleComments();
     } else {
-      const self = this;
       axios.get(`/api/comments?section_id=${section_id}`)
         .then( response => {
           const comments = response.data;
           let positiveComments = [];
           let negativeComments = [];
           comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
-          self.setState({ positiveComments, negativeComments, commentsVisible: true, sectionToggled: section_id });
+          this.setState({ positiveComments, negativeComments, commentsVisible: true, sectionToggled: section_id });
         }).catch(function (error) {
           console.log(error);
         });
