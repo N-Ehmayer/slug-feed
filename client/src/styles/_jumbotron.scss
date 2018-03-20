@@ -30,36 +30,47 @@
   margin: 5px;
 }
 
-.overall-rating-container {
-  display: inline-flex;
+.overall-rating {
+  display: inline-block;
+  color: white;
+  position: relative;
+  padding-left: 10px;
+  max-width: 100px;
+  font-size: 40px;
+  top: 30px;
+  h2 {
+    text-shadow: 7px 7px 8px black;
+  }
+  p {
+    font-size: 10px;
+  }
+}
+
+.thumb-up {
+  background-color: $neon-green;
+  width: 90px;
+  height: 90px;
+}
+ .thumb-down {
+  background-color: red;
+  width: 90px;
+  height: 90px;
+  padding-top: 7px;
+}
+
+.gaint-thumb {
+  display: inline-block;
   position: relative;
   top: 10px;
-  margin-right: 50px;
-}
-
-.thumb-badge {
-  background-color: red;
-  height: 60px;
-  width: 60px;
-  position: relative;
-  margin-right: 10px;
+  font-size: 55px;
+  max-width: 100px;
+  color: white;
 
 }
 
-.fa-heart {
-  font-size: 30px;
-  line-height: 1.8;
-}
-
-.overall-rating {
-  font-size: 45px;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
-  position: relative;
-}
-
-.positive-label {
-  position: relative;
-  top: 32px;
-  margin-left: 10px;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+.rating-box {
+  width: 200px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  display: inline;
 }
