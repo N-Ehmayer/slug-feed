@@ -5,7 +5,7 @@ import { CarouselItem, CarouselCaption } from 'mdbreact';
 const HomeCarouselItem = props => {
   return (
     <CarouselItem itemId={props.itemId}>
-      <div className="view hm-black-light">
+      <div className="view hm-black-strong">
         <img className="d-block w-100" style={{objectFit: 'cover'}} height='400px'src={props.article.hero_img_url}/>
         <div className="mask"></div>
       </div>
