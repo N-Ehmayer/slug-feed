@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { Tooltip } from 'mdbreact';
 
 const UPVOTE = true;
 const DOWNVOTE = false;
 const NOVOTE = null;
+
+const mapStateToProps = (state) => ({
+   session: state.session
+});
 
 class Comment extends Component {
   constructor(props) {
@@ -19,6 +25,7 @@ class Comment extends Component {
   }
 
   toggleVote(clickedVote) {
+    if (!(this.props.session.user || {}).id) { return; }
     axios.post('/api/comment_votes', {
       comment_id: this.state.id,
       is_upvote: ((this.state.currentuservotetype === clickedVote) ? NOVOTE : clickedVote)
@@ -32,6 +39,7 @@ class Comment extends Component {
   render() {
     const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {color: 'lightgrey'});
     const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {color: 'lightgrey'});
+    const loggedIn = ((this.props.session.user || {}).id !== undefined);
 
     return (
       <div className={this.props.classType}>
@@ -41,9 +49,13 @@ class Comment extends Component {
         <div className='comment-footer'>
           <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
           <div className='rating-containers'>
-            <i className={'fa fa-minus-circle'} style={downvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(DOWNVOTE)}></i>
+            <Tooltip placement='top' tooltipContent={loggedIn ? 'Downvote' : 'You must be logged in to vote'}>
+              <i className={'fa fa-minus-circle'} style={downvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(DOWNVOTE)}></i>
+            </Tooltip>
             <p className='comment-score'><b>{this.currentScore()}</b></p>
-            <i className={'fa fa-plus-circle'} style={upvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(UPVOTE)}></i>
+            <Tooltip placement='top' tooltipContent={loggedIn ? 'Upvote' : 'You must be logged in to vote'}>
+              <i className={'fa fa-plus-circle'} style={upvoteStyle} aria-hidden="true" onClick={() => this.toggleVote(UPVOTE)}></i>
+            </Tooltip>
           </div>
         </div>
       </div>
@@ -51,4 +63,4 @@ class Comment extends Component {
   }
 }
 
-export default Comment;
+export default connect(mapStateToProps)(Comment);
