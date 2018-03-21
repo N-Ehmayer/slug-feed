@@ -1,28 +1,38 @@
 .article-title {
   width: 90%;
   margin-right: inherit;
-  margin-bottom: -15px;
+  margin-bottom: -8px;
+  margin-left: 20px;
+  text-align: center;
 }
 
 .toggle-comments-button {
   background-color: $cool-blue;
+  opacity: 0.8;
   position: relative;
+  left: 274px;
   height: 30px;
   width: 150px;
+  margin: 0 auto;
   margin-bottom: 10px;
-  left: 512px;
+}
+.toggle-comments-button:hover {
+  opacity: 1;
 }
 
 .toggle-comments-text {
+  font-family: Cabin, san-sarif;
   font-size: 15px;
   position: relative;
-  top: 5px;
+  top: 2px;
+  right: 8px;
   letter-spacing: 0.3px;
+  margin-bottom: -1px;
 }
 
-.fa-comment-o {
-  font-size: 18px;
-  float: right;
+.toggle-comments-icon {
+  font-size: 14px;
   position: relative;
-  padding: 2px;
+  left: 58px;
+  bottom: 14px;
 }
