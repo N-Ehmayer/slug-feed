@@ -28,12 +28,12 @@ const ArticleJumbotron = (props) => {
               </div>
               <div className="rating-box">
                 {thumbsUp ?
-                <span className="badge rounded-circle thumb-up">
+                <span className="badge rounded-circle positive-circle">
                   <div className="gaint-thumb">
                      <i className="fa fa-thumbs-up "></i>
                   </div>
                 </span> :
-                <span className="badge rounded-circle thumb-down">
+                <span className="badge rounded-circle negative-circle">
                   <div className="gaint-thumb">
                      <i className="fa fa-thumbs-down "></i>
                   </div>

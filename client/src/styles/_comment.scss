@@ -24,9 +24,19 @@
   width: 50px;
 }
 
+.author-avatar {
+  height: 75px;
+  width: 75px;
+}
+
+.author-card {
+  p {
+    font-size: 14px;
+  }
+}
 .username {
   display: inline-block;
-  color: light-gray;
+  color: grey;
   font-size: 20px;
   position: relative;
   padding-left: 20px;

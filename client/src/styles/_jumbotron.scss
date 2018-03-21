@@ -1,6 +1,6 @@
 
 .jumbo-fix {
-  top: 40px;
+  top: 64px;
 }
 
 
@@ -22,13 +22,13 @@
   font-size: 18px;
   padding: 7px;
   position: relative;
+  .article-tag {
+    padding: 10px;
+    margin: 5px;
+  }
 
 }
 
-.article-tag {
-  padding: 10px;
-  margin: 5px;
-}
 
 .overall-rating {
   display: inline-block;
@@ -46,18 +46,6 @@
   }
 }
 
-.thumb-up {
-  background-color: $neon-green;
-  width: 90px;
-  height: 90px;
-}
- .thumb-down {
-  background-color: red;
-  width: 90px;
-  height: 90px;
-  padding-top: 7px;
-}
-
 .gaint-thumb {
   display: inline-block;
   position: relative;
@@ -65,8 +53,20 @@
   font-size: 55px;
   max-width: 100px;
   color: white;
-
 }
+
+.positive-circle {
+  background-color: $neon-green;
+  width: 90px;
+  height: 90px;
+}
+.negative-circle {
+  background-color: red;
+  width: 90px;
+  height: 90px;
+  padding-top: 7px;
+}
+
 
 .rating-box {
   width: 200px;
