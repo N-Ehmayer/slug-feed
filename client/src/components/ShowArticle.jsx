@@ -61,7 +61,12 @@ class ShowArticle extends Component {
 
   toggleSectionComments(section_id) {
     if (this.state.sectionToggled === section_id) {
-      this.setState({ positiveComments: [], negativeComments: [], sectionToggled: null });
+      let positiveComments = [];
+      let negativeComments = [];
+      this.state.article.sections.forEach((section) => {
+        section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+      })
+      this.setState({ positiveComments, negativeComments, sectionToggled: null });
       this.toggleComments();
     } else {
       axios.get(`/api/comments?section_id=${section_id}`)
@@ -110,7 +115,7 @@ class ShowArticle extends Component {
 
           <div className="p-3 w-100 col-6 article-container">
             <div className="container">
-              <ArticleHeader title={article.title} toggleComments={this.toggleComments}/>
+              <ArticleHeader title={article.title} toggleComments={this.toggleComments} commentsVisible={this.state.commentsVisible} />
               {articleSections}
               <AuthorCard author={article.author} />
             </div>
