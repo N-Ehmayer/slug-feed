@@ -27,16 +27,16 @@ class CommentModal extends React.Component {
   onMessageTextChange(event) { this.setState({ messageText: event.target.value }); }
 
   messageSend(agree) {
+    const self = this;
     axios.post('/api/comments', {
       content: this.state.messageText,
       section_id: this.state.section,
       agree: agree
     })
     .then(function(response){
+      self.props.hideMe(self.props.section);
       console.log('Message send success ----\n', response);
     });
-    this.props.hideMe();
-    this.setState({...this.state, messageText: '' });
   }
 
   render() {
@@ -47,7 +47,7 @@ class CommentModal extends React.Component {
 
           <div className="row">
             <div className="col-1">
-              <button onClick={this.props.hideMe} type="button" className="close" id="close-comment" aria-label="Close" >
+              <button onClick={() => this.props.hideMe(this.props.section)} type="button" className="close" id="close-comment" aria-label="Close" >
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
