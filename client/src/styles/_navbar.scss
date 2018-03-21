@@ -7,8 +7,10 @@
 }
 
 .logo {
-  margin: 0;
+  margin-bottom: 3px;
 }
+
+.main-nav {}
 
 .to-top {
   z-index: 1000;
@@ -19,6 +21,7 @@
   background-color: black;
   color: white !important;
   padding: 8px 20px !important;
+  margin-top: 3px;
   transition: 1s;
 }
 
@@ -31,6 +34,7 @@
 .nav-hover-red {
   background-color: white;
   color: black !important;
+  margin-top: 3px;
   padding: 8px 20px !important;
   transition: 1s;
 }

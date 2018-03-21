@@ -4,7 +4,7 @@ class Logo extends Component {
   render() {
     return (
           <div className="mx-auto logo">
-            <img width="300px" src={logo} alt='logo'/>
+            <img width="400px" src={logo} alt='logo'/>
           </div>
 
     );
