@@ -47,10 +47,10 @@ class Comment extends Component {
         <p className='comment-content'>&nbsp;&nbsp;{this.state.content}</p>
         <div className='container-fluid'>
           <div className='row'>
-            <div className="col-5">
+            <div className="col-6">
               <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
             </div>
-            <div className='rating-containers col-7'>
+            <div className='rating-containers col-6'>
               <TooltipIcon
               style={downvoteStyle}
               icon='minus-circle'
