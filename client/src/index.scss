@@ -1,18 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Timmana|Cabin|Cabin+Condensed|Lobster|Lora|Raleway:200');
 
 @import 'styles/_variables.scss';
-
-@import 'styles/App.scss';
 @import 'styles/article.scss';
-@import 'styles/ArticleHeader.scss';
-@import 'styles/ArticleSection.scss';
-@import 'styles/body.scss';
-
+@import 'styles/_ArticleHeader.scss';
 @import 'styles/_mixins.scss';
-
 @import 'styles/main.scss';
 @import 'styles/navbar.scss';
-
 @import 'styles/card.scss';
 @import 'styles/article.scss';
 @import 'styles/article_section.scss';
