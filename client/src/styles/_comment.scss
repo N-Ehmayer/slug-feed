@@ -1,24 +1,27 @@
 
-.comments-column {
-  padding: 25px;
-  height: 950px;
-  overflow: auto;
-}
+
 
 .comments-column-title {
   font-size: 20px;
   color: #d3d3d3;
 }
 
-
 .pos-comment-container {
-  border-bottom: 1px solid #00FFFF;
-  margin-bottom: 15px;
+  @extend %comments-column;
+  border-left: 2px solid $neon-blue;
+  .comment-card {
+    border-bottom: 1px solid $neon-blue;
+    margin-bottom: 15px;
+  }
 }
 
 .neg-comment-container {
-  border-bottom: 1px solid #ffa3a3fa;
-  margin-bottom: 15px;
+  @extend %comments-column;
+  border-right: 2px solid $neon-red;
+  .comment-card {
+    border-bottom: 1px solid $neon-red;
+    margin-bottom: 15px;
+  }
 }
 
 .username {
@@ -53,7 +56,6 @@
   display: inline-flex;
   position: relative;
   right: -100px;
-  bottom: 3px;
 }
 
 .fa-plus-circle {

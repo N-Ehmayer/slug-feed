@@ -24,7 +24,7 @@ class ArticleSection extends Component {
     return (
       <div className="section-container" style={transitionStyles}>
         <p className={props.isToggled ? 'section-content section-toggled' : 'section-content'}>
-          {props.section.content}
+          &nbsp;&nbsp;{props.section.content}
         </p>
         <div className="comment-icon" style={commentStyle}>
           <TooltipIcon

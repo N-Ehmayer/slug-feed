@@ -21,7 +21,11 @@ const ArticleJumbotron = (props) => {
               </div>
             </div>
             <div className="rgba-stylish-light d-flex justify-content-between align-items-end">
-              <div className="article-tag-container">{articleTags}</div>
+              <div className="container-fluid row ">
+              <div className="col-3">
+              </div>
+              <div className="col-6 article-tag-container">{articleTags}</div>
+              </div>
               <div className="rating-box">
                 {thumbsUp ?
                 <span className="badge rounded-circle thumb-up">
