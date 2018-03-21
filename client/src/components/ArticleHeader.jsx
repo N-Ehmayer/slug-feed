@@ -5,10 +5,10 @@ const ArticleHeader = (props) => {
   return (
     <div className="row">
       <h2 className="pb-3 article-title">{props.title}</h2>
-      <div className="toggle-comments-button badge badge-pill text-white" onClick={() => { props.toggleComments()}}>
+      <button className="toggle-comments-button badge badge-pill text-white" onClick={() => { props.toggleComments()}}>
         <h4 className="toggle-comments-text">{props.commentsVisible ? 'Hide' : 'Show'} discussion</h4>
         <i className={`toggle-comments-icon ${props.commentsVisible ? 'fa fa-comment-o' : 'fa fa-comment'}`} style={{...styles}}></i>
-      </div>
+      </button>
     </div>
   );
 }
