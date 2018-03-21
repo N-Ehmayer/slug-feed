@@ -25,7 +25,8 @@ class ShowArticle extends Component {
       negativeComments: [],
       commentModalSectionId: null,
       commentsVisible: false,
-      sectionToggled: null
+      sectionToggled: null,
+      articleHeight: 0
     }
 
     this.showCommentModal = this.showCommentModal.bind(this);
@@ -35,6 +36,7 @@ class ShowArticle extends Component {
   }
 
   componentWillMount() {
+    let self = this;
     const pathname = this.props.location.pathname;
     axios.get(`/api${pathname}`)
       .then( response => {
@@ -47,9 +49,11 @@ class ShowArticle extends Component {
         positiveComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
         negativeComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
         this.setState({ article, positiveComments, negativeComments });
+        this.setState({ articleHeight: self.refs.height.clientHeight });
       }).catch(function (error) {
         console.error(error);
       });
+        //console.log(self.refs.height.clientHeight);
   }
 
   componentDidMount() { window.scrollTo(0, 0); }
@@ -130,9 +134,10 @@ class ShowArticle extends Component {
               title={"Disagree"}
               comments={this.state.negativeComments}
               classType={'neg-comment-container'}
+              height={this.state.articleHeight}
             />
 
-          <div className="p-3 w-100 col-6 article-container" >
+          <div className="p-3 w-100 col-6 article-container" ref='height'>
             <div className="container">
               <ArticleHeader title={article.title} toggleComments={this.toggleComments} commentsVisible={this.state.commentsVisible} />
               {articleSections}
@@ -145,6 +150,7 @@ class ShowArticle extends Component {
             title={"Agree"}
             comments={this.state.positiveComments}
             classType={'pos-comment-container'}
+            height={this.state.articleHeight}
           />
         </div>
       </div>
