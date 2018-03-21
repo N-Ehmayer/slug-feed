@@ -41,6 +41,7 @@ class CommentModal extends React.Component {
 
   render() {
     const user = this.props.session.user
+    const isMessage = (this.state.messageText.length > 0)
     return (
       <Modal isOpen={true}>
 
@@ -58,40 +59,41 @@ class CommentModal extends React.Component {
 
         <ModalBody>
           <div className="row">
-            <div className="col-10 mx-auto">
+            <div className="col">
               <Input
                 type="textarea"
                 value={this.state.messageText}
                 onInput={this.onMessageTextChange.bind(this)}
-                label="Compose your message..."
-              />
-
+                label="Compose your message..."/>
             </div>
           </div>
         </ModalBody>
-        <div className="row mx-auto">
-          <div className="col-3 mx-auto">
-          <Button
-            className="float-left negative-message-send"
-            color="danger"
-            onClick={ () => this.messageSend(false)}
-          >
-            <i className="fa fa-arrow-left mx-auto" aria-hidden="true"></i>
-          </Button>
+        <div className="row text-center">
+          <div className='col'>Disagree</div>
+          <div className='col-6'>Positivity Rating</div>
+          <div className='col'>Agree</div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <Button
+              className="float-left negative-message-send"
+              color="danger"
+              disabled={!isMessage}
+              onClick={ () => isMessage ? this.messageSend(false) : false}>
+              <i className="fa fa-arrow-left mx-auto" aria-hidden="true"></i>
+            </Button>
           </div>
-          <div className="col-3">
-            <p className="sentiment-text align-middle">Points:<br/></p><p className="points">{this.displaySentiment()}</p>
-          </div>
-          <div className="col-3 mx-auto smiley">
+          <div className="col points">{this.displaySentiment()}</div>
+          <div className="col smiley">
             <Smiley height='50' width='50' sentiment={this.smileySentiment()}/>
           </div>
-          <div className="col-3 mx-auto">
+          <div className="col">
             <Button
-              className="positive-message-send "
+              className="positive-message-send"
               color="primary"
-              onClick={ () =>  this.messageSend(true) }
-            >
-              <i className="fa fa-arrow-right mx-auto" aria-hidden="true"></i>
+              disabled={!isMessage}
+              onClick={ () =>  isMessage ? this.messageSend(true) : false }>
+              <i className="fa fa-arrow-right" aria-hidden="true"></i>
             </Button>
           </div>
         </div>

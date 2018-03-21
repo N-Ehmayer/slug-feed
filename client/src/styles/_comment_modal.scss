@@ -1,3 +1,7 @@
+.comment-modal {
+  width: 800px;
+}
+
 #close-comment {
   float: left;
   margin: 12px;
@@ -37,21 +41,10 @@
 }
 
 .points {
-  padding: 0;
-  padding-left: 10px;
+  font-size: 35px;
   text-align: center;
-}
-.sentiment-text {
-  font-size: 8px;
-  text-align: center;
-  color: green;
-  padding-top: 15px;
-  margin-bottom: 0;
-  padding-left: 10px;
 }
 
 .smiley {
-  margin-top: 4px;
-  padding-left: 5px;
 }
 
