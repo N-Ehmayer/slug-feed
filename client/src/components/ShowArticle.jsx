@@ -51,6 +51,10 @@ class ShowArticle extends Component {
       });
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
+
   showCommentModal(section_id) { this.setState({ commentModalSectionId: section_id }); }
   hideCommentModal() { this.setState({ commentModalSectionId: null }); }
   toggleComments() { this.setState({ commentsVisible: !this.state.commentsVisible }); }
