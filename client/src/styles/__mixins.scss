@@ -1,0 +1,10 @@
+%comments-column {
+  padding: 25px;
+  height: 950px;
+  overflow: auto;
+  .comment-column-header {
+    font-size: 20px;
+    color: $not-white;
+  }
+}
+

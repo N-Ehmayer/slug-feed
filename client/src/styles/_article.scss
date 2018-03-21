@@ -1,13 +1,13 @@
-.article {
-  border: 1px solid #000;
-}
-
 .article-container {
   h1, h2, h3 {
     font-family: Cabin, san-sarif;
   }
   p {
     font-family: Lola, sarif;
+  }
+  h2 {
+    font-size: 40px;
+    margin-top: 40px;
   }
 }
 
@@ -22,6 +22,7 @@
 }
 
 .article-section {
+  margin-top: 24px;
   height: 98%;
 }
 

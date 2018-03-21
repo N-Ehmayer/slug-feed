@@ -1,28 +1,42 @@
 
-.comments-column {
-  padding: 25px;
-  height: 950px;
-  overflow: auto;
-}
-
-.comments-column-title {
-  font-size: 20px;
-  color: #d3d3d3;
-}
 
 
 .pos-comment-container {
-  border-bottom: 1px solid #00FFFF;
-  margin-bottom: 15px;
+  @extend %comments-column;
+  border-left: 2px solid $neon-blue;
+  .comment-card {
+    border-bottom: 1px solid $neon-blue;
+    margin-bottom: 15px;
+  }
 }
 
 .neg-comment-container {
-  border-bottom: 1px solid #ffa3a3fa;
-  margin-bottom: 15px;
+  @extend %comments-column;
+  border-right: 2px solid $neon-red;
+  .comment-card {
+    border-bottom: 1px solid $neon-red;
+    margin-bottom: 15px;
+  }
 }
 
+.user-avatar {
+  height: 50px;
+  width: 50px;
+}
+
+.author-avatar {
+  height: 75px;
+  width: 75px;
+}
+
+.author-card {
+  p {
+    font-size: 14px;
+  }
+}
 .username {
   display: inline-block;
+  color: grey;
   font-size: 20px;
   position: relative;
   padding-left: 20px;
@@ -37,34 +51,28 @@
 
 .comment-footer {
   position: relative;
+  display: inline-block;
 }
 
 .comment-time {
-  display: block;
-  float: left;
   position: relative;
-  left: 0;
-  bottom: 0;
+  top: 6px;
+  margin-bottom: 0;
+    float: left;
   color: grey;
   font-size: 15px;
 }
 
 .rating-containers {
-  display: inline-flex;
-  position: relative;
-  right: -100px;
-  bottom: 3px;
+  display: inline-block;
+  text-align: right;
+  font-size: 20px;
 }
 
 .comment-score {
-  position: relative;
-  top: 3px;
+  display: inline-block;
+  color: lightgrey;
   padding: 0 10px;
-  color: grey;
+  font-size: 20px;
 }
 
-.user-avatar {
-  height: 50px;
-  width: 50px;
-  border: $cool-blue 2px solid;
-}

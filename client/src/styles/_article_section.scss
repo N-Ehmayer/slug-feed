@@ -1,0 +1,30 @@
+.section-container {
+  position: relative;
+
+  .article-section {
+    height: 98%;
+  }
+
+  .section-toggled {
+    background-color: #fff2f2;
+    border-radius: 5px;
+  }
+
+  .comment-icon {
+    position: relative;
+    visibility: hidden;
+    text-align: center;
+    border-bottom: lightgrey 0.05em solid;
+    margin-bottom: 5px;
+  }
+}
+
+.section-container:hover > .comment-icon {
+  visibility: visible;
+  border-bottom: lightgrey 0.05em solid;
+  margin-bottom: 5px;
+
+}
+
+
+

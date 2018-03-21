@@ -1,17 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Lobster|Lora|Raleway:200');
+@import url('https://fonts.googleapis.com/css?family=Timmana|Cabin|Cabin+Condensed|Lobster|Lora|Raleway:200');
 
 @import 'styles/_variables.scss';
+
 @import 'styles/App.scss';
 @import 'styles/article.scss';
 @import 'styles/ArticleHeader.scss';
 @import 'styles/ArticleSection.scss';
 @import 'styles/body.scss';
-@import 'styles/card.scss';
-@import 'styles/comment.scss';
-@import 'styles/comment_modal.scss';
-@import 'styles/img.scss';
-@import 'styles/jumbotron.scss';
+
+@import 'styles/_mixins.scss';
+
 @import 'styles/main.scss';
 @import 'styles/navbar.scss';
-@import 'styles/p.scss';
-@import 'styles/TooltipIcon.scss';
+
+@import 'styles/card.scss';
+@import 'styles/article.scss';
+@import 'styles/article_section.scss';
+@import 'styles/comment.scss';
+@import 'styles/comment_modal.scss';
+@import 'styles/jumbotron.scss';
+@import 'styles/tooltip_icon.scss';
