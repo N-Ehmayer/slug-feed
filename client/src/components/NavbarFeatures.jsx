@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 class NavbarFeatures extends Component {
   render() {
     return (
-      <Navbar light className="to-top" expand="md" fixed="top" scrolling>
+      <Navbar className="to-top main-nav" expand="md" fixed="top" scrolling>
         <NavbarNav className="ml-auto">
           <NavItem><NavLink className="nav-link nav-hover-red" to="/">Feed</NavLink></NavItem>
           <NavItem><NavbarBrand href="/" className="navbar-logo mx-auto">
