@@ -9,7 +9,10 @@ const ArticleHeader = (props) => {
         className="toggle-comments"
         onClick={() => { props.toggleComments()}}
       >
-      <i className="fa fa-comments-o" aria-hidden="true" style={{...styles}}></i>
+      <button className="toggle-comments-button badge badge-pill text-white">
+        <i className="fa fa-comment-o" style={{...styles}}></i>
+        <p className="toggle-comments-text">View discussion</p>
+      </button>
       </div>
     </div>
   );

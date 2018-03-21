@@ -57,7 +57,12 @@ class ShowArticle extends Component {
 
   toggleSectionComments(section_id) {
     if (this.state.sectionToggled === section_id) {
-      this.setState({ positiveComments: [], negativeComments: [], sectionToggled: null });
+      let positiveComments = [];
+      let negativeComments = [];
+      this.state.article.sections.forEach((section) => {
+        section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+      })
+      this.setState({ positiveComments, negativeComments, sectionToggled: null });
       this.toggleComments();
     } else {
       axios.get(`/api/comments?section_id=${section_id}`)
