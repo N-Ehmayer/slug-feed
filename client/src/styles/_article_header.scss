@@ -9,30 +9,25 @@
 .toggle-comments-button {
   background-color: $cool-blue;
   opacity: 0.8;
-  position: relative;
-  left: 274px;
-  height: 30px;
-  width: 150px;
+  height: 28px;
+  width: 160px;
   margin: 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .toggle-comments-button:hover {
   opacity: 1;
 }
 
 .toggle-comments-text {
-  font-family: Cabin, san-sarif;
   font-size: 15px;
   position: relative;
   top: 2px;
   right: 8px;
-  letter-spacing: 0.3px;
-  margin-bottom: -1px;
 }
 
 .toggle-comments-icon {
   font-size: 14px;
   position: relative;
-  left: 58px;
-  bottom: 14px;
+  left: 62px;
+  bottom: 23px;
 }
