@@ -34,7 +34,6 @@ class ShowArticle extends Component {
     this.toggleSectionComments = this.toggleSectionComments.bind(this);
   }
 
-
   componentWillMount() {
     const pathname = this.props.location.pathname;
     axios.get(`/api${pathname}`)
@@ -45,18 +44,36 @@ class ShowArticle extends Component {
         article.sections.forEach( section => {
           section.comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) )
         });
+        positiveComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
+        negativeComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
         this.setState({ article, positiveComments, negativeComments });
       }).catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
   }
 
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
+  componentDidMount() { window.scrollTo(0, 0); }
+
 
   showCommentModal(section_id) { this.setState({ commentModalSectionId: section_id }); }
-  hideCommentModal() { this.setState({ commentModalSectionId: null }); }
+  hideCommentModal(section_id) {
+    this.setState({commentModalSectionId: null})
+    axios.get(`/api/comments?section_id=${section_id}`)
+      .then( response => {
+        const comments = response.data;
+        let positiveComments = [];
+        let negativeComments = [];
+        comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+        positiveComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
+        negativeComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
+        this.setState({
+          positiveComments,
+          negativeComments,
+          commentsVisible: true,
+          sectionToggled: section_id
+        });
+      }).catch(error => console.error(error));
+  }
   toggleComments() { this.setState({ commentsVisible: !this.state.commentsVisible }); }
 
   toggleSectionComments(section_id) {
@@ -75,6 +92,8 @@ class ShowArticle extends Component {
           let positiveComments = [];
           let negativeComments = [];
           comments.map( comment => (comment.agree ? positiveComments : negativeComments).push(comment) );
+          positiveComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
+          negativeComments.sort((a, b) => (b.initial_score + b.votes_score) - (a.initial_score + a.votes_score))
           this.setState({ positiveComments, negativeComments, commentsVisible: true, sectionToggled: section_id });
         }).catch(function (error) {
           console.log(error);
