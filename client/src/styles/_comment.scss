@@ -1,11 +1,6 @@
 
 
 
-.comments-column-title {
-  font-size: 20px;
-  color: #d3d3d3;
-}
-
 .pos-comment-container {
   @extend %comments-column;
   border-left: 2px solid $neon-blue;
@@ -26,6 +21,7 @@
 
 .username {
   display: inline-block;
+  color: light-gray;
   font-size: 20px;
   position: relative;
   padding-left: 20px;
@@ -68,5 +64,4 @@
 .user-avatar {
   height: 50px;
   width: 50px;
-  border: $cool-blue 2px solid;
 }
