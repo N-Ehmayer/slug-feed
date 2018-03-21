@@ -113,7 +113,7 @@ class ShowArticle extends Component {
               classType={'neg-comment-container'}
             />
 
-          <div className="p-3 w-100 col-6 article-container">
+          <div className="p-3 w-100 col-6 article-container" >
             <div className="container">
               <ArticleHeader title={article.title} toggleComments={this.toggleComments} commentsVisible={this.state.commentsVisible} />
               {articleSections}
