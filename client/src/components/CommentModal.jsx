@@ -69,27 +69,27 @@ class CommentModal extends React.Component {
           </div>
         </ModalBody>
         <div className="row text-center">
-          <div className='col'>Disagree</div>
+          <div className='col text-center'>Disagree</div>
           <div className='col-6'>Positivity Rating</div>
-          <div className='col'>Agree</div>
+          <div className='col text-center'>Agree</div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col text-center">
             <Button
-              className="float-left negative-message-send"
+              className="float-left"
               color="danger"
               disabled={!isMessage}
               onClick={ () => isMessage ? this.messageSend(false) : false}>
               <i className="fa fa-arrow-left mx-auto" aria-hidden="true"></i>
             </Button>
           </div>
-          <div className="col points">{this.displaySentiment()}</div>
-          <div className="col smiley">
+          <div className="points col-3 text-center">{this.displaySentiment()}</div>
+          <div className="smiley col-3 text-center">
             <Smiley height='50' width='50' sentiment={this.smileySentiment()}/>
           </div>
-          <div className="col">
+          <div className="col text-center">
             <Button
-              className="positive-message-send"
+              className="float-right"
               color="primary"
               disabled={!isMessage}
               onClick={ () =>  isMessage ? this.messageSend(true) : false }>
