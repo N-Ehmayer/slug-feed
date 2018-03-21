@@ -42,10 +42,10 @@ class Comment extends Component {
     const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {});
 
     return (
-      <div className={this.props.classType}>
+      <div className="comment-card">
         <img className='rounded-circle user-avatar' src={this.state.poster.picture} alt='article banner'/>
         <h3 className='username'>{this.state.poster.displayName}</h3>
-        <p className='comment-content'>{this.state.content}</p>
+        <p className='comment-content'>&nbsp;&nbsp;{this.state.content}</p>
         <div className='comment-footer'>
           <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
           <div className='rating-containers'>
