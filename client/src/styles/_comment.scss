@@ -19,6 +19,11 @@
   }
 }
 
+.user-avatar {
+  height: 50px;
+  width: 50px;
+}
+
 .username {
   display: inline-block;
   color: light-gray;
@@ -36,32 +41,28 @@
 
 .comment-footer {
   position: relative;
+  display: inline-block;
 }
 
 .comment-time {
-  display: block;
-  float: left;
   position: relative;
-  left: 0;
-  bottom: 0;
+  top: 6px;
+  margin-bottom: 0;
+    float: left;
   color: grey;
   font-size: 15px;
 }
 
 .rating-containers {
-  display: inline-flex;
-  position: relative;
-  right: -100px;
+  display: inline-block;
+  text-align: right;
+  font-size: 20px;
 }
 
 .comment-score {
-  position: relative;
-  top: 3px;
+  display: inline-block;
+  color: lightgrey;
   padding: 0 10px;
-  color: grey;
+  font-size: 20px;
 }
 
-.user-avatar {
-  height: 50px;
-  width: 50px;
-}

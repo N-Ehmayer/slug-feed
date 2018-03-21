@@ -37,33 +37,36 @@ class Comment extends Component {
   }
 
   render() {
-    const sharedStyle = {fontSize: '30px', }
-    const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {});
-    const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {});
+    const upvoteStyle = (this.state.currentuservotetype === UPVOTE ? {color: 'cyan'} : {color: 'lightgrey'});
+    const downvoteStyle = (this.state.currentuservotetype === DOWNVOTE ? {color: '#db5e5e'} : {color: 'lightgrey'});
 
     return (
       <div className="comment-card">
         <img className='rounded-circle user-avatar' src={this.state.poster.picture} alt='article banner'/>
         <h3 className='username'>{this.state.poster.displayName}</h3>
         <p className='comment-content'>&nbsp;&nbsp;{this.state.content}</p>
-        <div className='comment-footer'>
-          <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
-          <div className='rating-containers'>
-            <TooltipIcon
-            style={{...sharedStyle, ...downvoteStyle}}
-            icon='minus-circle'
-            loginRequired
-            validMessage='Downvote'
-            invalidMessage='You must be logged in to vote'
-            onClick={() => this.toggleVote(DOWNVOTE)} />
-            <p className='comment-score'><b>{this.currentScore()}</b></p>
-            <TooltipIcon
-            style={{...sharedStyle, ...upvoteStyle}}
-            icon='plus-circle'
-            loginRequired
-            validMessage='Upvote'
-            invalidMessage='You must be logged in to vote'
-            onClick={() => this.toggleVote(UPVOTE)} />
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className="col-4">
+              <p className='comment-time'>{moment(this.state.created_at).fromNow()}</p>
+            </div>
+            <div className='rating-containers col-8'>
+              <TooltipIcon
+              style={downvoteStyle}
+              icon='minus-circle'
+              loginRequired
+              validMessage='Downvote'
+              invalidMessage='You must be logged in to vote'
+              onClick={() => this.toggleVote(DOWNVOTE)} />
+              <p className='comment-score'><b>{this.currentScore()}</b></p>
+              <TooltipIcon
+              style={upvoteStyle}
+              icon='plus-circle'
+              loginRequired
+              validMessage='Upvote'
+              invalidMessage='You must be logged in to vote'
+              onClick={() => this.toggleVote(UPVOTE)} />
+            </div>
           </div>
         </div>
       </div>
