@@ -24,7 +24,7 @@ class TooltipIcon extends Component {
     const tooltipContent = (props.loginRequired && !loggedIn) ? props.invalidMessage : props.validMessage;
 
     return (
-      <Tooltip placement='top' tooltipContent={tooltipContent} >
+      <Tooltip className='tooltip-icon' placement='top' tooltipContent={tooltipContent} >
         <i
           className={'fa animated fa-' + props.icon + (this.state.shouldShake ? ' shake' : '')}
           aria-hidden="true"

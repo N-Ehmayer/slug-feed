@@ -9,28 +9,23 @@ class ArticleSection extends Component {
     this.state = {shouldShake: false};
   }
 
-  shake() {
-    this.setState({shouldShake: true}, () => {
-        const self = this;
-        setTimeout(() => self.setState({shouldShake: false}), 1000);
-    });
-  }
-
   render() {
     const props = this.props;
     const transitionStyles = { transition: 'all 0.2s ease-out'}
     const commentStyle = props.isToggled ? {'visibility': 'visible'} : {}
+    const sectionToggleStyle = props.isToggled ? {color: 'pink'} : {}
 
     return (
       <div className="section-container" style={transitionStyles}>
         <p className={props.isToggled ? 'section-content section-toggled' : 'section-content'}>
           &nbsp;&nbsp;{props.section.content}
         </p>
-        <div className="comment-icon" style={commentStyle}>
+        <div className="comment-icon d-flex justify-content-around" style={commentStyle}>
           <TooltipIcon
             icon='comments'
-            validMessage='Show Section Comments'
-            onClick={() => props.toggleSectionComments(props.section.id)} />
+            validMessage={props.isToggled ? 'Hide Section Comments' : 'Show Section Comments'}
+            onClick={() => props.toggleSectionComments(props.section.id)}
+            style={sectionToggleStyle} />
           <TooltipIcon
             icon='commenting'
             loginRequired
