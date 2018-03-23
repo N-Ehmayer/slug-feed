@@ -44,7 +44,7 @@ Running only the backend server:
 # Article Page
 !["Article Page"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/clean_article.png)
 # Comment Modal
-!["Comment Modal"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comment_modal.png =720x)
+!["Comment Modal"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comment_modal.png)
 # Comment With Scroll
 !["Comments with scroll"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comments_with_scroll.png)
 # Auth0 Single Sign on
