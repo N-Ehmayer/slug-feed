@@ -38,16 +38,16 @@ Running only the backend server:
 
 ## Screenshots
 
-# Feed
+### Feed
 !["Homepage"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/feed.png)
 
-# Article Page
+### Article Page
 !["Article Page"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/clean_article.png)
-# Comment Modal
+### Comment Modal
 !["Comment Modal"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comment_modal.png)
-# Comment With Scroll
+### Comment With Scroll
 !["Comments with scroll"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comments_with_scroll.png)
-# Auth0 Single Sign on
+### Auth0 Single Sign on
 !["Auth0 Single Sign on"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/auth0_page.png)
 
 
