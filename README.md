@@ -33,3 +33,22 @@ Running only the client server:
 
 Running only the backend server:
 ```$ npm run server```
+
+## Screenshots
+
+## Screenshots
+
+# Feed
+!["Homepage"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/feed.png)
+
+# Article Page
+!["Article Page"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/clean_article.png)
+# Comment Modal
+!["Comment Modal"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comment_modal.png)
+# Comment With Scroll
+!["Comments with scroll"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/comments_with_scroll.png)
+# Auth0 Single Sign on
+!["Auth0 Single Sign on"](https://github.com/Spezp/myButler/blob/master/docs/Item%20rating%20information.png)
+
+
+
