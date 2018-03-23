@@ -36,8 +36,6 @@ Running only the backend server:
 
 ## Screenshots
 
-## Screenshots
-
 ### Feed
 !["Homepage"](https://raw.githubusercontent.com/N-Ehmayer/slug-feed/master/docs/screenshots/feed.png)
 
