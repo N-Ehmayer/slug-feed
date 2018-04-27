@@ -53,7 +53,6 @@ class ShowArticle extends Component {
       }).catch(function (error) {
         console.error(error);
       });
-        //console.log(self.refs.height.clientHeight);
   }
 
   componentDidMount() { window.scrollTo(0, 0); }
