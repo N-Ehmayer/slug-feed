@@ -1,26 +1,25 @@
-export default function articlesReducer(state={
-  articles: [],
+export default function articlesByTagReducer(state={
+  articlesByTag: [],
   fetching: false,
   fetched: false,
   error: null,
   }, action) {
 
   switch (action.type) {
-    case "FETCH_ARTICLES": {
+    case "FETCH_ARTICLES_BY_TAG": {
       return {...state, fetching: true}
     }
-    case "FETCH_ARTICLES_FAILURE": {
+    case "FETCH_ARTICLES_BY_TAG_FAILURE": {
       return {...state, fetching: false, error: action.payload}
     }
-    case "FETCH_ARTICLES_SUCCESS": {
+    case "FETCH_ARTICLES_BY_TAG_SUCCESS": {
       return {
         ...state,
         fetching: false,
         fetched: true,
-        articles: action.payload,
+        articlesByTag: action.payload,
       }
     }
     default: return state
   }
 }
-
