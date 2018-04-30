@@ -7,10 +7,15 @@ class HomeCarousel extends Component {
     super(props);
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
+    this.numOfArticles = props.articles.length;
     this.state = {
-      activeItem: 8,
-      maxLength: 8
-    };
+      activeItem: null,
+      maxLength: null
+    }
+  }
+
+  setCarouselLength() {
+    this.setState({ maxLength: this.props.articles.length });
   }
 
   next() {
@@ -39,20 +44,29 @@ class HomeCarousel extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+  // You don't have to do this check first, but it can help prevent an unneeded render
+  if (nextProps.articles.length !== this.state.maxLength) {
+    this.setState({ maxLength: nextProps.articles.length });
+  }
+}
+
+
   render() {
     if (!this.props.articles.length) { return false; }
-    return (
+      return (
       <Carousel
         activeItem={this.state.activeItem}
         next={this.next}
         className="z-depth-1 black">
         <CarouselInner>
-          {this.props.articles.map((article, index) => <HomeCarouselItem key={index} article={article} itemId={(index + 1).toString()} />)}
+          {this.props.articles.map((article, index) => <HomeCarouselItem key={article.id} article={article} itemId={(index + 1).toString()} />)}
         </CarouselInner>
         <CarouselControl direction="prev" role="button" onClick={() => { this.prev(); }} />
         <CarouselControl direction="next" role="button" onClick={() => { this.next(); }} />
       </Carousel>
     )
+
   };
 };
 
