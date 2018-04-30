@@ -91,6 +91,7 @@ require("./routes/auth0")(router, knex);
 require("./routes/api-articles")(router, knex);
 require("./routes/api-comments")(router, knex);
 require("./routes/api-comment_votes")(router, knex);
+require("./routes/api-tags")(router, knex);
 
 // Mount all factory-made resource routes
 const apiRouteFactory = require("./routes/api--route-factory.js");
